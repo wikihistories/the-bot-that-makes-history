@@ -44,6 +44,10 @@ library(tidyverse)
 
 # Introduction: What is Wikipedia time?
 
+a. *Introduce big picture summary of research so that you can introduce the gap in research;*
+b. *Introduce your RQ: What is Wikipedia time?*
+c. *The contributions of this paper to digital media research/media, culture and society.*
+
 # Theoretical overview
 
 ## Temporal regimes
@@ -75,6 +79,10 @@ Why does practice vary across the different language editions? What led to the e
 We try to answer these questions by focussing on Yapperbot/uncurrenter. We describe the history of Template:Current and recount the debates that led to the bot's creation. We then examine Yapperbot/uncurrenter's contributions to English Wikipedia, comparing its practice with the practice of human editors on English Wikipedia and other-language Wikipedias. As many scholars have observed, bots are powerful actors in Wikipedia's "sociotechnical system", and account for a large share of contributions [@niederer_wisdom_2010; @dijck_culture_2013, pp. 137-140; @geiger_work_2010; @geiger_when_2013; @geiger_operationalizing_2017; @halfaker_bots_2012; @livingstone_population_2016]. Bots are also culturally significant. In a series of pathbreaking papers, Stuart Geiger has demonstrated how bots enact or incarnate Wikipedia's culture [@geiger_social_2009; @geiger_lives_2011; @geiger_are_2013; @geiger_beyond_2017; see also @kennedy_textual_2010]. As he explains, it is not sufficient to read a bot's source code, although there may well be important policies, procedures or ideals "encoded" in the source [@geiger_beyond_2017, p. 9]. To understand bots, it is essential to observe how they act in the wild, and to observe how human users and other bots interact with *them* [@geiger_lives_2011; @geiger_beyond_2017]. In that spirit, we pursue Yapperbot/uncurrenter through Wikipedia, to see how and when it consigns articles to history. Does it solve the problems identified by the editors who summoned it into existence? And what were those problems anyway?
 
 # Methods
+
+- *Qualitative methods:* Reading the talk pages, bot approval etc. that led to the creation of Yapperbot/uncurrenter
+- *Quantitative methods:* Comparison of Yapperbot/uncurrenter with humans who have policed Template:Current using wikkitidy [@falk_wikkitidy_2023] and the tidyverse [@wickham_welcome_2019].
+- *Methodology:* Trace ethnography [@geiger_trace_2011]; ethnography of algorithmic systems [@seaver_algorithms_2017; @geiger_beyond_2017].
 
 ```{r}
 get_yapperbot <- function(data_dir = "data", use_cache = FALSE) {
