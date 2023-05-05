@@ -45,32 +45,332 @@ ethnography}
 
 \maketitle
 
-\hypertarget{introduction-what-is-wikipedia-time}{%
-\section{Introduction: What is Wikipedia
-time?}\label{introduction-what-is-wikipedia-time}}
+\hypertarget{introduction-wikipedia-and-the-technicity-of-time}{%
+\section{Introduction: Wikipedia and The Technicity of
+Time}\label{introduction-wikipedia-and-the-technicity-of-time}}
 
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\tightlist
-\item
-  \emph{Introduce big picture summary of research so that you can
-  introduce the gap in research;}
-\item
-  \emph{Introduce your RQ: What is Wikipedia time?}
-\item
-  \emph{The contributions of this paper to digital media research/media,
-  culture and society.}
-\end{enumerate}
+Time is a supple medium. It winds itself into many shapes. It surges
+through the heartwood. It lies upon the bark. It carves rock and unfolds
+in song. It creates myriad structures, then entropically destroys them.
+It races, dallies, recurs, reverses, accelerates, splits and stops.
 
-\hypertarget{theoretical-overview}{%
-\section{Theoretical overview}\label{theoretical-overview}}
+Despite its suppleness, time has definite characteristics. It forms
+rhythms. It weaves people and plants and animals into lives and seasons.
+It founds eras.
 
-\hypertarget{temporal-regimes}{%
-\subsection{Temporal regimes}\label{temporal-regimes}}
+What are the characteristics of time in the digital era? The question
+has been a major preoccupation for humanists and social scientists in
+the twenty-first century. Theorists in many disciplines have argued that
+`presentism' is the dominant `temporal regime' of the twenty-first
+century \citep{assmann_is_2020, hartog_regimes_2017}. We inhabit a
+`broad present' \citep{gumbrecht_our_2014} or a `timeless time'
+\citep{castells_rise_2010} in which big data and frictionless
+communication have conspired with the cult of memory to abolish the
+future and bring the past into the present. We live in a rubble-world of
+accumulating fact. Other theorists have diagnosed the problem as
+`temporal acceleration'. We experience time as running ever faster,
+argues \citet[p.~77]{wajcman_pressed_2015}, because it has become
+`deroutinized'. We are trapped in the present because we are present in
+so many places at once: on the phone to daycare while picking up dinner
+ingredients in the supermarket on our lunchbreak at work. Digital media
+are the handmaidens of post-industrial capitalism. Without them, we
+would be unable to maintain the modicum of order we currently enjoy.
 
-\hypertarget{time-in-wikipedia-studies-the-primacy-of-the-past}{%
-\subsection{Time in Wikipedia Studies: the primacy of the
-past}\label{time-in-wikipedia-studies-the-primacy-of-the-past}}
+A weakness of many theories of temporality is their focus on the
+\emph{products} rather than the \emph{production} of temporal regimes.
+To characterise a temporal regime, the theorist considers some cultural
+products, such as literary texts
+\citep{gumbrecht_our_2014, hartog_regimes_2017} or work-time statistics
+\citep{castells_rise_2010} and tries to determine what kind of temporal
+regime those products represent. Such accounts necessarily raise the
+question: how is it possible to erect a temporal regime in the first
+place? A compelling answer is given by \citet{orlikowski_its_2002}, who
+argue that the temporal regime of an organisation is produced by the
+`practices' of its members. Such practices can modify a temporal regime
+`implicitly' or `explicitly' \citeyearpar[p.~687]{orlikowski_its_2002},
+though in either case the key force of change is \emph{repetition}, or
+`recurrent action' \citeyearpar[p.~696]{orlikowski_its_2002}. Temporal
+regimes are rhythmical. They are produced by the recurrent actions of
+people, who learn to act in concert as the members of an orchestra.
+
+In this paper, we build on Orlikowski and Yates's theory of temporal
+structuration to describe the temporal regime of Wikipedia. We show that
+to explain Wikipedia's temporal regime, it is necessary to supplement
+Orlikowski and Yates's theory of \emph{repetition} with a theory of
+time's \emph{representation} and its \emph{technicity}. Only by
+accounting for these three aspects of time can we adequately answer our
+central questions: (1) what is Wikipedia time? and (2) what can it tell
+us about digital time more broadly?
+
+Our central case study is
+\href{https://en.wikipedia.org/wiki/User:Yapperbot}{Yapperbot/uncurrenter},
+a `bot' or computer program that polices the barrier between past and
+present on English Wikipedia. We situate Yapperbot/uncurrenter in
+Wikipedia's broader sociotechnical systems. We examine how it interacts
+with human editors. We show how it fits into Wikipedia's complex array
+of interfaces and data streams. We present Yapperbot/uncurrenter as a
+prime example of the `technicity of time'. It is a technology that
+attempts to make time concrete, to freeze it into an object.
+Yapperbot/uncurrenter is like the master's clock in an
+eighteenth-century factory. It ticks regularly (\emph{repetition}),
+shows the time (\emph{representation}) and acts impersonally
+(\emph{technicity}).
+
+Yapperbot/uncurrenter performs a single, simple task. Each hour, it
+scans English Wikipedia, finding every article that `transcludes'
+\href{https://en.wikipedia.org/wiki/Template:Current}{Template:Current}.
+If the article has not been edited in over five hours, it deletes the
+template.
+
+A `template' is a microprogram that peforms a common task. In the case
+of Template:Current, the editor inserts the code
+\texttt{\{\{current\}\}} into an article. This adds a warning banner to
+the article (Figure \ref{fig:banner_collage}), and automatically adds
+the article to
+\href{https://en.wikipedia.org/wiki/Category:Current_events}{Category:Current\_events}.
+When Yapperbot/uncurrenter deletes the template, the banner disappears,
+as does the article's categorisation as a `current event'. This would
+seem to consign the article to the past. But here lies the first twist
+in the tale. When Yapperbot/uncurrenter deletes Template:Current, it
+leaves an oddly contradictory message in the article's edit history:
+
+\begin{quote}
+Auto-removing \{\{current\}\} - no edits in 5hrs+. The event may still
+be current, but
+\href{https://en.wikipedia.org/wiki/Template:Current}{the
+\{\{current\}\} template is designed only for articles which many
+editors are editing, and is usually up for less than a day}.
+\end{quote}
+
+On English Wikipedia, an event can be `current' without being
+\texttt{\{\{current\}\}}. This contradiction lies at the heart of
+Wikipedia's temporal regime. When Wikipedia's English editors debated
+the need for Yapperbot/uncurrenter, they ran straight into the
+contradiction between two different understandings of time. To stabilise
+Wikipedia's temporal regime, they had to resolve this contradiction. As
+we show below, Wikipedia's English editors made the radical move to try
+and abolish the present, a path that editors of other-language
+Wikipedias have refused to take.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{images/banner_collage} \caption{Template:Current in Italian, Hindi, English, French, Korean and German (as of 14 March 2023)\label{fig:banner_collage}}\label{fig:unnamed-chunk-1}
+\end{figure}
+
+Wikipedia is one of the few places where where the construction of a
+temporal regime can be (almost) directly observed. Unlike other
+prominent social media platforms, Wikipedia is an `open' project, every
+one of whose facets can be publicly altered and debated. The
+encyclopaedia can only be changed in public. Nearly every step in the
+construction of the temporal regime leaves an easily-recovered mark. It
+may appear that an `open' platform such as Wikipedia could never
+tolerate something as closed as a temporal \emph{regime}, but as
+\citet{tkacz_wikipedia_2015} shows, Wikipedia's openness has not
+prevented it from developing a restrictive `frame' of rules and concepts
+that govern its activities. Quite the contrary. Wikipedia is not only
+the most open of social networks---it is surely also the most highly
+organised.
+
+Wikipedia is also a place where `technicities of time' are especially
+prominent. Large parts of the encyclopedia are managed by bots such as
+Yapperbot/uncurrenter, which are powerful actors in Wikipedia's
+sociotechnical system
+\citetext{\citealp{niederer_wisdom_2010}; \citealp[pp.~137-140]{dijck_culture_2013}; \citealp{geiger_work_2010}; \citealp{geiger_when_2013}; \citealp[pp.~111-119]{tkacz_wikipedia_2015}; \citealp{geiger_operationalizing_2017}; \citealp{halfaker_bots_2012}; \citealp{livingstone_population_2016}}.
+Bots are best understand as users of the platform, rather than as
+extensions of their human developers. Indeed, Wikipedia bots have
+ordinary user accounts like human Wikipedians, although they also have
+special privileges and their actions are tracked separately by the
+system. Bots incarnate or enact Wikipedia's culture, as Stuart Geiger
+has revealed in a pathbreaking series of papers
+\citetext{\citealp{geiger_social_2009}; \citealp{geiger_lives_2011}; \citealp{geiger_are_2013}; \citealp{geiger_beyond_2017}; \citealp[see
+also][]{kennedy_textual_2010}}. To understand bots, he explains, it is
+not sufficient to read the source code, although there may well be
+important policies, procedures or ideals `encoded' in the source
+\citeyearpar[p.~9]{geiger_beyond_2017}. Instead, it is essential to
+observe how bots act in the wild, and to observe how human users and
+other bots interact with \emph{them}
+\citetext{\citeyear{geiger_lives_2011}; \citeyear{geiger_beyond_2017}}.
+In this spirit, we pursue Yapperbot/uncurrenter through Wikipedia, to
+see how it works and whom it fights to uphold Wikipedia's temporal
+regime.
+
+Our discussion falls into four main sections. In
+\protect\hyperlink{how-to-make-time}{How to make time}, we present a
+theory of `temporal mapping' to show how temporal regimes can be
+produced through repetition, representation and technicity. In
+\protect\hyperlink{wikipedia-time-1-the-primacy-of-the-past}{Wikipedia
+time (1): the primacy of the past}, we consider existing research into
+Wikipedia's temporal regime, and consider the various ways that time
+enters into the encyclopaedia. In
+\protect\hyperlink{the-birth-of-the-bot-that-makes-history}{The birth of
+the bot that makes history}, we describe the series of events that led
+to Yapperbot/uncurrenter's creation, and use a range of qualitative and
+quantitiative methods to analyse its contributions to Wikipedia.
+Finally, in
+\protect\hyperlink{wikipedia-time-2-encyclopaedia-time}{Wikipedia time
+(2): encyclopaedia time}, we offer our conclusions about Wikipedia's
+temporal regime, contextualising Wikipedia as one in a long line of
+encyclopaedic projects that attempt to encompass time. We conclude that
+Wikipedia's temporal regime is \emph{complex regime of historicity}. It
+is \emph{complex} because it is a clash of many temporalities, which are
+contested by the people and other actors on the platform. It is
+\emph{historicist} because it attempts to situate its human participants
+in the process of history through literary representation. The example
+of Wikipedia's \emph{complex historicity} supports the idea that time
+remains contingent. There is no fixed regime of digital time or network
+time. Time is out there for the making.
+
+\hypertarget{how-to-make-time}{%
+\section{How to make time}\label{how-to-make-time}}
+
+We make temporal regimes by mixing time and space. We map time. The
+crying of the infant, the waxing of the moon, the rising of the dough,
+the coming of the moths, the shadow of the sundial, the alignment of the
+text, the stellar orientation of the standing stones---all are maps,
+which crystallise time in space. Whether this mapping occurs by analysis
+or synthesis depends on your view of time. For Henri Bergson, the
+`spatialization' of time is analytic. Time is fundamentally
+\emph{duration} {[}\emph{durée}{]}. Our basic experience of time is
+continuous. When we spatialize time, we divide it, for instance when
+split it into hours and minutes, and map these divisions onto the clock
+\citeyearpar[pp.~71-72]{bergson_oeuvres_1984}. For Arthur Schopenhauer,
+by contrast, the spatialization of time is synthetic. Our basic
+experience of time is discontinuous. Time is an endless series of unique
+moments: `Succession is the whole being of time' \citep[vol.1,
+p.~37]{schopenhauer_werke_1999}.\footnote{Succession ist das ganze Wesen
+  der Zeit.} We can only form a conception of the `duration'
+{[}\emph{Dauer}{]} of things when time and space are united in the
+`understanding' {[}\emph{Verstand}{]} \citeyearpar[vol.~1,
+p.~40]{schopenhauer_werke_1999}. Had Schopenhauer experienced the
+cinema, he might have chosen it as his metaphor. From the whirring
+filmstrip of individual moments, we project the movie of life. Bergson
+rejected the cinema as a metaphor for consciousness
+\citeyearpar[pp.~752ff]{bergson_oeuvres_1984}. For him, the Kantian view
+of time as succession insufficiently distinguishes time from space. To
+think time as succession, we need to use a spatial metaphor such as a
+`line' or `chain', and `juxtapose' time's moments along it
+\citeyearpar[pp.~68]{bergson_oeuvres_1984}.\footnote{In fact, Bergson
+  distinguishes `la succession pure' from `la succession se développant
+  en espace'; he identifies Kantian succession as the second kind
+  \citeyearpar[p.~151]{bergson_oeuvres_1984}.} A Kantian like
+Schopenhauer might reply that Bergson is too empirical. What makes it
+possible for Bergson to experience time as a non-spatial duration, if
+not the synthetic activity of the understanding?
+
+Whichever theory of spatialization we adopt, it is clear that there are
+many ways to map time. The time of the wheat is not the time of the
+Twitter feed. The sheer variety of temporal mappings is a key theme in
+the work of Mikhail Bakhtin. In his classic study of the `chronotope',
+Bakhtin argues that different forms of literature are defined by their
+different forms of time \citeyearpar[p.~85]{bakhtin_dialogic_1981}.
+Greek romance is charactersised by `adventure-time'
+\citeyearpar[p.~87]{bakhtin_dialogic_1981}, modern fiction by
+`historical time' \citeyearpar[p.~165]{bakhtin_dialogic_1981},
+Dostoyevsky's existential novels by `mystery- and carnvial-time'
+\citeyearpar[p.~249]{bakhtin_dialogic_1981}. The time-mapping technology
+in this case is writing. Writers shape time with words. Words can shape
+time literally, for instance when Greek romanciers stitch together the
+moments of adventure-time using `link-words' such as `suddenly' or `at
+that moment' \citeyearpar[p.~92]{bakhtin_dialogic_1981}. Words can shape
+time symbolically, for instance when a writer portrays the `path of
+life' as a road \citeyearpar[p.~120]{bakhtin_dialogic_1981}. Bakhtin
+demonstrates how a technology such as writing can constitute different
+forms of time; indeed, his researches support the more radical argument
+of Bernard Stiegler, who claims that `organized inorganic beings' such
+as novels might be generally `\emph{constitutive} \ldots{} of
+temporality as well as spatiality'
+\citeyearpar[p.~17]{stiegler_technics_1998}. We experience time and
+space through the maps we make of them.
+
+Maps structure time by structuring attention. The Sunderland petitioners
+in 1800: `many people are obliged to be up at all hours of the night to
+attend the tides' \citep[quoted in][p.~60]{thompson_time_1967}. To
+\emph{attend}. The tides rise and fall (\emph{repetition}). Through
+their height, they tell the the hour, day, month and season
+(\emph{representation}). They are known partly by sight, and partly by
+moon-phase and tide-chart and plumb-line (\emph{technicity}). To attend
+upon the tides is to know not only \emph{what} time it is (high tide,
+spring), but \emph{what kind} of time it is (to depart or return). In
+this way, attention plays a `constructive role \ldots{} in fabricating
+tools and technical ensembles' \citep[p.~91]{hayles_how_2012}. The boat,
+the compass, the fishing-line and the fisher are fused together by
+attention on the tides.
+
+Through the power of attention, temporal \emph{maps} can uphold temporal
+\emph{regimes}. The classic example comes from the Industrial
+Revolution. \citet{thompson_time_1967} memorably describes the scene. As
+the `need for the synchronization of labour' grew, so did the need for
+`{[}a{]}ttention to time' \citep[p.~70]{thompson_time_1967}---or rather,
+the need for a particular kind of attention, which Thompson calls
+`time-discipline'. Masters used the factory clock (a map) to impose
+time-discipline on their workers (a regime). They fiddled with the clock
+to extract more hours of labour. They handed out gold watches for long
+service. Workers themselves would blow a windfall on a watch of their
+own---for the status, or the power? This example demonstrates why the
+repetition-theory of \citet{orlikowski_its_2002} must be supplemented by
+the concepts of representation and technicity. The `recurrent action' of
+factory workers can only be fully explained if we include the clock,
+which represented time as a succession of hours and minutes to be spent
+working, and which legitimated the new temporal regime by its (apparent)
+impersonality.
+
+Not all temporal maps are as strict or authoritative as Thompson's
+factory-clock. Theorists of \emph{technicity} observe that technical
+objects vary greatly in their degree of `concretization'
+\citep{stiegler_technics_1998}. Concretization is a process of
+unification. As a technology becomes more concrete, its parts become
+`organs' that `function more and more as parts of a whole'
+\citep[p.~71]{stiegler_technics_1998}. It thus becomes autonomous. It
+ceases to be a `utensil' of a human `actor'; it becomes itself an
+`actor' with human `operators' \citep[p.~66]{stiegler_technics_1998}.
+The drying of hops was once regulated by the dryer, who touched and
+smelt the cones to determine the drying-time. The dryer relied on
+comparatively abstract technology (the oast-house and its cowl) to
+regulate the time by regulating the temperature and humidity. Today, the
+dryer is a machine, which determines the drying-time autonomously using
+clocks and sensors. Such a concrete technology in effect concretizes
+time itself. The drying-time is nothing but the time it takes for the
+machine to work.
+
+In the same way we characterise technicities as \emph{concrete} or
+\emph{abstract}, we can characterise repetitions as \emph{regular} or
+\emph{irregular}, and representations as \emph{clear} or \emph{vague}.
+\citet{thompson_time_1967} repeatedly stresses the `regularity' of
+capitalist work-patterns, as opposed to the `irregularity' of work in
+pre-capitalist temporal regimes. While we may reject Thompson's
+schematism, we must accept his observation that repetition can vary in
+its lawfulness and predictability. The tanpura drones regularly while
+the sitar wanders in endless novelty. In much the same way, a
+representation of time can be clear and bright or vague and suggestive.
+A modern composer gives the tempo in beats per minute, where a Romantic
+requests the orchestra to play \emph{Bewegt, doch nicht schnell}.
+
+Temporal regimes are seldom unitary. They combine many temporal maps to
+create a `multiplicity' \citep[p.~687]{orlikowski_its_2002} or `complex'
+of temporalities \citep[p.~89]{hayles_how_2012}. This complexity is
+especially apparent on the plane of representation. Digital media can
+present many different interfaces to time. A Wikipedia article
+represents time as a connected narrative on the `Article' tab, as a list
+of versions on the `View history' tab, as an ongoing debate between
+editors on the `Talk' tab, as a time-series of web hits on the Pageviews
+tool, as a pie-chart of contributions on the XTools interface, as an
+immutable series of transactions in the underlying MYSQL database, and
+so on. Such interfaces form a single unstable `complex' because they are
+folded together by Wikipedia's various actors. This complexity leads to
+contradiction, which leads to contention, which led, in one case, to
+Yapperbot/uncurrenter.
+
+In sum, we define a temporal regime as a system of temporal maps that
+structure a particular form of life through the modulation of human
+attention. We can now refine our research questions. How do Wikipedians
+map time? Which mappings are established, which are contested, and how
+does Yapperbot/uncurrenter fit among them? How has digital technology
+changed the nature of temporal mapping?
+
+\hypertarget{wikipedia-time-1-the-primacy-of-the-past}{%
+\section{Wikipedia time (1): the primacy of the
+past}\label{wikipedia-time-1-the-primacy-of-the-past}}
+
+\emph{TODO: Rewrite/adapt}
 
 How does Wikipedia portray the past? Scholars typically give three
 answers. Some argue that Wikipedia produces \emph{history}: it
@@ -178,9 +478,10 @@ the phrase ``aktuelles Ereignis'' {[}current event{]} in the banner with
 a more specific description such as ``die derzeitige
 Sportveranstaltung'' {[}the ongoing sporting event{]}.
 
-\begin{figure}
-\includegraphics[width=1\linewidth]{images/banner_collage} \caption{Template:Current in Italian, Hindi, English, French, Korean and German (as of 14 March 2023)\label{fig:banner_collage}}\label{fig:unnamed-chunk-1}
-\end{figure}
+New twist in the tale: a user `killed' Yapperbot/uncurrent on 24/4/2023
+because
+\href{https://en.wikipedia.org/w/index.php?diff=1151461527\&oldid=986550108\&title=User\%3AYapperbot\%2Fkill\%2FUncurrenter}{they
+complained it had removed \{\{current\}\} from a current event}.
 
 On the surface, Template:Current might seem like a simple phenomenon.
 Editors mark an article when it is ``current,'' then remove the template
@@ -223,28 +524,11 @@ We describe the history of Template:Current and recount the debates that
 led to the bot's creation. We then examine Yapperbot/uncurrenter's
 contributions to English Wikipedia, comparing its practice with the
 practice of human editors on English Wikipedia and other-language
-Wikipedias. As many scholars have observed, bots are powerful actors in
-Wikipedia's ``sociotechnical system'', and account for a large share of
-contributions
-\citetext{\citealp{niederer_wisdom_2010}; \citealp[pp.~137-140]{dijck_culture_2013}; \citealp{geiger_work_2010}; \citealp{geiger_when_2013}; \citealp{geiger_operationalizing_2017}; \citealp{halfaker_bots_2012}; \citealp{livingstone_population_2016}}.
-Bots are also culturally significant. In a series of pathbreaking
-papers, Stuart Geiger has demonstrated how bots enact or incarnate
-Wikipedia's culture
-\citetext{\citealp{geiger_social_2009}; \citealp{geiger_lives_2011}; \citealp{geiger_are_2013}; \citealp{geiger_beyond_2017}; \citealp[see
-also][]{kennedy_textual_2010}}. As he explains, it is not sufficient to
-read a bot's source code, although there may well be important policies,
-procedures or ideals ``encoded'' in the source
-\citep[p.~9]{geiger_beyond_2017}. To understand bots, it is essential to
-observe how they act in the wild, and to observe how human users and
-other bots interact with \emph{them}
-\citep{geiger_lives_2011, geiger_beyond_2017}. In that spirit, we pursue
-Yapperbot/uncurrenter through Wikipedia, to see how and when it consigns
-articles to history. Does it solve the problems identified by the
-editors who summoned it into existence? And what were those problems
-anyway?
+Wikipedias.
 
-\hypertarget{methods}{%
-\section{Methods}\label{methods}}
+\hypertarget{the-birth-of-the-bot-that-makes-history}{%
+\section{The birth of the bot that makes
+history}\label{the-birth-of-the-bot-that-makes-history}}
 
 \begin{itemize}
 \tightlist
@@ -275,18 +559,9 @@ anyway?
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
 
-\hypertarget{results}{%
-\section{Results}\label{results}}
-
-\hypertarget{document-analysis}{%
-\subsection{Document analysis}\label{document-analysis}}
-
 \emph{How did `Yapperbot/uncurrenter' come about? What were the debates
 and discussions of the editors? What was the perceived problem the bot
 was supposed to fix?}
-
-\hypertarget{quantitative-analysis}{%
-\subsection{Quantitative analysis}\label{quantitative-analysis}}
 
 \emph{What does the bot actually do? How does that compare with what it
 is supposed to do?}
@@ -311,7 +586,7 @@ What was happening on that day it uncurrented 45 pages?
 ##  8 63395521 COVID-19 pandemic in Sarawak                     2020-10-21 20:00:45
 ##  9 63391509 COVID-19 pandemic in Quebec                      2020-10-21 20:00:39
 ## 10 63389195 COVID-19 pandemic in Sabah                       2020-10-21 20:00:36
-## # ... with 35 more rows
+## # i 35 more rows
 \end{verbatim}
 
 How often does Yapperbot have to remove the template more than once?
@@ -350,9 +625,9 @@ Which page had to be uncurrented nine times?
 ## 7 70809573 2022–2023 monkeypox outbreak                         5
 \end{verbatim}
 
-\hypertarget{discussion-what-is-distinctive-about-wikipedia-time}{%
-\section{Discussion: What is distinctive about Wikipedia
-time?}\label{discussion-what-is-distinctive-about-wikipedia-time}}
+\hypertarget{wikipedia-time-2-encyclopaedia-time}{%
+\section{Wikipedia time (2): encyclopaedia
+time}\label{wikipedia-time-2-encyclopaedia-time}}
 
 \emph{Compared to other temporal regimes}
 
