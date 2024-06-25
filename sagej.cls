@@ -320,7 +320,8 @@ centering]{geometry}
     {\raggedright\titlesize\textbf{\@title} \par}%
     \vskip 1.5em%
     \vskip 12.5mm%
-    \end{minipage}\hspace{15mm}\begin{minipage}[t]{42.625mm}
+\end{minipage}\hspace{15mm}\begin{minipage}[t]{42.625mm}
+  
 \hbox{}\scriptsize\journalname\\
 \hbox{}\volumenumber(\issuenumber):\startpage--\endpage\\ 
 \hbox{}\copyright The Author(s) \volumeyear\\

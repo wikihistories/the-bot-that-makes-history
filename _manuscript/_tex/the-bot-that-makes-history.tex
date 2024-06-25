@@ -1,53 +1,202 @@
-\documentclass[Royal,times,sageh]{sagej}
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  Crown,
+  times,
+  sageh]{sagej}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
 
-\usepackage{moreverb,url,natbib, multirow, tabularx}
-\usepackage[colorlinks,bookmarksopen,bookmarksnumbered,citecolor=red,urlcolor=red]{hyperref}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \fi
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\renewcommand\familydefault{\sfdefault}
 
 
-
-% tightlist command for lists without linebreak
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-
-
-
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\usepackage[perpage]{footmisc}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{SageH}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={The bot that makes history},
+  pdfauthor={Michael Falk; Heather Ford; Tamson Pietsch; Nathaniel Tkacz},
+  pdfkeywords={Wikipedia; bots; temporal regime; time; historicity;
+trace ethnography},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\usepackage{float}
+\makeatletter
+\let\oldlt\longtable
+\let\endoldlt\endlongtable
+\def\longtable{\@ifnextchar[\longtable@i \longtable@ii}
+\def\longtable@i[#1]{\begin{figure}[H]
+\onecolumn
+\begin{minipage}{\columnwidth}
+\oldlt[#1]
+}
+\def\longtable@ii{\begin{figure}[H]
+\onecolumn
+\begin{minipage}{\columnwidth}
+\oldlt
+}
+\def\endlongtable{\endoldlt
+\end{minipage}
+% \twocolumn
+\end{figure}}
+\makeatother
+
+\title{The bot that makes history}
+\author{Michael Falk\affilnum{1} and Heather Ford\affilnum{2} and Tamson
+Pietsch\affilnum{3} and Nathaniel Tkacz\affilnum{4}}
+
+\affiliation{
+    \affilnum{1} University of Melbourne \\
+    \affilnum{2} University of Technology, Sydney \\
+    \affilnum{3} Goldsmiths, University of London \\
+  }
+
+\corrauth{}
+
+\email{}
+
+\begin{abstract}
+
+\end{abstract}
+\keywords{Wikipedia; bots; temporal regime; time; historicity; trace
+ethnography}
 
 
 
 \begin{document}
 
 
-\setcitestyle{aysep={,}}
+\maketitle
 
-\title{The bot that makes history}
-
-\runninghead{Falk \emph{et al}.}
-
-\author{Michael Falk*\affilnum{1}, Heather Ford\affilnum{1}, Tamson
-Pietsch\affilnum{2}, Nathaniel Tkacz\affilnum{3}}
-
-\affiliation{\affilnum{1}{Digital and Social Media, University of
-Technology Sydney, Sydney, Australia}\\\affilnum{2}{Australian Centre
-for Public History, University of Technology Sydney, Sydney,
-Australia}\\\affilnum{3}{Centre for Interdisciplinary Methodologies,
-University of Warwick, Conventry, United Kingdom}}
-
-\corrauth{Michael Falk, Digital and Social Media, University of
-Technology Sydney}
-
-\email{\href{mailto:michael.falk@uts.edu.au}{\nolinkurl{michael.falk@uts.edu.au}}}
-
-
-\keywords{Wikipedia; bots; temporal regime; time; historicity; trace
-ethnography}
 
 \maketitle
 
-\hypertarget{introduction-wikipedia-and-the-technicity-of-time}{%
 \section{Introduction: Wikipedia and The Technicity of
-Time}\label{introduction-wikipedia-and-the-technicity-of-time}}
+Time}\label{introduction-wikipedia-and-the-technicity-of-time}
 
 Time is a supple medium. It winds itself into many shapes. It surges
 through the heartwood. It lies upon the bark. It carves rock and unfolds
@@ -123,10 +272,9 @@ If the article has not been edited in over five hours, it deletes the
 template.
 
 A `template' is a microprogram that peforms a common task. In the case
-of Template:Current, the editor inserts the code
-\texttt{\{\{current\}\}} into an article. This adds a warning banner to
-the article (Figure \ref{fig:banner_collage}), and automatically adds
-the article to
+of Template:Current, the editor inserts the code \texttt{\{current\}}
+into an article. This adds a warning banner to the article (Figure
+\ref{fig:banner_collage}), and automatically adds the article to
 \href{https://en.wikipedia.org/wiki/Category:Current_events}{Category:Current\_events}.
 When Yapperbot/uncurrenter deletes the template, the banner disappears,
 as does the article's categorisation as a `current event'. This would
@@ -143,7 +291,7 @@ editors are editing, and is usually up for less than a day}.
 \end{quote}
 
 On English Wikipedia, an event can be `current' without being
-\texttt{\{\{current\}\}}. This contradiction lies at the heart of
+\texttt{\{current\}}. This contradiction lies at the heart of
 Wikipedia's temporal regime. When Wikipedia's English editors debated
 the need for Yapperbot/uncurrenter, they ran straight into the
 contradiction between two different understandings of time. To stabilise
@@ -152,9 +300,20 @@ we show below, Wikipedia's English editors made the radical move to try
 and abolish the present, a path that editors of other-language
 Wikipedias have refused to take.
 
-\begin{figure}
-\includegraphics[width=1\linewidth]{images/banner_collage} \caption{Template:Current in Italian, Hindi, English, French, Korean and German (as of 14 March 2023)\label{fig:banner_collage}}\label{fig:unnamed-chunk-1}
-\end{figure}
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{images/banner_collage.png}
+
+}
+
+\caption{Template:Current in Italian, Hindi, English, French, Korean and
+German (as of 14 March 2023)\label{fig:banner_collage}}
+
+\end{figure}%
+
+\textsubscript{Source:
+\href{https://wikihistories.github.io/the-bot-that-makes-history/the-bot-that-makes-history-preview.html}{Article
+Notebook}}
 
 Wikipedia is one of the few places where where the construction of a
 temporal regime can be (almost) directly observed. Unlike other
@@ -194,24 +353,23 @@ see how it works and whom it fights to uphold Wikipedia's temporal
 regime.
 
 Our discussion falls into four main sections. In
-\protect\hyperlink{how-to-make-time}{How to make time}, we present a
-theory of `temporal mapping' to show how temporal regimes can be
-produced through repetition, representation and technicity. In
-\protect\hyperlink{wikipedia-time-1-the-primacy-of-the-past}{Wikipedia
-time (1): the primacy of the past}, we consider existing research into
-Wikipedia's temporal regime, and consider the various ways that time
-enters into the encyclopaedia. In
-\protect\hyperlink{the-birth-of-the-bot-that-makes-history}{The birth of
-the bot that makes history}, we describe the series of events that led
-to Yapperbot/uncurrenter's creation, and use a range of qualitative and
-quantitiative methods to analyse its contributions to Wikipedia.
-Finally, in
-\protect\hyperlink{wikipedia-time-2-encyclopaedia-time}{Wikipedia time
-(2): encyclopaedia time}, we offer our conclusions about Wikipedia's
-temporal regime, contextualising Wikipedia as one in a long line of
-encyclopaedic projects that attempt to encompass time. We conclude that
-Wikipedia's temporal regime is \emph{complex regime of historicity}. It
-is \emph{complex} because it is a clash of many temporalities, which are
+\hyperref[how-to-make-time]{How to make time}, we present a theory of
+`temporal mapping' to show how temporal regimes can be produced through
+repetition, representation and technicity. In
+\hyperref[wikipedia-time-1-the-primacy-of-the-past]{Wikipedia time (1):
+the primacy of the past}, we consider existing research into Wikipedia's
+temporal regime, and consider the various ways that time enters into the
+encyclopaedia. In \hyperref[the-birth-of-the-bot-that-makes-history]{The
+birth of the bot that makes history}, we describe the series of events
+that led to Yapperbot/uncurrenter's creation, and use a range of
+qualitative and quantitiative methods to analyse its contributions to
+Wikipedia. Finally, in
+\hyperref[wikipedia-time-2-encyclopaedia-time]{Wikipedia time (2):
+encyclopaedia time}, we offer our conclusions about Wikipedia's temporal
+regime, contextualising Wikipedia as one in a long line of encyclopaedic
+projects that attempt to encompass time. We conclude that Wikipedia's
+temporal regime is \emph{complex regime of historicity}. It is
+\emph{complex} because it is a clash of many temporalities, which are
 contested by the people and other actors on the platform. It is
 \emph{historicist} because it attempts to situate its human participants
 in the process of history through literary representation. The example
@@ -219,8 +377,7 @@ of Wikipedia's \emph{complex historicity} supports the idea that time
 remains contingent. There is no fixed regime of digital time or network
 time. Time is out there for the making.
 
-\hypertarget{how-to-make-time}{%
-\section{How to make time}\label{how-to-make-time}}
+\section{How to make time}\label{how-to-make-time}
 
 We make temporal regimes by mixing time and space. We map time. The
 crying of the infant, the waxing of the moon, the rising of the dough,
@@ -366,9 +523,8 @@ map time? Which mappings are established, which are contested, and how
 does Yapperbot/uncurrenter fit among them? How has digital technology
 changed the nature of temporal mapping?
 
-\hypertarget{wikipedia-time-1-the-primacy-of-the-past}{%
 \section{Wikipedia time (1): the primacy of the
-past}\label{wikipedia-time-1-the-primacy-of-the-past}}
+past}\label{wikipedia-time-1-the-primacy-of-the-past}
 
 \emph{TODO: Rewrite/adapt}
 
@@ -455,7 +611,7 @@ trespasses on the present: mark it with one of the available
 \href{https://en.wikipedia.org/wiki/Wikipedia:Current_event_templates}{Current
 Event Templates}. The main template is
 \href{https://en.wikipedia.org/wiki/Template:Current}{Template:Current},
-which at the time of writing is available on 115 language editions of
+which at the time of writing is available on 116 language editions of
 Wikipedia. When the template is added to an article, a familiar banner
 appears at the top of the page (Figure \ref{fig:banner_collage}), and
 the article is automatically added to
@@ -480,7 +636,7 @@ Sportveranstaltung'' {[}the ongoing sporting event{]}.
 
 New twist in the tale: a user `killed' Yapperbot/uncurrent on 24/4/2023
 because
-\href{https://en.wikipedia.org/w/index.php?diff=1151461527\&oldid=986550108\&title=User\%3AYapperbot\%2Fkill\%2FUncurrenter}{they
+\href{https://en.wikipedia.org/w/index.php?diff=1151461527&oldid=986550108&title=User\%3AYapperbot\%2Fkill\%2FUncurrenter}{they
 complained it had removed \{\{current\}\} from a current event}.
 
 On the surface, Template:Current might seem like a simple phenomenon.
@@ -526,9 +682,8 @@ contributions to English Wikipedia, comparing its practice with the
 practice of human editors on English Wikipedia and other-language
 Wikipedias.
 
-\hypertarget{the-birth-of-the-bot-that-makes-history}{%
 \section{The birth of the bot that makes
-history}\label{the-birth-of-the-bot-that-makes-history}}
+history}\label{the-birth-of-the-bot-that-makes-history}
 
 \begin{itemize}
 \tightlist
@@ -546,18 +701,9 @@ history}\label{the-birth-of-the-bot-that-makes-history}}
   \citep{seaver_algorithms_2017, geiger_beyond_2017}.
 \end{itemize}
 
-\begin{verbatim}
-## Rows: 1648 Columns: 10
-## -- Column specification --------------------------------------------------------
-## Delimiter: ","
-## chr  (3): user, title, comment
-## dbl  (5): userid, pageid, revid, parentid, ns
-## lgl  (1): texthidden
-## dttm (1): timestamp
-## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-\end{verbatim}
+\textsubscript{Source:
+\href{https://wikihistories.github.io/the-bot-that-makes-history/the-bot-that-makes-history-preview.html}{Article
+Notebook}}
 
 \emph{How did `Yapperbot/uncurrenter' come about? What were the debates
 and discussions of the editors? What was the perceived problem the bot
@@ -568,71 +714,81 @@ is supposed to do?}
 
 How many pages is yapperbot uncurrenting per day?
 
-\includegraphics[width=1\linewidth]{the-bot-that-makes-history_files/figure-latex/unnamed-chunk-3-1}
+\includegraphics[width=1\textwidth,height=\textheight]{the-bot-that-makes-history_files/figure-pdf/unnamed-chunk-3-1.pdf}
+
+\textsubscript{Source:
+\href{https://wikihistories.github.io/the-bot-that-makes-history/the-bot-that-makes-history-preview.html}{Article
+Notebook}}
 
 What was happening on that day it uncurrented 45 pages?
 
 \begin{verbatim}
-## # A tibble: 45 x 3
-##      pageid title                                            timestamp          
-##       <dbl> <chr>                                            <dttm>             
-##  1 63362621 COVID-19 pandemic in Ethiopia                    2020-10-21 23:00:28
-##  2 63431783 COVID-19 pandemic in Northern Ireland            2020-10-21 22:00:48
-##  3 63181042 COVID-19 pandemic in Europe                      2020-10-21 22:00:41
-##  4 63178596 COVID-19 pandemic in Hong Kong                   2020-10-21 22:00:38
-##  5 63313047 COVID-19 pandemic in Moldova                     2020-10-21 21:00:43
-##  6 63239190 COVID-19 pandemic in Sweden                      2020-10-21 21:00:37
-##  7 64307024 Timeline of the COVID-19 pandemic in October 20~ 2020-10-21 20:00:49
-##  8 63395521 COVID-19 pandemic in Sarawak                     2020-10-21 20:00:45
-##  9 63391509 COVID-19 pandemic in Quebec                      2020-10-21 20:00:39
-## 10 63389195 COVID-19 pandemic in Sabah                       2020-10-21 20:00:36
-## # i 35 more rows
+# A tibble: 45 x 3
+     pageid title                                            timestamp          
+      <dbl> <chr>                                            <dttm>             
+ 1 63362621 COVID-19 pandemic in Ethiopia                    2020-10-21 23:00:28
+ 2 63431783 COVID-19 pandemic in Northern Ireland            2020-10-21 22:00:48
+ 3 63181042 COVID-19 pandemic in Europe                      2020-10-21 22:00:41
+ 4 63178596 COVID-19 pandemic in Hong Kong                   2020-10-21 22:00:38
+ 5 63313047 COVID-19 pandemic in Moldova                     2020-10-21 21:00:43
+ 6 63239190 COVID-19 pandemic in Sweden                      2020-10-21 21:00:37
+ 7 64307024 Timeline of the COVID-19 pandemic in October 20~ 2020-10-21 20:00:49
+ 8 63395521 COVID-19 pandemic in Sarawak                     2020-10-21 20:00:45
+ 9 63391509 COVID-19 pandemic in Quebec                      2020-10-21 20:00:39
+10 63389195 COVID-19 pandemic in Sabah                       2020-10-21 20:00:36
+# i 35 more rows
 \end{verbatim}
+
+\textsubscript{Source:
+\href{https://wikihistories.github.io/the-bot-that-makes-history/the-bot-that-makes-history-preview.html}{Article
+Notebook}}
 
 How often does Yapperbot have to remove the template more than once?
 
 \begin{verbatim}
-## # A tibble: 7 x 2
-##   count num_pages
-##   <int>     <int>
-## 1     1      1236
-## 2     2       133
-## 3     3        23
-## 4     4         9
-## 5     5         4
-## 6     6         2
-## 7     9         1
+# A tibble: 7 x 2
+  count num_pages
+  <int>     <int>
+1     1      1236
+2     2       133
+3     3        23
+4     4         9
+5     5         4
+6     6         2
+7     9         1
 \end{verbatim}
+
+\textsubscript{Source:
+\href{https://wikihistories.github.io/the-bot-that-makes-history/the-bot-that-makes-history-preview.html}{Article
+Notebook}}
 
 Which page had to be uncurrented nine times?
 
 \begin{verbatim}
-## `summarise()` has grouped output by 'pageid'. You can override using the
-## `.groups` argument.
+# A tibble: 7 x 3
+# Groups:   pageid [7]
+    pageid title                                            count
+     <dbl> <chr>                                            <int>
+1 70168267 Siege of Mariupol                                    9
+2 65760352 Tigray War                                           6
+3 70161957 Siege of Chernihiv                                   6
+4 64399515 2020–2021 Belarusian protests                        5
+5 70157964 Timeline of the 2022 Russian invasion of Ukraine     5
+6 70160923 Battle of Kharkiv (2022)                             5
+7 70809573 2022–2023 monkeypox outbreak                         5
 \end{verbatim}
 
-\begin{verbatim}
-## # A tibble: 7 x 3
-## # Groups:   pageid [7]
-##     pageid title                                            count
-##      <dbl> <chr>                                            <int>
-## 1 70168267 Siege of Mariupol                                    9
-## 2 65760352 Tigray War                                           6
-## 3 70161957 Siege of Chernihiv                                   6
-## 4 64399515 2020–2021 Belarusian protests                        5
-## 5 70157964 Timeline of the 2022 Russian invasion of Ukraine     5
-## 6 70160923 Battle of Kharkiv (2022)                             5
-## 7 70809573 2022–2023 monkeypox outbreak                         5
-\end{verbatim}
+\textsubscript{Source:
+\href{https://wikihistories.github.io/the-bot-that-makes-history/the-bot-that-makes-history-preview.html}{Article
+Notebook}}
 
-\hypertarget{wikipedia-time-2-encyclopaedia-time}{%
 \section{Wikipedia time (2): encyclopaedia
-time}\label{wikipedia-time-2-encyclopaedia-time}}
+time}\label{wikipedia-time-2-encyclopaedia-time}
 
 \emph{Compared to other temporal regimes}
 
-\bibliographystyle{sageh}
 \bibliography{wikihistories.bib}
+
 
 
 \end{document}

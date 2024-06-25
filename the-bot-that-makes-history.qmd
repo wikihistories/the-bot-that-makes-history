@@ -1,38 +1,31 @@
 ---
 title: "The bot that makes history"
-runninghead: Falk \emph{et al}.
 author:
-- name: Michael Falk*
-  num: 1
-- name: Heather Ford
-  num: 1
-- name: Tamson Pietsch
-  num: 2
-- name: Nathaniel Tkacz
-  num: 3
-address:
-- num: 1
-  org: Digital and Social Media, University of Technology Sydney, Sydney, Australia
-- num: 2
-  org: Australian Centre for Public History, University of Technology Sydney, Sydney, Australia
-- num: 3
-  org: Centre for Interdisciplinary Methodologies, University of Warwick, Conventry, United Kingdom
-corrauth: "Michael Falk, Digital and Social Media, University of Technology Sydney"
-email: michael.falk@uts.edu.au
+  - name: Michael Falk
+    orcid: 0000-0001-9261-8390
+    corresponding: true
+    email: michael.falk@unimelb.edu.au
+    affiliation: University of Melbourne
+    url: https://michaelfalk.io
+  - name: Heather Ford
+    orcid: 0000-0002-3500-9772
+    email: heather.ford@uts.edu.au
+    affiliation: University of Technology, Sydney
+    url: https://hblog.org/
+  - name: Tamson Pietsch
+    orcid: 0000-0002-8304-7108
+    email: tamson.pietsch@uts.edu.au
+    affiliation: University of Technology, Sydney
+    url: https://capandgown.wordpress.com/
+  - name: Nathaniel Tkacz
+    orcid: 0000-0002-5796-4105
+    email: n.tkacz@gold.ac.uk
+    affiliation: Goldsmiths, University of London
+    url: https://www.gold.ac.uk/media-communications/staff/tkacz-nathaniel/
+email: michael.falk@unimelb.edu.au
 abstract: ""
 keywords: Wikipedia; bots; temporal regime; time; historicity; trace ethnography
-classoption:
-  - Royal
-  - times
 bibliography: wikihistories.bib
-bibliographystyle: sageh
-header-includes: |
-  \usepackage[utf8]{inputenc}
-  \usepackage[T1]{fontenc}
-output:
-  word_document: default
-  rticles::sage_article:
-    keep_tex: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -109,13 +102,13 @@ Wikipedia itself provides an answer in two of its foundational policies. Accordi
 
 Despite its supposed pastness, Wikipedia is well-known as a source of information on current events. It is 'An Encylopedia with Breaking News' [@keegan_encyclopedia_2019]. Current events dominate Wikipedia, accounting for the lion's share of user contributions and page views at any given time [@keegan_hot_2011]. Scholars have analysed Wikipedia's coverage of current events in detail. We now know how Wikipedia's editors clash over the nature and definition of current events [@ford_writing_2022; @pentzold_fixing_2009], how they link current events into larger thematic structures [@twyman_black_2017], how they adopt newsroom practices to co-ordinate their efforts [@avieson_breaking_2019], how they revisit old articles to commemorate traumatic events [@ferron_beyond_2014], and how they shape the interpretation of events using images [@porter_visual_2020]. One thing we *don't* know is how Wikipedia's editors decide what is 'current'. How does Wikipedia distinguish the past from the present at the very threshold of time? How does it resolve the contradiction between the pastness of the encyclopaedia and the presentness of the current?
 
-Most readers of Wikipedia will have seen what editors do when an article trespasses on the present: mark it with one of the available [Current Event Templates](https://en.wikipedia.org/wiki/Wikipedia:Current_event_templates). The main template is [Template:Current](https://en.wikipedia.org/wiki/Template:Current), which at the time of writing is available on `r wikkitidy::get_langlinks("Template:Current") %>% .[[1]] %>% length() + 1` language editions of Wikipedia. When the template is added to an article, a familiar banner appears at the top of the page (Figure \ref{fig:banner_collage}), and the article is automatically added to [Category:Current Events](https://en.wikipedia.org/wiki/Category:Current_events) or a related category. Each language edition has its own distinct version of Template:Current, and may also sport a range of related Templates. French Wikipedia, for instance, distinguishes 'Événements en cours' [ongoing events] from 'Événements récents' [recent events] in its [main template](https://fr.wikipedia.org/wiki/Mod%C3%A8le:%C3%89v%C3%A9nement_en_cours), and provides several related templates such as [Modèle:Bataille en cours](https://fr.wikipedia.org/wiki/Mod%C3%A8le:Bataille_en_cours) [Template:Ongoing battle] and [Modèle:Mort récente](https://fr.wikipedia.org/wiki/Mod%C3%A8le:Mort_r%C3%A9cente) [Template:Recent death]. German Wikipedia, by contrast, has only a single [Current Events template](https://de.wikipedia.org/wiki/Vorlage:Laufendes_Ereignis), but it is customisable, so that editors can replace the phrase "aktuelles Ereignis" [current event] in the banner with a more specific description such as "die derzeitige Sportveranstaltung" [the ongoing sporting event].
+Most readers of Wikipedia will have seen what editors do when an article trespasses on the present: mark it with one of the available [Current Event Templates](https://en.wikipedia.org/wiki/Wikipedia:Current_event_templates). The main template is [Template:Current](https://en.wikipedia.org/wiki/Template:Current), which at the time of writing is available on `r wikkitidy::get_page_langlinks("Template:Current") %>% .[[1]] %>% length() + 1` language editions of Wikipedia. When the template is added to an article, a familiar banner appears at the top of the page (Figure \ref{fig:banner_collage}), and the article is automatically added to [Category:Current Events](https://en.wikipedia.org/wiki/Category:Current_events) or a related category. Each language edition has its own distinct version of Template:Current, and may also sport a range of related Templates. French Wikipedia, for instance, distinguishes 'Événements en cours' [ongoing events] from 'Événements récents' [recent events] in its [main template](https://fr.wikipedia.org/wiki/Mod%C3%A8le:%C3%89v%C3%A9nement_en_cours), and provides several related templates such as [Modèle:Bataille en cours](https://fr.wikipedia.org/wiki/Mod%C3%A8le:Bataille_en_cours) [Template:Ongoing battle] and [Modèle:Mort récente](https://fr.wikipedia.org/wiki/Mod%C3%A8le:Mort_r%C3%A9cente) [Template:Recent death]. German Wikipedia, by contrast, has only a single [Current Events template](https://de.wikipedia.org/wiki/Vorlage:Laufendes_Ereignis), but it is customisable, so that editors can replace the phrase "aktuelles Ereignis" [current event] in the banner with a more specific description such as "die derzeitige Sportveranstaltung" [the ongoing sporting event].
 
 New twist in the tale: a user 'killed' Yapperbot/uncurrent on 24/4/2023 because [they complained it had removed {{current}} from a current event](https://en.wikipedia.org/w/index.php?diff=1151461527&oldid=986550108&title=User%3AYapperbot%2Fkill%2FUncurrenter).
 
 On the surface, Template:Current might seem like a simple phenomenon. Editors mark an article when it is "current," then remove the template when its currency is ended. @avieson_breaking_2019 likens Template:Current to the "live" icon on a newspaper blog or television news. While Template:Current is present, the article functions as live coverage; when the template is removed, the article gradually becomes encyclopaedic.
 
-But the use of Template:Current is not simple, and has vexed Wikipedia's editors for years. @avieson_breaking_2019 herself grapples with the problem. Although she argues for a distinction between "news" and "encyclopaedias," she also observes that Wikipedia's coverage of current events "blurs the boundaries of both news and temporality." These blurred boundaries are a problem for Wikipedia's editors, and editors in different langauges have clarified the distinction between past, present and future in different ways. In this context, English Wikipedia is extremist. Unlike other language editions, English Wikipedia strictly polices the use of Template:Current with a bot: [Yapperbot/uncurrenter](https://en.wikipedia.org/wiki/User:Yapperbot). Yapperbot/uncurrenter scans English Wikipedia hourly, examining every article that includes Template:Current and deleting the template if the article has not been edited in the last five hours. English Wikipedia is also one of the few larger language editions without a [Template:Future](https://wikipedia.org/wiki/Template:Future) to mark events that have yet to occur. English Wikipedia deleted Template:Future in 2009 after an official process, and several attempts to resurrect the template have foundered. Meanwhile French, Italian, Bengali, Chinese and `r wikkitidy::get_langlinks("Modèle:Événement_à_venir", language="fr") %>% .[[1]] %>% length() - 3` other-language Wikipedias maintain a Template:Future.
+But the use of Template:Current is not simple, and has vexed Wikipedia's editors for years. @avieson_breaking_2019 herself grapples with the problem. Although she argues for a distinction between "news" and "encyclopaedias," she also observes that Wikipedia's coverage of current events "blurs the boundaries of both news and temporality." These blurred boundaries are a problem for Wikipedia's editors, and editors in different langauges have clarified the distinction between past, present and future in different ways. In this context, English Wikipedia is extremist. Unlike other language editions, English Wikipedia strictly polices the use of Template:Current with a bot: [Yapperbot/uncurrenter](https://en.wikipedia.org/wiki/User:Yapperbot). Yapperbot/uncurrenter scans English Wikipedia hourly, examining every article that includes Template:Current and deleting the template if the article has not been edited in the last five hours. English Wikipedia is also one of the few larger language editions without a [Template:Future](https://wikipedia.org/wiki/Template:Future) to mark events that have yet to occur. English Wikipedia deleted Template:Future in 2009 after an official process, and several attempts to resurrect the template have foundered. Meanwhile French, Italian, Bengali, Chinese and `r wikkitidy::get_page_langlinks("Modèle:Événement_à_venir", language="fr") %>% .[[1]] %>% length() - 3` other-language Wikipedias maintain a Template:Future.
 
 Why does practice vary across the different language editions? What led to the extremely strict approach of English Wikipedia, in which Template:Current is ruthlessly policed by an artificial agent, and the future is not explicitly marked? What can this tell us about Wikipedia's "temporal regime" [@assmann_is_2020]?
 
