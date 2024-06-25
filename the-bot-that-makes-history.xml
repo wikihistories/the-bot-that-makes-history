@@ -1,0 +1,3573 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Archiving
+and Interchange DTD v1.2 20190208//EN" "JATS-archivearticle1.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" dtd-version="1.2" article-type="other">
+  <front>
+    <article-meta>
+      <title-group>
+        <article-title>The bot that makes history</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author" corresp="yes">
+          <contrib-id contrib-id-type="orcid">0000-0001-9261-8390</contrib-id>
+          <name>
+            <surname>Falk</surname>
+            <given-names>Michael</given-names>
+          </name>
+          <string-name>Michael Falk</string-name>
+          <email>michael.falk@unimelb.edu.au</email>
+          <xref ref-type="aff" rid="aff-1">a</xref>
+          <xref ref-type="corresp" rid="cor-1">*</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid">0000-0002-3500-9772</contrib-id>
+          <name>
+            <surname>Ford</surname>
+            <given-names>Heather</given-names>
+          </name>
+          <string-name>Heather Ford</string-name>
+          <email>heather.ford@uts.edu.au</email>
+          <xref ref-type="aff" rid="aff-2">b</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid">0000-0002-8304-7108</contrib-id>
+          <name>
+            <surname>Pietsch</surname>
+            <given-names>Tamson</given-names>
+          </name>
+          <string-name>Tamson Pietsch</string-name>
+          <email>tamson.pietsch@uts.edu.au</email>
+          <xref ref-type="aff" rid="aff-2">b</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid">0000-0002-5796-4105</contrib-id>
+          <name>
+            <surname>Tkacz</surname>
+            <given-names>Nathaniel</given-names>
+          </name>
+          <string-name>Nathaniel Tkacz</string-name>
+          <email>n.tkacz@gold.ac.uk</email>
+          <xref ref-type="aff" rid="aff-3">c</xref>
+        </contrib>
+      </contrib-group>
+      <aff id="aff-1">
+        <institution-wrap>
+          <institution>University of Melbourne</institution>
+        </institution-wrap>
+      </aff>
+      <aff id="aff-2">
+        <institution-wrap>
+          <institution>University of Technology, Sydney</institution>
+        </institution-wrap>
+      </aff>
+      <aff id="aff-3">
+        <institution-wrap>
+          <institution>Goldsmiths, University of London</institution>
+        </institution-wrap>
+      </aff>
+      <author-notes>
+        <corresp id="cor-1">michael.falk@unimelb.edu.au</corresp>
+      </author-notes>
+      <history/>
+      <kwd-group kwd-group-type="author">
+        <kwd>Wikipedia; bots; temporal regime; time; historicity; trace
+ethnography</kwd>
+      </kwd-group>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="introduction-wikipedia-and-the-technicity-of-time">
+      <title>Introduction: Wikipedia and The Technicity of Time</title>
+      <p>Time is a supple medium. It winds itself into many shapes. It
+  surges through the heartwood. It lies upon the bark. It carves rock
+  and unfolds in song. It creates myriad structures, then entropically
+  destroys them. It races, dallies, recurs, reverses, accelerates,
+  splits and stops.</p>
+      <p>Despite its suppleness, time has definite characteristics. It forms
+  rhythms. It weaves people and plants and animals into lives and
+  seasons. It founds eras.</p>
+      <p>What are the characteristics of time in the digital era? The
+  question has been a major preoccupation for humanists and social
+  scientists in the twenty-first century. Theorists in many disciplines
+  have argued that ‘presentism’ is the dominant ‘temporal regime’ of the
+  twenty-first century
+  (<xref alt="Assmann 2020" rid="ref-assmann_is_2020" ref-type="bibr">Assmann
+  2020</xref>;
+  <xref alt="Hartog 2017" rid="ref-hartog_regimes_2017" ref-type="bibr">Hartog
+  2017</xref>). We inhabit a ‘broad present’
+  (<xref alt="Gumbrecht 2014" rid="ref-gumbrecht_our_2014" ref-type="bibr">Gumbrecht
+  2014</xref>) or a ‘timeless time’
+  (<xref alt="Castells 2010" rid="ref-castells_rise_2010" ref-type="bibr">Castells
+  2010</xref>) in which big data and frictionless communication have
+  conspired with the cult of memory to abolish the future and bring the
+  past into the present. We live in a rubble-world of accumulating fact.
+  Other theorists have diagnosed the problem as ‘temporal acceleration’.
+  We experience time as running ever faster, argues Wajcman
+  (<xref alt="2015, 77" rid="ref-wajcman_pressed_2015" ref-type="bibr">2015,
+  77</xref>), because it has become ‘deroutinized’. We are trapped in
+  the present because we are present in so many places at once: on the
+  phone to daycare while picking up dinner ingredients in the
+  supermarket on our lunchbreak at work. Digital media are the
+  handmaidens of post-industrial capitalism. Without them, we would be
+  unable to maintain the modicum of order we currently enjoy.</p>
+      <p>A weakness of many theories of temporality is their focus on the
+  <italic>products</italic> rather than the <italic>production</italic>
+  of temporal regimes. To characterise a temporal regime, the theorist
+  considers some cultural products, such as literary texts
+  (<xref alt="Gumbrecht 2014" rid="ref-gumbrecht_our_2014" ref-type="bibr">Gumbrecht
+  2014</xref>;
+  <xref alt="Hartog 2017" rid="ref-hartog_regimes_2017" ref-type="bibr">Hartog
+  2017</xref>) or work-time statistics
+  (<xref alt="Castells 2010" rid="ref-castells_rise_2010" ref-type="bibr">Castells
+  2010</xref>) and tries to determine what kind of temporal regime those
+  products represent. Such accounts necessarily raise the question: how
+  is it possible to erect a temporal regime in the first place? A
+  compelling answer is given by Orlikowski and Yates
+  (<xref alt="2002" rid="ref-orlikowski_its_2002" ref-type="bibr">2002</xref>),
+  who argue that the temporal regime of an organisation is produced by
+  the ‘practices’ of its members. Such practices can modify a temporal
+  regime ‘implicitly’ or ‘explicitly’
+  (<xref alt="2002, 687" rid="ref-orlikowski_its_2002" ref-type="bibr">2002,
+  687</xref>), though in either case the key force of change is
+  <italic>repetition</italic>, or ‘recurrent action’
+  (<xref alt="2002, 696" rid="ref-orlikowski_its_2002" ref-type="bibr">2002,
+  696</xref>). Temporal regimes are rhythmical. They are produced by the
+  recurrent actions of people, who learn to act in concert as the
+  members of an orchestra.</p>
+      <p>In this paper, we build on Orlikowski and Yates’s theory of
+  temporal structuration to describe the temporal regime of Wikipedia.
+  We show that to explain Wikipedia’s temporal regime, it is necessary
+  to supplement Orlikowski and Yates’s theory of
+  <italic>repetition</italic> with a theory of time’s
+  <italic>representation</italic> and its <italic>technicity</italic>.
+  Only by accounting for these three aspects of time can we adequately
+  answer our central questions: (1) what is Wikipedia time? and (2) what
+  can it tell us about digital time more broadly?</p>
+      <p>Our central case study is
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/User:Yapperbot">Yapperbot/uncurrenter</ext-link>,
+  a ‘bot’ or computer program that polices the barrier between past and
+  present on English Wikipedia. We situate Yapperbot/uncurrenter in
+  Wikipedia’s broader sociotechnical systems. We examine how it
+  interacts with human editors. We show how it fits into Wikipedia’s
+  complex array of interfaces and data streams. We present
+  Yapperbot/uncurrenter as a prime example of the ‘technicity of time’.
+  It is a technology that attempts to make time concrete, to freeze it
+  into an object. Yapperbot/uncurrenter is like the master’s clock in an
+  eighteenth-century factory. It ticks regularly
+  (<italic>repetition</italic>), shows the time
+  (<italic>representation</italic>) and acts impersonally
+  (<italic>technicity</italic>).</p>
+      <p>Yapperbot/uncurrenter performs a single, simple task. Each hour, it
+  scans English Wikipedia, finding every article that ‘transcludes’
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/Template:Current">Template:Current</ext-link>.
+  If the article has not been edited in over five hours, it deletes the
+  template.</p>
+      <p>A ‘template’ is a microprogram that peforms a common task. In the
+  case of Template:Current, the editor inserts the code
+  <monospace>{current}</monospace> into an article. This adds a warning
+  banner to the article (Figure ), and automatically adds the article to
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/Category:Current_events">Category:Current_events</ext-link>.
+  When Yapperbot/uncurrenter deletes the template, the banner
+  disappears, as does the article’s categorisation as a ‘current event’.
+  This would seem to consign the article to the past. But here lies the
+  first twist in the tale. When Yapperbot/uncurrenter deletes
+  Template:Current, it leaves an oddly contradictory message in the
+  article’s edit history:</p>
+      <disp-quote>
+        <p>Auto-removing {{current}} - no edits in 5hrs+. The event may
+    still be current, but
+    <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/Template:Current">the
+    {{current}} template is designed only for articles which many
+    editors are editing, and is usually up for less than a
+    day</ext-link>.</p>
+      </disp-quote>
+      <p>On English Wikipedia, an event can be ‘current’ without being
+  <monospace>{current}</monospace>. This contradiction lies at the heart
+  of Wikipedia’s temporal regime. When Wikipedia’s English editors
+  debated the need for Yapperbot/uncurrenter, they ran straight into the
+  contradiction between two different understandings of time. To
+  stabilise Wikipedia’s temporal regime, they had to resolve this
+  contradiction. As we show below, Wikipedia’s English editors made the
+  radical move to try and abolish the present, a path that editors of
+  other-language Wikipedias have refused to take.</p>
+      <fig>
+        <caption>
+          <p>Template:Current in Italian, Hindi, English, French,
+    Korean and German (as of 14 March 2023)</p>
+        </caption>
+        <graphic mimetype="image" mime-subtype="png" xlink:href="images/banner_collage.png"/>
+      </fig>
+      <p>Wikipedia is one of the few places where where the construction of
+  a temporal regime can be (almost) directly observed. Unlike other
+  prominent social media platforms, Wikipedia is an ‘open’ project,
+  every one of whose facets can be publicly altered and debated. The
+  encyclopaedia can only be changed in public. Nearly every step in the
+  construction of the temporal regime leaves an easily-recovered mark.
+  It may appear that an ‘open’ platform such as Wikipedia could never
+  tolerate something as closed as a temporal <italic>regime</italic>,
+  but as Tkacz
+  (<xref alt="2015" rid="ref-tkacz_wikipedia_2015" ref-type="bibr">2015</xref>)
+  shows, Wikipedia’s openness has not prevented it from developing a
+  restrictive ‘frame’ of rules and concepts that govern its activities.
+  Quite the contrary. Wikipedia is not only the most open of social
+  networks—it is surely also the most highly organised.</p>
+      <p>Wikipedia is also a place where ‘technicities of time’ are
+  especially prominent. Large parts of the encyclopedia are managed by
+  bots such as Yapperbot/uncurrenter, which are powerful actors in
+  Wikipedia’s sociotechnical system
+  (<xref alt="Niederer and Dijck 2010" rid="ref-niederer_wisdom_2010" ref-type="bibr">Niederer
+  and Dijck 2010</xref>;
+  <xref alt="Dijck 2013, 137–40" rid="ref-dijck_culture_2013" ref-type="bibr">Dijck
+  2013, 137–40</xref>;
+  <xref alt="R. Stuart Geiger and Ribes 2010" rid="ref-geiger_work_2010" ref-type="bibr">R.
+  Stuart Geiger and Ribes 2010</xref>;
+  <xref alt="R. Stuart Geiger and Halfaker 2013" rid="ref-geiger_when_2013" ref-type="bibr">R.
+  Stuart Geiger and Halfaker 2013</xref>,
+  <xref alt="2017" rid="ref-geiger_operationalizing_2017" ref-type="bibr">2017</xref>;
+  <xref alt="Tkacz 2015, 111–19" rid="ref-tkacz_wikipedia_2015" ref-type="bibr">Tkacz
+  2015, 111–19</xref>;
+  <xref alt="Halfaker and Riedl 2012" rid="ref-halfaker_bots_2012" ref-type="bibr">Halfaker
+  and Riedl 2012</xref>;
+  <xref alt="Livingstone 2016" rid="ref-livingstone_population_2016" ref-type="bibr">Livingstone
+  2016</xref>). Bots are best understand as users of the platform,
+  rather than as extensions of their human developers. Indeed, Wikipedia
+  bots have ordinary user accounts like human Wikipedians, although they
+  also have special privileges and their actions are tracked separately
+  by the system. Bots incarnate or enact Wikipedia’s culture, as Stuart
+  Geiger has revealed in a pathbreaking series of papers
+  (<xref alt="R. Stuart Geiger 2009" rid="ref-geiger_social_2009" ref-type="bibr">R.
+  Stuart Geiger 2009</xref>,
+  <xref alt="2011" rid="ref-geiger_lives_2011" ref-type="bibr">2011</xref>,
+  <xref alt="2013" rid="ref-geiger_are_2013" ref-type="bibr">2013</xref>;
+  <xref alt="R. Stuart Geiger 2017" rid="ref-geiger_beyond_2017" ref-type="bibr">R.
+  Stuart Geiger 2017</xref>; see also
+  <xref alt="Kennedy 2010" rid="ref-kennedy_textual_2010" ref-type="bibr">Kennedy
+  2010</xref>). To understand bots, he explains, it is not sufficient to
+  read the source code, although there may well be important policies,
+  procedures or ideals ‘encoded’ in the source
+  (<xref alt="2017, 9" rid="ref-geiger_beyond_2017" ref-type="bibr">2017,
+  9</xref>). Instead, it is essential to observe how bots act in the
+  wild, and to observe how human users and other bots interact with
+  <italic>them</italic>
+  (<xref alt="2011" rid="ref-geiger_lives_2011" ref-type="bibr">2011</xref>;
+  <xref alt="2017" rid="ref-geiger_beyond_2017" ref-type="bibr">2017</xref>).
+  In this spirit, we pursue Yapperbot/uncurrenter through Wikipedia, to
+  see how it works and whom it fights to uphold Wikipedia’s temporal
+  regime.</p>
+      <p>Our discussion falls into four main sections. In
+  <xref alt="How to make time" rid="how-to-make-time">How to make
+  time</xref>, we present a theory of ‘temporal mapping’ to show how
+  temporal regimes can be produced through repetition, representation
+  and technicity. In
+  <xref alt="Wikipedia time (1): the primacy of the past" rid="wikipedia-time-1-the-primacy-of-the-past">Wikipedia
+  time (1): the primacy of the past</xref>, we consider existing
+  research into Wikipedia’s temporal regime, and consider the various
+  ways that time enters into the encyclopaedia. In
+  <xref alt="The birth of the bot that makes history" rid="the-birth-of-the-bot-that-makes-history">The
+  birth of the bot that makes history</xref>, we describe the series of
+  events that led to Yapperbot/uncurrenter’s creation, and use a range
+  of qualitative and quantitiative methods to analyse its contributions
+  to Wikipedia. Finally, in
+  <xref alt="Wikipedia time (2): encyclopaedia time" rid="wikipedia-time-2-encyclopaedia-time">Wikipedia
+  time (2): encyclopaedia time</xref>, we offer our conclusions about
+  Wikipedia’s temporal regime, contextualising Wikipedia as one in a
+  long line of encyclopaedic projects that attempt to encompass time. We
+  conclude that Wikipedia’s temporal regime is <italic>complex regime of
+  historicity</italic>. It is <italic>complex</italic> because it is a
+  clash of many temporalities, which are contested by the people and
+  other actors on the platform. It is <italic>historicist</italic>
+  because it attempts to situate its human participants in the process
+  of history through literary representation. The example of Wikipedia’s
+  <italic>complex historicity</italic> supports the idea that time
+  remains contingent. There is no fixed regime of digital time or
+  network time. Time is out there for the making.</p>
+    </sec>
+    <sec id="how-to-make-time">
+      <title>How to make time</title>
+      <p>We make temporal regimes by mixing time and space. We map time. The
+  crying of the infant, the waxing of the moon, the rising of the dough,
+  the coming of the moths, the shadow of the sundial, the alignment of
+  the text, the stellar orientation of the standing stones—all are maps,
+  which crystallise time in space. Whether this mapping occurs by
+  analysis or synthesis depends on your view of time. For Henri Bergson,
+  the ‘spatialization’ of time is analytic. Time is fundamentally
+  <italic>duration</italic> [<italic>durée</italic>]. Our basic
+  experience of time is continuous. When we spatialize time, we divide
+  it, for instance when split it into hours and minutes, and map these
+  divisions onto the clock
+  (<xref alt="1984, 71–72" rid="ref-bergson_oeuvres_1984" ref-type="bibr">1984,
+  71–72</xref>). For Arthur Schopenhauer, by contrast, the
+  spatialization of time is synthetic. Our basic experience of time is
+  discontinuous. Time is an endless series of unique moments:
+  ‘Succession is the whole being of time’
+  (<xref alt="Schopenhauer 1999, vol. 1" rid="ref-schopenhauer_werke_1999" ref-type="bibr">Schopenhauer
+  1999, vol. 1</xref>, p. 37).<xref ref-type="fn" rid="fn1">1</xref> We
+  can only form a conception of the ‘duration’ [<italic>Dauer</italic>]
+  of things when time and space are united in the ‘understanding’
+  [<italic>Verstand</italic>]
+  (<xref alt="1999, vol. 1" rid="ref-schopenhauer_werke_1999" ref-type="bibr">1999,
+  vol. 1</xref>, p. 40). Had Schopenhauer experienced the cinema, he
+  might have chosen it as his metaphor. From the whirring filmstrip of
+  individual moments, we project the movie of life. Bergson rejected the
+  cinema as a metaphor for consciousness
+  (<xref alt="1984, 752ff" rid="ref-bergson_oeuvres_1984" ref-type="bibr">1984,
+  752ff</xref>). For him, the Kantian view of time as succession
+  insufficiently distinguishes time from space. To think time as
+  succession, we need to use a spatial metaphor such as a ‘line’ or
+  ‘chain’, and ‘juxtapose’ time’s moments along it
+  (<xref alt="1984, 68" rid="ref-bergson_oeuvres_1984" ref-type="bibr">1984,
+  68</xref>).<xref ref-type="fn" rid="fn2">2</xref> A Kantian like
+  Schopenhauer might reply that Bergson is too empirical. What makes it
+  possible for Bergson to experience time as a non-spatial duration, if
+  not the synthetic activity of the understanding?</p>
+      <p>Whichever theory of spatialization we adopt, it is clear that there
+  are many ways to map time. The time of the wheat is not the time of
+  the Twitter feed. The sheer variety of temporal mappings is a key
+  theme in the work of Mikhail Bakhtin. In his classic study of the
+  ‘chronotope’, Bakhtin argues that different forms of literature are
+  defined by their different forms of time
+  (<xref alt="1981, 85" rid="ref-bakhtin_dialogic_1981" ref-type="bibr">1981,
+  85</xref>). Greek romance is charactersised by ‘adventure-time’
+  (<xref alt="1981, 87" rid="ref-bakhtin_dialogic_1981" ref-type="bibr">1981,
+  87</xref>), modern fiction by ‘historical time’
+  (<xref alt="1981, 165" rid="ref-bakhtin_dialogic_1981" ref-type="bibr">1981,
+  165</xref>), Dostoyevsky’s existential novels by ‘mystery- and
+  carnvial-time’
+  (<xref alt="1981, 249" rid="ref-bakhtin_dialogic_1981" ref-type="bibr">1981,
+  249</xref>). The time-mapping technology in this case is writing.
+  Writers shape time with words. Words can shape time literally, for
+  instance when Greek romanciers stitch together the moments of
+  adventure-time using ‘link-words’ such as ‘suddenly’ or ‘at that
+  moment’
+  (<xref alt="1981, 92" rid="ref-bakhtin_dialogic_1981" ref-type="bibr">1981,
+  92</xref>). Words can shape time symbolically, for instance when a
+  writer portrays the ‘path of life’ as a road
+  (<xref alt="1981, 120" rid="ref-bakhtin_dialogic_1981" ref-type="bibr">1981,
+  120</xref>). Bakhtin demonstrates how a technology such as writing can
+  constitute different forms of time; indeed, his researches support the
+  more radical argument of Bernard Stiegler, who claims that ‘organized
+  inorganic beings’ such as novels might be generally
+  ‘<italic>constitutive</italic> … of temporality as well as spatiality’
+  (<xref alt="1998, 17" rid="ref-stiegler_technics_1998" ref-type="bibr">1998,
+  17</xref>). We experience time and space through the maps we make of
+  them.</p>
+      <p>Maps structure time by structuring attention. The Sunderland
+  petitioners in 1800: ‘many people are obliged to be up at all hours of
+  the night to attend the tides’ (quoted in
+  <xref alt="Thompson 1967, 60" rid="ref-thompson_time_1967" ref-type="bibr">Thompson
+  1967, 60</xref>). To <italic>attend</italic>. The tides rise and fall
+  (<italic>repetition</italic>). Through their height, they tell the the
+  hour, day, month and season (<italic>representation</italic>). They
+  are known partly by sight, and partly by moon-phase and tide-chart and
+  plumb-line (<italic>technicity</italic>). To attend upon the tides is
+  to know not only <italic>what</italic> time it is (high tide, spring),
+  but <italic>what kind</italic> of time it is (to depart or return). In
+  this way, attention plays a ‘constructive role … in fabricating tools
+  and technical ensembles’
+  (<xref alt="Hayles 2012, 91" rid="ref-hayles_how_2012" ref-type="bibr">Hayles
+  2012, 91</xref>). The boat, the compass, the fishing-line and the
+  fisher are fused together by attention on the tides.</p>
+      <p>Through the power of attention, temporal <italic>maps</italic> can
+  uphold temporal <italic>regimes</italic>. The classic example comes
+  from the Industrial Revolution. Thompson
+  (<xref alt="1967" rid="ref-thompson_time_1967" ref-type="bibr">1967</xref>)
+  memorably describes the scene. As the ‘need for the synchronization of
+  labour’ grew, so did the need for ‘[a]ttention to time’
+  (<xref alt="Thompson 1967, 70" rid="ref-thompson_time_1967" ref-type="bibr">Thompson
+  1967, 70</xref>)—or rather, the need for a particular kind of
+  attention, which Thompson calls ‘time-discipline’. Masters used the
+  factory clock (a map) to impose time-discipline on their workers (a
+  regime). They fiddled with the clock to extract more hours of labour.
+  They handed out gold watches for long service. Workers themselves
+  would blow a windfall on a watch of their own—for the status, or the
+  power? This example demonstrates why the repetition-theory of
+  Orlikowski and Yates
+  (<xref alt="2002" rid="ref-orlikowski_its_2002" ref-type="bibr">2002</xref>)
+  must be supplemented by the concepts of representation and technicity.
+  The ‘recurrent action’ of factory workers can only be fully explained
+  if we include the clock, which represented time as a succession of
+  hours and minutes to be spent working, and which legitimated the new
+  temporal regime by its (apparent) impersonality.</p>
+      <p>Not all temporal maps are as strict or authoritative as Thompson’s
+  factory-clock. Theorists of <italic>technicity</italic> observe that
+  technical objects vary greatly in their degree of ‘concretization’
+  (<xref alt="Stiegler 1998" rid="ref-stiegler_technics_1998" ref-type="bibr">Stiegler
+  1998</xref>). Concretization is a process of unification. As a
+  technology becomes more concrete, its parts become ‘organs’ that
+  ‘function more and more as parts of a whole’
+  (<xref alt="Stiegler 1998, 71" rid="ref-stiegler_technics_1998" ref-type="bibr">Stiegler
+  1998, 71</xref>). It thus becomes autonomous. It ceases to be a
+  ‘utensil’ of a human ‘actor’; it becomes itself an ‘actor’ with human
+  ‘operators’
+  (<xref alt="Stiegler 1998, 66" rid="ref-stiegler_technics_1998" ref-type="bibr">Stiegler
+  1998, 66</xref>). The drying of hops was once regulated by the dryer,
+  who touched and smelt the cones to determine the drying-time. The
+  dryer relied on comparatively abstract technology (the oast-house and
+  its cowl) to regulate the time by regulating the temperature and
+  humidity. Today, the dryer is a machine, which determines the
+  drying-time autonomously using clocks and sensors. Such a concrete
+  technology in effect concretizes time itself. The drying-time is
+  nothing but the time it takes for the machine to work.</p>
+      <p>In the same way we characterise technicities as
+  <italic>concrete</italic> or <italic>abstract</italic>, we can
+  characterise repetitions as <italic>regular</italic> or
+  <italic>irregular</italic>, and representations as
+  <italic>clear</italic> or <italic>vague</italic>. Thompson
+  (<xref alt="1967" rid="ref-thompson_time_1967" ref-type="bibr">1967</xref>)
+  repeatedly stresses the ‘regularity’ of capitalist work-patterns, as
+  opposed to the ‘irregularity’ of work in pre-capitalist temporal
+  regimes. While we may reject Thompson’s schematism, we must accept his
+  observation that repetition can vary in its lawfulness and
+  predictability. The tanpura drones regularly while the sitar wanders
+  in endless novelty. In much the same way, a representation of time can
+  be clear and bright or vague and suggestive. A modern composer gives
+  the tempo in beats per minute, where a Romantic requests the orchestra
+  to play <italic>Bewegt, doch nicht schnell</italic>.</p>
+      <p>Temporal regimes are seldom unitary. They combine many temporal
+  maps to create a ‘multiplicity’
+  (<xref alt="Orlikowski and Yates 2002, 687" rid="ref-orlikowski_its_2002" ref-type="bibr">Orlikowski
+  and Yates 2002, 687</xref>) or ‘complex’ of temporalities
+  (<xref alt="Hayles 2012, 89" rid="ref-hayles_how_2012" ref-type="bibr">Hayles
+  2012, 89</xref>). This complexity is especially apparent on the plane
+  of representation. Digital media can present many different interfaces
+  to time. A Wikipedia article represents time as a connected narrative
+  on the ‘Article’ tab, as a list of versions on the ‘View history’ tab,
+  as an ongoing debate between editors on the ‘Talk’ tab, as a
+  time-series of web hits on the Pageviews tool, as a pie-chart of
+  contributions on the XTools interface, as an immutable series of
+  transactions in the underlying MYSQL database, and so on. Such
+  interfaces form a single unstable ‘complex’ because they are folded
+  together by Wikipedia’s various actors. This complexity leads to
+  contradiction, which leads to contention, which led, in one case, to
+  Yapperbot/uncurrenter.</p>
+      <p>In sum, we define a temporal regime as a system of temporal maps
+  that structure a particular form of life through the modulation of
+  human attention. We can now refine our research questions. How do
+  Wikipedians map time? Which mappings are established, which are
+  contested, and how does Yapperbot/uncurrenter fit among them? How has
+  digital technology changed the nature of temporal mapping?</p>
+    </sec>
+    <sec id="wikipedia-time-1-the-primacy-of-the-past">
+      <title>Wikipedia time (1): the primacy of the past</title>
+      <p>
+        <italic>TODO: Rewrite/adapt</italic>
+      </p>
+      <p>How does Wikipedia portray the past? Scholars typically give three
+  answers. Some argue that Wikipedia produces <italic>history</italic>:
+  it represents the past in literary form. Wikipedia history may be more
+  “colorful,” “anecdotal” and “factualist” than “professional history,”
+  observes Roy Rosenzweig, but history it most certainly is
+  (<xref alt="Rosenzweig 2006, 142" rid="ref-rosenzweig_can_2006" ref-type="bibr">Rosenzweig
+  2006, 142</xref>). Others argue that Wikipedia articles comprise
+  <italic>collective memories</italic> that evoke shared experiences.
+  From this perspective, Wikipedia’s Talk pages are more important than
+  the articles themselves, and its editors are more important than its
+  readers. As Christian Pentzold argues, Wikipedia’s Talk pages are
+  non-physical “memory places,” where editors meet to “negotiat[e]” the
+  “memorable elements” of their experiences
+  (<xref alt="Pentzold 2009, 264" rid="ref-pentzold_fixing_2009" ref-type="bibr">Pentzold
+  2009, 264</xref>). Numerous scholars have followed in Pentzold’s wake
+  to examine how editors “build” or “form” collective memories in
+  Wikipedia
+  (<xref alt="Ferron and Massa 2011b" rid="ref-ferron_collective_2011" ref-type="bibr">Ferron
+  and Massa 2011b</xref>,
+  <xref alt="2011a" rid="ref-ferron_arab_2011" ref-type="bibr">2011a</xref>;
+  <xref alt="Porter, Krafft, and Keegan 2020" rid="ref-porter_visual_2020" ref-type="bibr">Porter,
+  Krafft, and Keegan 2020</xref>). A third group of scholars argue that
+  Wikipedia is a repository of <italic>facts</italic>. Wikipedia may
+  well publish works of history and store collective memories, but its
+  main role is to produce atomistic facts that are propagated through
+  knowledge graphs
+  (<xref alt="Ford 2020" rid="ref-ford_rise_2020" ref-type="bibr">Ford
+  2020</xref>,
+  <xref alt="2022" rid="ref-ford_writing_2022" ref-type="bibr">2022</xref>).
+  Wikipedia may be <italic>memory</italic> to thousands of editors. It
+  may be <italic>history</italic> to millions of readers. But it is mere
+  <italic>fact</italic> to billions of search requests and API
+  calls.</p>
+      <p>These approaches are not mutually exclusive. Search engines,
+  readers and editors all produce and consume Wikipedia in different
+  ways, and a complete account of the encyclopedia must include them
+  all. In which case, we must ask: how are the historical, memorial and
+  factual aspects of Wikipedia related?</p>
+      <p>One way to approach this question is to focus precisely on the
+  <italic>pastness</italic> of history, memory and fact. Pastness is
+  central to Wikipedia’s self-definition. “Wikipedia is not a crystal
+  ball,” reads
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/WP:NOT">a
+  famous policy</ext-link>, wherein we also read that Wikipedia is “not
+  a newspaper.” It is the pastness of Wikipedia that allows it to
+  function simultaneously as history, memory and fact. Pastness is
+  obviously a feature of both history and memory: I cannot remember an
+  event nor write its history until it has happened. The pastness of
+  <italic>fact</italic> is less obvious. Wikipedia contains facts about
+  fictional spacecraft, embroidery techniques and the heat death of the
+  universe. In what sense can such facts be said to be “past”?</p>
+      <p>Wikipedia itself provides an answer in two of its foundational
+  policies. According to
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/Wikipedia:No_original_research">‘No
+  Original Research’</ext-link>, no new facts are to be admitted to the
+  encyclopaedia. The only allowable facts are—the <italic>old</italic>.
+  According to
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/Wikipedia:Neutral_point_of_view">‘Neutral
+  Point of View’</ext-link>, no controversial facts are to be admitted
+  to the encyclopaedia. The only allowable facts are—the
+  <italic>settled</italic>. Facts are geological. Only time can grind
+  down the seashells of evidence and bring forth the limestone of
+  objectivity. Editors who wish to include new or unsettled facts in the
+  encyclopaedia are advised that
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/Wikipedia:There_is_no_deadline">‘There
+  is no deadline’</ext-link>. <italic>Þæs oferēode; þisses swa
+  mæg.</italic> That passed; so may this. Eventually everything is
+  past.</p>
+      <p>Despite its supposed pastness, Wikipedia is well-known as a source
+  of information on current events. It is ‘An Encylopedia with Breaking
+  News’
+  (<xref alt="Keegan 2019" rid="ref-keegan_encyclopedia_2019" ref-type="bibr">Keegan
+  2019</xref>). Current events dominate Wikipedia, accounting for the
+  lion’s share of user contributions and page views at any given time
+  (<xref alt="Keegan, Gergle, and Contractor 2011" rid="ref-keegan_hot_2011" ref-type="bibr">Keegan,
+  Gergle, and Contractor 2011</xref>). Scholars have analysed
+  Wikipedia’s coverage of current events in detail. We now know how
+  Wikipedia’s editors clash over the nature and definition of current
+  events
+  (<xref alt="Ford 2022" rid="ref-ford_writing_2022" ref-type="bibr">Ford
+  2022</xref>;
+  <xref alt="Pentzold 2009" rid="ref-pentzold_fixing_2009" ref-type="bibr">Pentzold
+  2009</xref>), how they link current events into larger thematic
+  structures
+  (<xref alt="Twyman, Keegan, and Shaw 2017" rid="ref-twyman_black_2017" ref-type="bibr">Twyman,
+  Keegan, and Shaw 2017</xref>), how they adopt newsroom practices to
+  co-ordinate their efforts
+  (<xref alt="Avieson 2019" rid="ref-avieson_breaking_2019" ref-type="bibr">Avieson
+  2019</xref>), how they revisit old articles to commemorate traumatic
+  events
+  (<xref alt="Ferron and Massa 2014" rid="ref-ferron_beyond_2014" ref-type="bibr">Ferron
+  and Massa 2014</xref>), and how they shape the interpretation of
+  events using images
+  (<xref alt="Porter, Krafft, and Keegan 2020" rid="ref-porter_visual_2020" ref-type="bibr">Porter,
+  Krafft, and Keegan 2020</xref>). One thing we <italic>don’t</italic>
+  know is how Wikipedia’s editors decide what is ‘current’. How does
+  Wikipedia distinguish the past from the present at the very threshold
+  of time? How does it resolve the contradiction between the pastness of
+  the encyclopaedia and the presentness of the current?</p>
+      <p>Most readers of Wikipedia will have seen what editors do when an
+  article trespasses on the present: mark it with one of the available
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/Wikipedia:Current_event_templates">Current
+  Event Templates</ext-link>. The main template is
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/Template:Current">Template:Current</ext-link>,
+  which at the time of writing is available on 116 language editions of
+  Wikipedia. When the template is added to an article, a familiar banner
+  appears at the top of the page (Figure ), and the article is
+  automatically added to
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/Category:Current_events">Category:Current
+  Events</ext-link> or a related category. Each language edition has its
+  own distinct version of Template:Current, and may also sport a range
+  of related Templates. French Wikipedia, for instance, distinguishes
+  ‘Événements en cours’ [ongoing events] from ‘Événements récents’
+  [recent events] in its
+  <ext-link ext-link-type="uri" xlink:href="https://fr.wikipedia.org/wiki/Mod%C3%A8le:%C3%89v%C3%A9nement_en_cours">main
+  template</ext-link>, and provides several related templates such as
+  <ext-link ext-link-type="uri" xlink:href="https://fr.wikipedia.org/wiki/Mod%C3%A8le:Bataille_en_cours">Modèle:Bataille
+  en cours</ext-link> [Template:Ongoing battle] and
+  <ext-link ext-link-type="uri" xlink:href="https://fr.wikipedia.org/wiki/Mod%C3%A8le:Mort_r%C3%A9cente">Modèle:Mort
+  récente</ext-link> [Template:Recent death]. German Wikipedia, by
+  contrast, has only a single
+  <ext-link ext-link-type="uri" xlink:href="https://de.wikipedia.org/wiki/Vorlage:Laufendes_Ereignis">Current
+  Events template</ext-link>, but it is customisable, so that editors
+  can replace the phrase “aktuelles Ereignis” [current event] in the
+  banner with a more specific description such as “die derzeitige
+  Sportveranstaltung” [the ongoing sporting event].</p>
+      <p>New twist in the tale: a user ‘killed’ Yapperbot/uncurrent on
+  24/4/2023 because
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/w/index.php?diff=1151461527&amp;oldid=986550108&amp;title=User%3AYapperbot%2Fkill%2FUncurrenter">they
+  complained it had removed {{current}} from a current
+  event</ext-link>.</p>
+      <p>On the surface, Template:Current might seem like a simple
+  phenomenon. Editors mark an article when it is “current,” then remove
+  the template when its currency is ended. Avieson
+  (<xref alt="2019" rid="ref-avieson_breaking_2019" ref-type="bibr">2019</xref>)
+  likens Template:Current to the “live” icon on a newspaper blog or
+  television news. While Template:Current is present, the article
+  functions as live coverage; when the template is removed, the article
+  gradually becomes encyclopaedic.</p>
+      <p>But the use of Template:Current is not simple, and has vexed
+  Wikipedia’s editors for years. Avieson
+  (<xref alt="2019" rid="ref-avieson_breaking_2019" ref-type="bibr">2019</xref>)
+  herself grapples with the problem. Although she argues for a
+  distinction between “news” and “encyclopaedias,” she also observes
+  that Wikipedia’s coverage of current events “blurs the boundaries of
+  both news and temporality.” These blurred boundaries are a problem for
+  Wikipedia’s editors, and editors in different langauges have clarified
+  the distinction between past, present and future in different ways. In
+  this context, English Wikipedia is extremist. Unlike other language
+  editions, English Wikipedia strictly polices the use of
+  Template:Current with a bot:
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/User:Yapperbot">Yapperbot/uncurrenter</ext-link>.
+  Yapperbot/uncurrenter scans English Wikipedia hourly, examining every
+  article that includes Template:Current and deleting the template if
+  the article has not been edited in the last five hours. English
+  Wikipedia is also one of the few larger language editions without a
+  <ext-link ext-link-type="uri" xlink:href="https://wikipedia.org/wiki/Template:Future">Template:Future</ext-link>
+  to mark events that have yet to occur. English Wikipedia deleted
+  Template:Future in 2009 after an official process, and several
+  attempts to resurrect the template have foundered. Meanwhile French,
+  Italian, Bengali, Chinese and 51 other-language Wikipedias maintain a
+  Template:Future.</p>
+      <p>Why does practice vary across the different language editions? What
+  led to the extremely strict approach of English Wikipedia, in which
+  Template:Current is ruthlessly policed by an artificial agent, and the
+  future is not explicitly marked? What can this tell us about
+  Wikipedia’s “temporal regime”
+  (<xref alt="Assmann 2020" rid="ref-assmann_is_2020" ref-type="bibr">Assmann
+  2020</xref>)?</p>
+      <p>We try to answer these questions by focussing on
+  Yapperbot/uncurrenter. We describe the history of Template:Current and
+  recount the debates that led to the bot’s creation. We then examine
+  Yapperbot/uncurrenter’s contributions to English Wikipedia, comparing
+  its practice with the practice of human editors on English Wikipedia
+  and other-language Wikipedias.</p>
+    </sec>
+    <sec id="the-birth-of-the-bot-that-makes-history">
+      <title>The birth of the bot that makes history</title>
+      <list list-type="bullet">
+        <list-item>
+          <p><italic>Qualitative methods:</italic> Reading the talk pages,
+      bot approval etc. that led to the creation of
+      Yapperbot/uncurrenter</p>
+        </list-item>
+        <list-item>
+          <p><italic>Quantitative methods:</italic> Comparison of
+      Yapperbot/uncurrenter with humans who have policed
+      Template:Current using wikkitidy
+      (<xref alt="Falk 2023" rid="ref-falk_wikkitidy_2023" ref-type="bibr">Falk
+      2023</xref>) and the tidyverse
+      (<xref alt="Wickham et al. 2019" rid="ref-wickham_welcome_2019" ref-type="bibr">Wickham
+      et al. 2019</xref>).</p>
+        </list-item>
+        <list-item>
+          <p><italic>Methodology:</italic> Trace ethnography
+      (<xref alt="R. Stuart Geiger and Ribes 2011" rid="ref-geiger_trace_2011" ref-type="bibr">R.
+      Stuart Geiger and Ribes 2011</xref>); ethnography of algorithmic
+      systems
+      (<xref alt="Seaver 2017" rid="ref-seaver_algorithms_2017" ref-type="bibr">Seaver
+      2017</xref>;
+      <xref alt="R. Stuart Geiger 2017" rid="ref-geiger_beyond_2017" ref-type="bibr">R.
+      Stuart Geiger 2017</xref>).</p>
+        </list-item>
+      </list>
+      <p>
+        <italic>How did `Yapperbot/uncurrenter’ come about? What were the
+  debates and discussions of the editors? What was the perceived problem
+  the bot was supposed to fix?</italic>
+      </p>
+      <p>
+        <italic>What does the bot actually do? How does that compare with
+  what it is supposed to do?</italic>
+      </p>
+      <p>How many pages is yapperbot uncurrenting per day?</p>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="the-bot-that-makes-history_files/figure-jats/unnamed-chunk-3-1.png"/>
+      <p>What was happening on that day it uncurrented 45 pages?</p>
+      <preformat># A tibble: 45 × 3
+     pageid title                                            timestamp          
+      &lt;dbl&gt; &lt;chr&gt;                                            &lt;dttm&gt;             
+ 1 63362621 COVID-19 pandemic in Ethiopia                    2020-10-21 23:00:28
+ 2 63431783 COVID-19 pandemic in Northern Ireland            2020-10-21 22:00:48
+ 3 63181042 COVID-19 pandemic in Europe                      2020-10-21 22:00:41
+ 4 63178596 COVID-19 pandemic in Hong Kong                   2020-10-21 22:00:38
+ 5 63313047 COVID-19 pandemic in Moldova                     2020-10-21 21:00:43
+ 6 63239190 COVID-19 pandemic in Sweden                      2020-10-21 21:00:37
+ 7 64307024 Timeline of the COVID-19 pandemic in October 20… 2020-10-21 20:00:49
+ 8 63395521 COVID-19 pandemic in Sarawak                     2020-10-21 20:00:45
+ 9 63391509 COVID-19 pandemic in Quebec                      2020-10-21 20:00:39
+10 63389195 COVID-19 pandemic in Sabah                       2020-10-21 20:00:36
+# ℹ 35 more rows</preformat>
+      <p>How often does Yapperbot have to remove the template more than
+  once?</p>
+      <preformat># A tibble: 7 × 2
+  count num_pages
+  &lt;int&gt;     &lt;int&gt;
+1     1      1236
+2     2       133
+3     3        23
+4     4         9
+5     5         4
+6     6         2
+7     9         1</preformat>
+      <p>Which page had to be uncurrented nine times?</p>
+      <preformat># A tibble: 7 × 3
+# Groups:   pageid [7]
+    pageid title                                            count
+     &lt;dbl&gt; &lt;chr&gt;                                            &lt;int&gt;
+1 70168267 Siege of Mariupol                                    9
+2 65760352 Tigray War                                           6
+3 70161957 Siege of Chernihiv                                   6
+4 64399515 2020–2021 Belarusian protests                        5
+5 70157964 Timeline of the 2022 Russian invasion of Ukraine     5
+6 70160923 Battle of Kharkiv (2022)                             5
+7 70809573 2022–2023 monkeypox outbreak                         5</preformat>
+    </sec>
+    <sec id="wikipedia-time-2-encyclopaedia-time">
+      <title>Wikipedia time (2): encyclopaedia time</title>
+      <p>
+        <italic>Compared to other temporal regimes</italic>
+      </p>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <title/>
+      <ref id="ref-porter_visual_2020">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Porter</surname>
+              <given-names>Emily</given-names>
+            </name>
+            <name>
+              <surname>Krafft</surname>
+              <given-names>P. M.</given-names>
+            </name>
+            <name>
+              <surname>Keegan</surname>
+              <given-names>Brian</given-names>
+            </name>
+          </person-group>
+          <article-title>Visual Narratives and Collective Memory across Peer-Produced Accounts of Contested Sociopolitical Events</article-title>
+          <source>ACM Transactions on Social Computing</source>
+          <year iso-8601-date="2020-02">2020</year>
+          <month>02</month>
+          <date-in-citation content-type="access-date">
+            <year iso-8601-date="2023-01-09">2023</year>
+            <month>01</month>
+            <day>09</day>
+          </date-in-citation>
+          <volume>3</volume>
+          <issue>1</issue>
+          <issn>2469-7818</issn>
+          <uri>http://doi.org/10.1145/3373147</uri>
+          <pub-id pub-id-type="doi">10.1145/3373147</pub-id>
+          <fpage>4:1</fpage>
+          <lpage>4:20</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-twyman_black_2017">
+        <element-citation publication-type="paper-conference">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Twyman</surname>
+              <given-names>Marlon</given-names>
+            </name>
+            <name>
+              <surname>Keegan</surname>
+              <given-names>Brian C.</given-names>
+            </name>
+            <name>
+              <surname>Shaw</surname>
+              <given-names>Aaron</given-names>
+            </name>
+          </person-group>
+          <article-title>Black Lives Matter in Wikipedia: Collaboration and Collective Memory around Online Social Movements</article-title>
+          <source>Proceedings of the 2017 ACM Conference on Computer Supported Cooperative Work and Social Computing</source>
+          <year iso-8601-date="2017-02">2017</year>
+          <month>02</month>
+          <date-in-citation content-type="access-date">
+            <year iso-8601-date="2023-01-03">2023</year>
+            <month>01</month>
+            <day>03</day>
+          </date-in-citation>
+          <uri>http://arxiv.org/abs/1611.01257</uri>
+          <pub-id pub-id-type="doi">10.1145/2998181.2998232</pub-id>
+          <fpage>1400</fpage>
+          <lpage>1412</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-pentzold_fixing_2009">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Pentzold</surname>
+              <given-names>Christian</given-names>
+            </name>
+          </person-group>
+          <article-title>Fixing the floating gap: The online encyclopaedia Wikipedia as a global memory place</article-title>
+          <source>Memory Studies</source>
+          <year iso-8601-date="2009-05">2009</year>
+          <month>05</month>
+          <date-in-citation content-type="access-date">
+            <year iso-8601-date="2023-01-03">2023</year>
+            <month>01</month>
+            <day>03</day>
+          </date-in-citation>
+          <volume>2</volume>
+          <issue>2</issue>
+          <issn>1750-6980, 1750-6999</issn>
+          <uri>http://journals.sagepub.com/doi/10.1177/1750698008102055</uri>
+          <pub-id pub-id-type="doi">10.1177/1750698008102055</pub-id>
+          <fpage>255</fpage>
+          <lpage>272</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-castells_rise_2010">
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Castells</surname>
+              <given-names>Manuel</given-names>
+            </name>
+          </person-group>
+          <source>The rise of the network society</source>
+          <publisher-name>Wiley-Blackwell</publisher-name>
+          <publisher-loc>Chichester, West Sussex ; Malden, MA</publisher-loc>
+          <year iso-8601-date="2010">2010</year>
+          <edition>2nd ed., with a new pref</edition>
+          <isbn>978-1-4051-9686-4</isbn>
+        </element-citation>
+      </ref>
+      <ref id="ref-ford_writing_2022">
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ford</surname>
+              <given-names>Heather</given-names>
+            </name>
+          </person-group>
+          <source>Writing the revolution: Wikipedia and the survival of facts in the digital age</source>
+          <publisher-name>The MIT Press</publisher-name>
+          <publisher-loc>Cambridge, Massachusetts</publisher-loc>
+          <year iso-8601-date="2022">2022</year>
+          <isbn>978-0-262-04629-9</isbn>
+        </element-citation>
+      </ref>
+      <ref id="ref-rosenzweig_can_2006">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Rosenzweig</surname>
+              <given-names>Roy</given-names>
+            </name>
+          </person-group>
+          <article-title>Can History Be Open Source? Wikipedia and the Future of the Past</article-title>
+          <source>The Journal of American History</source>
+          <year iso-8601-date="2006">2006</year>
+          <date-in-citation content-type="access-date">
+            <year iso-8601-date="2023-01-23">2023</year>
+            <month>01</month>
+            <day>23</day>
+          </date-in-citation>
+          <volume>93</volume>
+          <issue>1</issue>
+          <issn>0021-8723</issn>
+          <uri>http://www.jstor.org/stable/4486062</uri>
+          <pub-id pub-id-type="doi">10.2307/4486062</pub-id>
+          <fpage>117</fpage>
+          <lpage>146</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-tkacz_wikipedia_2015">
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Tkacz</surname>
+              <given-names>Nathaniel</given-names>
+            </name>
+          </person-group>
+          <source>Wikipedia and the politics of openness</source>
+          <publisher-name>University of Chicago Press</publisher-name>
+          <publisher-loc>Chicago ; London</publisher-loc>
+          <year iso-8601-date="2015">2015</year>
+          <isbn>978-0-226-19227-7 978-0-226-19230-7</isbn>
+        </element-citation>
+      </ref>
+      <ref id="ref-wajcman_pressed_2015">
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Wajcman</surname>
+              <given-names>Judy</given-names>
+            </name>
+          </person-group>
+          <source>Pressed for time: The acceleration of life in digital capitalism</source>
+          <publisher-name>The University of Chicago Press</publisher-name>
+          <publisher-loc>Chicago</publisher-loc>
+          <year iso-8601-date="2015">2015</year>
+          <isbn>978-0-226-19650-3</isbn>
+          <pub-id pub-id-type="doi">10.7208/9780226196503</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="ref-keegan_encyclopedia_2019">
+        <element-citation publication-type="chapter">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Keegan</surname>
+              <given-names>Brian</given-names>
+            </name>
+          </person-group>
+          <article-title>An encyclopedia with breaking news</article-title>
+          <source>Wikipedia@ 20: Stories of an Incomplete Revolution</source>
+          <person-group person-group-type="editor">
+            <name>
+              <surname>Reagle</surname>
+              <given-names>Joseph</given-names>
+            </name>
+            <name>
+              <surname>Koerner</surname>
+              <given-names>Jackie</given-names>
+            </name>
+          </person-group>
+          <publisher-name>MIT Press</publisher-name>
+          <publisher-loc>Cambridge, Mass</publisher-loc>
+          <year iso-8601-date="2019">2019</year>
+          <uri>https://doi.org/10.7551/mitpress/12366.003.0007</uri>
+          <fpage>55</fpage>
+          <lpage>70</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-avieson_breaking_2019">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Avieson</surname>
+              <given-names>Bunty</given-names>
+            </name>
+          </person-group>
+          <article-title>Breaking news on Wikipedia: Collaborating, collating and competing</article-title>
+          <source>First Monday</source>
+          <year iso-8601-date="2019-04">2019</year>
+          <month>04</month>
+          <date-in-citation content-type="access-date">
+            <year iso-8601-date="2023-01-30">2023</year>
+            <month>01</month>
+            <day>30</day>
+          </date-in-citation>
+          <issn>1396-0466</issn>
+          <uri>https://firstmonday.org/ojs/index.php/fm/article/view/9530</uri>
+          <pub-id pub-id-type="doi">10.5210/fm.v24i5.9530</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="ref-keegan_hot_2011">
+        <element-citation publication-type="paper-conference">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Keegan</surname>
+              <given-names>Brian</given-names>
+            </name>
+            <name>
+              <surname>Gergle</surname>
+              <given-names>Darren</given-names>
+            </name>
+            <name>
+              <surname>Contractor</surname>
+              <given-names>Noshir</given-names>
+            </name>
+          </person-group>
+          <article-title>Hot off the wiki: Dynamics, practices, and structures in Wikipedia’s coverage of the Tōhoku catastrophes</article-title>
+          <source>Proceedings of the 7th International Symposium on Wikis and Open Collaboration</source>
+          <publisher-name>ACM</publisher-name>
+          <publisher-loc>Mountain View California</publisher-loc>
+          <year iso-8601-date="2011-10">2011</year>
+          <month>10</month>
+          <date-in-citation content-type="access-date">
+            <year iso-8601-date="2023-01-30">2023</year>
+            <month>01</month>
+            <day>30</day>
+          </date-in-citation>
+          <isbn>978-1-4503-0909-7</isbn>
+          <uri>https://dl.acm.org/doi/10.1145/2038558.2038577</uri>
+          <pub-id pub-id-type="doi">10.1145/2038558.2038577</pub-id>
+          <fpage>105</fpage>
+          <lpage>113</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-ferron_arab_2011">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ferron</surname>
+              <given-names>Michela</given-names>
+            </name>
+            <name>
+              <surname>Massa</surname>
+              <given-names>Paolo</given-names>
+            </name>
+          </person-group>
+          <article-title>The Arab Spring wikirevolutions: Wikipedia as a lens for studying the real-time formation of collective memories of revolutions</article-title>
+          <source>International Journal of Communication</source>
+          <year iso-8601-date="2011">2011</year>
+          <volume>5</volume>
+          <fpage>20</fpage>
+          <lpage/>
+        </element-citation>
+      </ref>
+      <ref id="ref-ferron_beyond_2014">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ferron</surname>
+              <given-names>Michela</given-names>
+            </name>
+            <name>
+              <surname>Massa</surname>
+              <given-names>Paolo</given-names>
+            </name>
+          </person-group>
+          <article-title>Beyond the encyclopedia: Collective memories in Wikipedia</article-title>
+          <source>Memory Studies</source>
+          <year iso-8601-date="2014">2014</year>
+          <volume>7</volume>
+          <issue>1</issue>
+          <fpage>22</fpage>
+          <lpage>45</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-gumbrecht_our_2014">
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Gumbrecht</surname>
+              <given-names>Hans Ulrich</given-names>
+            </name>
+          </person-group>
+          <source>Our broad present: Time and contemporary culture</source>
+          <publisher-name>Columbia University Press</publisher-name>
+          <publisher-loc>New York</publisher-loc>
+          <year iso-8601-date="2014">2014</year>
+          <isbn>978-0-231-16360-6 978-0-231-16361-3</isbn>
+        </element-citation>
+      </ref>
+      <ref id="ref-ferron_collective_2011">
+        <element-citation publication-type="paper-conference">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ferron</surname>
+              <given-names>Michela</given-names>
+            </name>
+            <name>
+              <surname>Massa</surname>
+              <given-names>Paolo</given-names>
+            </name>
+          </person-group>
+          <article-title>Collective memory building in Wikipedia: The case of North African uprisings</article-title>
+          <source>Proceedings of the 7th International Symposium on Wikis and Open Collaboration</source>
+          <publisher-name>Association for Computing Machinery</publisher-name>
+          <publisher-loc>New York, NY, USA</publisher-loc>
+          <year iso-8601-date="2011-10">2011</year>
+          <month>10</month>
+          <date-in-citation content-type="access-date">
+            <year iso-8601-date="2023-02-26">2023</year>
+            <month>02</month>
+            <day>26</day>
+          </date-in-citation>
+          <isbn>978-1-4503-0909-7</isbn>
+          <uri>https://doi.org/10.1145/2038558.2038578</uri>
+          <pub-id pub-id-type="doi">10.1145/2038558.2038578</pub-id>
+          <fpage>114</fpage>
+          <lpage>123</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-ford_rise_2020">
+        <element-citation publication-type="chapter">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ford</surname>
+              <given-names>Heather</given-names>
+            </name>
+          </person-group>
+          <article-title>Rise of the Underdog</article-title>
+          <source>Wikipedia@20: Stories of an Incomplete Revolution</source>
+          <person-group person-group-type="editor">
+            <name>
+              <surname>Reagle</surname>
+              <given-names>Joseph</given-names>
+            </name>
+            <name>
+              <surname>Koerner</surname>
+              <given-names>Jackie</given-names>
+            </name>
+          </person-group>
+          <publisher-name>MIT Press</publisher-name>
+          <publisher-loc>Cambridge, Mass</publisher-loc>
+          <year iso-8601-date="2020-10">2020</year>
+          <month>10</month>
+          <date-in-citation content-type="access-date">
+            <year iso-8601-date="2023-02-27">2023</year>
+            <month>02</month>
+            <day>27</day>
+          </date-in-citation>
+          <uri>https://direct.mit.edu/books/book/4956/chapter/1879827/Rise-of-the-Underdog</uri>
+          <fpage>189</fpage>
+          <lpage>201</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-assmann_is_2020">
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Assmann</surname>
+              <given-names>Aleida</given-names>
+            </name>
+          </person-group>
+          <source>Is Time out of Joint?: On the Rise and Fall of the Modern Time Regime</source>
+          <publisher-name>Cornell University Press</publisher-name>
+          <publisher-loc>Ithaca, UNITED STATES</publisher-loc>
+          <year iso-8601-date="2020">2020</year>
+          <date-in-citation content-type="access-date">
+            <year iso-8601-date="2023-01-26">2023</year>
+            <month>01</month>
+            <day>26</day>
+          </date-in-citation>
+          <isbn>978-1-5017-4245-3</isbn>
+          <uri>http://ebookcentral.proquest.com/lib/uts/detail.action?docID=5964894</uri>
+        </element-citation>
+      </ref>
+      <ref id="ref-geiger_when_2013">
+        <element-citation publication-type="paper-conference">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Geiger</surname>
+              <given-names>R. Stuart</given-names>
+            </name>
+            <name>
+              <surname>Halfaker</surname>
+              <given-names>Aaron</given-names>
+            </name>
+          </person-group>
+          <article-title>When the levee breaks: Without bots, what happens to Wikipedia’s quality control processes?</article-title>
+          <source>Proceedings of the 9th International Symposium on Open Collaboration</source>
+          <year iso-8601-date="2013">2013</year>
+          <fpage>1</fpage>
+          <lpage>6</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-geiger_work_2010">
+        <element-citation publication-type="paper-conference">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Geiger</surname>
+              <given-names>R. Stuart</given-names>
+            </name>
+            <name>
+              <surname>Ribes</surname>
+              <given-names>David</given-names>
+            </name>
+          </person-group>
+          <article-title>The work of sustaining order in Wikipedia: The banning of a vandal</article-title>
+          <source>Proceedings of the 2010 ACM conference on Computer supported cooperative work</source>
+          <year iso-8601-date="2010">2010</year>
+          <fpage>117</fpage>
+          <lpage>126</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-geiger_are_2013">
+        <element-citation publication-type="paper-conference">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Geiger</surname>
+              <given-names>R. Stuart</given-names>
+            </name>
+          </person-group>
+          <article-title>Are computers merely" supporting" cooperative work: Towards an ethnography of bot development</article-title>
+          <source>Proceedings of the 2013 conference on Computer supported cooperative work companion</source>
+          <year iso-8601-date="2013">2013</year>
+          <fpage>51</fpage>
+          <lpage>56</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-geiger_social_2009">
+        <element-citation publication-type="paper-conference">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Geiger</surname>
+              <given-names>R. Stuart</given-names>
+            </name>
+          </person-group>
+          <article-title>The social roles of bots and assisted editing programs</article-title>
+          <source>Proceedings of the 5th International Symposium on Wikis and Open Collaboration</source>
+          <year iso-8601-date="2009">2009</year>
+          <fpage>1</fpage>
+          <lpage>2</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-geiger_lives_2011">
+        <element-citation publication-type="chapter">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Geiger</surname>
+              <given-names>R. Stuart</given-names>
+            </name>
+          </person-group>
+          <article-title>The lives of bots</article-title>
+          <source>Critical Point of View: A Wikipedia Reader</source>
+          <person-group person-group-type="editor">
+            <name>
+              <surname>Lovink</surname>
+              <given-names>Geert</given-names>
+            </name>
+            <name>
+              <surname>Tkacz</surname>
+              <given-names>Nathaniel</given-names>
+            </name>
+          </person-group>
+          <publisher-name>Amsterdam</publisher-name>
+          <publisher-loc>Institute of Network Cultures</publisher-loc>
+          <year iso-8601-date="2011">2011</year>
+          <fpage>78</fpage>
+          <lpage>93</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-geiger_operationalizing_2017">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Geiger</surname>
+              <given-names>R. Stuart</given-names>
+            </name>
+            <name>
+              <surname>Halfaker</surname>
+              <given-names>Aaron</given-names>
+            </name>
+          </person-group>
+          <article-title>Operationalizing conflict and cooperation between automated software agents in wikipedia: A replication and expansion of’even good bots fight’</article-title>
+          <source>Proceedings of the ACM on Human-Computer Interaction</source>
+          <year iso-8601-date="2017">2017</year>
+          <volume>1</volume>
+          <issue>CSCW</issue>
+          <fpage>1</fpage>
+          <lpage>33</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-geiger_beyond_2017">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Geiger</surname>
+              <given-names>R Stuart</given-names>
+            </name>
+          </person-group>
+          <article-title>Beyond opening up the black box: Investigating the role of algorithmic systems in Wikipedian organizational culture</article-title>
+          <source>Big Data &amp; Society</source>
+          <year iso-8601-date="2017-12">2017</year>
+          <month>12</month>
+          <date-in-citation content-type="access-date">
+            <year iso-8601-date="2023-02-28">2023</year>
+            <month>02</month>
+            <day>28</day>
+          </date-in-citation>
+          <volume>4</volume>
+          <issue>2</issue>
+          <issn>2053-9517, 2053-9517</issn>
+          <uri>http://journals.sagepub.com/doi/10.1177/2053951717730735</uri>
+          <pub-id pub-id-type="doi">10.1177/2053951717730735</pub-id>
+          <fpage>205395171773073</fpage>
+          <lpage/>
+        </element-citation>
+      </ref>
+      <ref id="ref-niederer_wisdom_2010">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Niederer</surname>
+              <given-names>Sabine</given-names>
+            </name>
+            <name>
+              <surname>Dijck</surname>
+              <given-names>José van</given-names>
+            </name>
+          </person-group>
+          <article-title>Wisdom of the crowd or technicity of content? Wikipedia as a sociotechnical system</article-title>
+          <source>New Media &amp; Society</source>
+          <year iso-8601-date="2010-12">2010</year>
+          <month>12</month>
+          <date-in-citation content-type="access-date">
+            <year iso-8601-date="2023-02-28">2023</year>
+            <month>02</month>
+            <day>28</day>
+          </date-in-citation>
+          <volume>12</volume>
+          <issue>8</issue>
+          <issn>1461-4448</issn>
+          <uri>https://doi.org/10.1177/1461444810365297</uri>
+          <pub-id pub-id-type="doi">10.1177/1461444810365297</pub-id>
+          <fpage>1368</fpage>
+          <lpage>1387</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-halfaker_bots_2012">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Halfaker</surname>
+              <given-names>Aaron</given-names>
+            </name>
+            <name>
+              <surname>Riedl</surname>
+              <given-names>John</given-names>
+            </name>
+          </person-group>
+          <article-title>Bots and Cyborgs: Wikipedia’s Immune System</article-title>
+          <source>Computer</source>
+          <year iso-8601-date="2012-03">2012</year>
+          <month>03</month>
+          <date-in-citation content-type="access-date">
+            <year iso-8601-date="2023-02-28">2023</year>
+            <month>02</month>
+            <day>28</day>
+          </date-in-citation>
+          <volume>45</volume>
+          <issue>3</issue>
+          <issn>0018-9162</issn>
+          <uri>http://ieeexplore.ieee.org/document/6163451/</uri>
+          <pub-id pub-id-type="doi">10.1109/MC.2012.82</pub-id>
+          <fpage>79</fpage>
+          <lpage>82</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-seaver_algorithms_2017">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Seaver</surname>
+              <given-names>Nick</given-names>
+            </name>
+          </person-group>
+          <article-title>Algorithms as culture: Some tactics for the ethnography of algorithmic systems</article-title>
+          <source>Big data &amp; society</source>
+          <year iso-8601-date="2017">2017</year>
+          <volume>4</volume>
+          <issue>2</issue>
+          <fpage>2053951717738104</fpage>
+          <lpage/>
+        </element-citation>
+      </ref>
+      <ref id="ref-dijck_culture_2013">
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Dijck</surname>
+              <given-names>José van</given-names>
+            </name>
+          </person-group>
+          <source>The culture of connectivity: A critical history of social media</source>
+          <publisher-name>Oxford University Press</publisher-name>
+          <publisher-loc>Oxford ; New York</publisher-loc>
+          <year iso-8601-date="2013">2013</year>
+          <isbn>978-0-19-997077-3 978-0-19-997078-0</isbn>
+        </element-citation>
+      </ref>
+      <ref id="ref-kennedy_textual_2010">
+        <element-citation publication-type="chapter">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Kennedy</surname>
+              <given-names>Krista</given-names>
+            </name>
+          </person-group>
+          <article-title>Textual Machinery: Authorial Agency and Bot-Written Texts in Wikipedia</article-title>
+          <source>The Responsibilities of Rhetoric</source>
+          <person-group person-group-type="editor">
+            <name>
+              <surname>Smith</surname>
+              <given-names>Michelle</given-names>
+            </name>
+            <name>
+              <surname>Warnick</surname>
+              <given-names>Barbara</given-names>
+            </name>
+          </person-group>
+          <publisher-name>Waveland</publisher-name>
+          <publisher-loc>Long Grove, Illinois</publisher-loc>
+          <year iso-8601-date="2010">2010</year>
+          <uri>https://surface.syr.edu/wp/1</uri>
+          <fpage>303</fpage>
+          <lpage>309</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-livingstone_population_2016">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Livingstone</surname>
+              <given-names>Randall M.</given-names>
+            </name>
+          </person-group>
+          <article-title>Population automation: An interview with Wikipedia bot pioneer Ram-Man</article-title>
+          <source>First Monday</source>
+          <year iso-8601-date="2016-01">2016</year>
+          <month>01</month>
+          <date-in-citation content-type="access-date">
+            <year iso-8601-date="2023-02-28">2023</year>
+            <month>02</month>
+            <day>28</day>
+          </date-in-citation>
+          <issn>1396-0466</issn>
+          <uri>https://firstmonday.org/ojs/index.php/fm/article/view/6027</uri>
+          <pub-id pub-id-type="doi">10.5210/fm.v21i1.6027</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="ref-hartog_regimes_2017">
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Hartog</surname>
+              <given-names>François</given-names>
+            </name>
+          </person-group>
+          <source>Regimes of historicity: Presentism and experiences of time</source>
+          <publisher-name>Columbia University Press</publisher-name>
+          <publisher-loc>New York</publisher-loc>
+          <year iso-8601-date="2017">2017</year>
+          <edition>Paperback edition</edition>
+          <isbn>978-0-231-16377-4</isbn>
+        </element-citation>
+      </ref>
+      <ref id="ref-geiger_trace_2011">
+        <element-citation publication-type="paper-conference">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Geiger</surname>
+              <given-names>R. Stuart</given-names>
+            </name>
+            <name>
+              <surname>Ribes</surname>
+              <given-names>David</given-names>
+            </name>
+          </person-group>
+          <article-title>Trace Ethnography: Following Coordination through Documentary Practices</article-title>
+          <source>2011 44th Hawaii International Conference on System Sciences</source>
+          <year iso-8601-date="2011-01">2011</year>
+          <month>01</month>
+          <pub-id pub-id-type="doi">10.1109/HICSS.2011.455</pub-id>
+          <fpage>1</fpage>
+          <lpage>10</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-wickham_welcome_2019">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Wickham</surname>
+              <given-names>Hadley</given-names>
+            </name>
+            <name>
+              <surname>Averick</surname>
+              <given-names>Mara</given-names>
+            </name>
+            <name>
+              <surname>Bryan</surname>
+              <given-names>Jennifer</given-names>
+            </name>
+            <name>
+              <surname>Chang</surname>
+              <given-names>Winston</given-names>
+            </name>
+            <name>
+              <surname>McGowan</surname>
+              <given-names>Lucy D’Agostino</given-names>
+            </name>
+            <name>
+              <surname>François</surname>
+              <given-names>Romain</given-names>
+            </name>
+            <name>
+              <surname>Grolemund</surname>
+              <given-names>Garrett</given-names>
+            </name>
+            <name>
+              <surname>Hayes</surname>
+              <given-names>Alex</given-names>
+            </name>
+            <name>
+              <surname>Henry</surname>
+              <given-names>Lionel</given-names>
+            </name>
+            <name>
+              <surname>Hester</surname>
+              <given-names>Jim</given-names>
+            </name>
+            <name>
+              <surname>Kuhn</surname>
+              <given-names>Max</given-names>
+            </name>
+            <name>
+              <surname>Pedersen</surname>
+              <given-names>Thomas Lin</given-names>
+            </name>
+            <name>
+              <surname>Miller</surname>
+              <given-names>Evan</given-names>
+            </name>
+            <name>
+              <surname>Bache</surname>
+              <given-names>Stephan Milton</given-names>
+            </name>
+            <name>
+              <surname>Müller</surname>
+              <given-names>Kirill</given-names>
+            </name>
+            <name>
+              <surname>Ooms</surname>
+              <given-names>Jeroen</given-names>
+            </name>
+            <name>
+              <surname>Robinson</surname>
+              <given-names>David</given-names>
+            </name>
+            <name>
+              <surname>Seidel</surname>
+              <given-names>Dana Paige</given-names>
+            </name>
+            <name>
+              <surname>Spinu</surname>
+              <given-names>Vitalie</given-names>
+            </name>
+            <name>
+              <surname>Takahashi</surname>
+              <given-names>Kohske</given-names>
+            </name>
+            <name>
+              <surname>Vaughan</surname>
+              <given-names>Davis</given-names>
+            </name>
+            <name>
+              <surname>Wilke</surname>
+              <given-names>Claus</given-names>
+            </name>
+            <name>
+              <surname>Woo</surname>
+              <given-names>Kara</given-names>
+            </name>
+            <name>
+              <surname>Yutani</surname>
+              <given-names>Hiroaki</given-names>
+            </name>
+          </person-group>
+          <article-title>Welcome to the Tidyverse</article-title>
+          <source>Journal of Open Source Software</source>
+          <year iso-8601-date="2019-11">2019</year>
+          <month>11</month>
+          <date-in-citation content-type="access-date">
+            <year iso-8601-date="2023-03-27">2023</year>
+            <month>03</month>
+            <day>27</day>
+          </date-in-citation>
+          <volume>4</volume>
+          <issue>43</issue>
+          <issn>2475-9066</issn>
+          <uri>https://joss.theoj.org/papers/10.21105/joss.01686</uri>
+          <pub-id pub-id-type="doi">10.21105/joss.01686</pub-id>
+          <fpage>1686</fpage>
+          <lpage/>
+        </element-citation>
+      </ref>
+      <ref id="ref-falk_wikkitidy_2023">
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Falk</surname>
+              <given-names>Michael</given-names>
+            </name>
+          </person-group>
+          <source>Wikkitidy: Tidy analysis of Wikipedia in R</source>
+          <year iso-8601-date="2023">2023</year>
+          <uri>https://wikihistories.github.io/wikkitidy/</uri>
+        </element-citation>
+      </ref>
+      <ref id="ref-orlikowski_its_2002">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Orlikowski</surname>
+              <given-names>Wanda J.</given-names>
+            </name>
+            <name>
+              <surname>Yates</surname>
+              <given-names>JoAnne</given-names>
+            </name>
+          </person-group>
+          <article-title>It’s about time: Temporal structuring in organizations</article-title>
+          <source>Organization Science</source>
+          <year iso-8601-date="2002-12">2002</year>
+          <month>12</month>
+          <date-in-citation content-type="access-date">
+            <year iso-8601-date="2023-03-28">2023</year>
+            <month>03</month>
+            <day>28</day>
+          </date-in-citation>
+          <volume>13</volume>
+          <issue>6</issue>
+          <issn>10477039</issn>
+          <uri>https://www.proquest.com/docview/213829873/abstract/57070C934917444CPQ/1</uri>
+          <fpage>684</fpage>
+          <lpage>700</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-thompson_time_1967">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Thompson</surname>
+              <given-names>E. P.</given-names>
+            </name>
+          </person-group>
+          <article-title>Time, Work-Discipline, and Industrial Capitalism</article-title>
+          <source>Past &amp; Present</source>
+          <year iso-8601-date="1967">1967</year>
+          <date-in-citation content-type="access-date">
+            <year iso-8601-date="2023-03-31">2023</year>
+            <month>03</month>
+            <day>31</day>
+          </date-in-citation>
+          <issue>38</issue>
+          <issn>0031-2746</issn>
+          <uri>https://www.jstor.org/stable/649749</uri>
+          <fpage>56</fpage>
+          <lpage>97</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-bergson_oeuvres_1984">
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bergson</surname>
+              <given-names>Henri</given-names>
+            </name>
+          </person-group>
+          <source>Œuvres</source>
+          <person-group person-group-type="editor">
+            <name>
+              <surname>Robinet</surname>
+              <given-names>André</given-names>
+            </name>
+          </person-group>
+          <publisher-name>Presses universitaires de France</publisher-name>
+          <publisher-loc>Paris</publisher-loc>
+          <year iso-8601-date="1984">1984</year>
+          <edition>4e</edition>
+          <isbn>978-2-13-038495-3</isbn>
+        </element-citation>
+      </ref>
+      <ref id="ref-bakhtin_dialogic_1981">
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bakhtin</surname>
+              <given-names>Mikhail</given-names>
+            </name>
+          </person-group>
+          <source>The Dialogic Imagination: Four Essays</source>
+          <person-group person-group-type="editor">
+            <name>
+              <surname>Holquist</surname>
+              <given-names>Michael</given-names>
+            </name>
+          </person-group>
+          <publisher-name>University of Texas Press</publisher-name>
+          <publisher-loc>Austin</publisher-loc>
+          <year iso-8601-date="1981">1981</year>
+        </element-citation>
+      </ref>
+      <ref id="ref-stiegler_technics_1998">
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Stiegler</surname>
+              <given-names>Bernard</given-names>
+            </name>
+          </person-group>
+          <source>Technics and time</source>
+          <publisher-name>Stanford University Press</publisher-name>
+          <publisher-loc>Stanford, Calif</publisher-loc>
+          <year iso-8601-date="1998">1998</year>
+          <isbn>978-0-8047-3040-2 978-0-8047-3041-9 978-0-8047-3012-9</isbn>
+        </element-citation>
+      </ref>
+      <ref id="ref-schopenhauer_werke_1999">
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Schopenhauer</surname>
+              <given-names>Arthur</given-names>
+            </name>
+          </person-group>
+          <source>Werke in 5 Bänden mit einem Beibuch</source>
+          <person-group person-group-type="editor">
+            <name>
+              <surname>Lütkehaus</surname>
+              <given-names>Ludger</given-names>
+            </name>
+          </person-group>
+          <publisher-name>Haffmans Verlag</publisher-name>
+          <year iso-8601-date="1999">1999</year>
+          <edition>2</edition>
+          <isbn>978-3-96022-011-4</isbn>
+        </element-citation>
+      </ref>
+      <ref id="ref-hayles_how_2012">
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Hayles</surname>
+              <given-names>N. Katherine</given-names>
+            </name>
+          </person-group>
+          <source>How we think: Digital media and contemporary technogenesis</source>
+          <publisher-name>The University of Chicago Press</publisher-name>
+          <publisher-loc>Chicago ; London</publisher-loc>
+          <year iso-8601-date="2012">2012</year>
+          <isbn>978-0-226-32140-0 978-0-226-32142-4</isbn>
+        </element-citation>
+      </ref>
+    </ref-list>
+    <fn-group>
+      <fn id="fn1">
+        <label>1</label>
+        <p>Succession ist das ganze Wesen der Zeit.</p>
+      </fn>
+      <fn id="fn2">
+        <label>2</label>
+        <p>In fact, Bergson distinguishes ‘la succession
+    pure’ from ‘la succession se développant en espace’; he identifies
+    Kantian succession as the second kind
+    (<xref alt="1984, 151" rid="ref-bergson_oeuvres_1984" ref-type="bibr">1984,
+    151</xref>).</p>
+      </fn>
+    </fn-group>
+  </back>
+  <sub-article article-type="notebook" id="nb-2-nb-article">
+    <front-stub>
+      <title-group>
+        <article-title>The bot that makes history</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author" corresp="yes">
+          <contrib-id contrib-id-type="orcid">0000-0001-9261-8390</contrib-id>
+          <name>
+            <surname>Falk</surname>
+            <given-names>Michael</given-names>
+          </name>
+          <string-name>Michael Falk</string-name>
+          <email>michael.falk@unimelb.edu.au</email>
+          <xref ref-type="aff" rid="aff-1-nb-article">a</xref>
+          <xref ref-type="corresp" rid="cor-1-nb-article">*</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid">0000-0002-3500-9772</contrib-id>
+          <name>
+            <surname>Ford</surname>
+            <given-names>Heather</given-names>
+          </name>
+          <string-name>Heather Ford</string-name>
+          <email>heather.ford@uts.edu.au</email>
+          <xref ref-type="aff" rid="aff-2-nb-article">b</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid">0000-0002-8304-7108</contrib-id>
+          <name>
+            <surname>Pietsch</surname>
+            <given-names>Tamson</given-names>
+          </name>
+          <string-name>Tamson Pietsch</string-name>
+          <email>tamson.pietsch@uts.edu.au</email>
+          <xref ref-type="aff" rid="aff-2-nb-article">b</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid">0000-0002-5796-4105</contrib-id>
+          <name>
+            <surname>Tkacz</surname>
+            <given-names>Nathaniel</given-names>
+          </name>
+          <string-name>Nathaniel Tkacz</string-name>
+          <email>n.tkacz@gold.ac.uk</email>
+          <xref ref-type="aff" rid="aff-3-nb-article">c</xref>
+        </contrib>
+      </contrib-group>
+      <aff id="aff-1-nb-article">
+        <institution-wrap>
+          <institution>University of Melbourne</institution>
+        </institution-wrap>
+      </aff>
+      <aff id="aff-2-nb-article">
+        <institution-wrap>
+          <institution>University of Technology, Sydney</institution>
+        </institution-wrap>
+      </aff>
+      <aff id="aff-3-nb-article">
+        <institution-wrap>
+          <institution>Goldsmiths, University of London</institution>
+        </institution-wrap>
+      </aff>
+      <author-notes>
+        <corresp id="cor-1-nb-article">michael.falk@unimelb.edu.au</corresp>
+      </author-notes>
+    </front-stub>
+    <body>
+      <sec id="nb-code-cell-1-nb-article" specific-use="notebook-code">
+        <code language="r script">knitr::opts_chunk$set(echo = FALSE, out.width = "100%")
+
+library(tidyverse)</code>
+        <sec id="nb-code-cell-1-output-0-nb-article" specific-use="notebook-output">
+          <preformat>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</preformat>
+        </sec>
+      </sec>
+      <sec id="introduction-wikipedia-and-the-technicity-of-time-nb-article">
+        <title>Introduction: Wikipedia and The Technicity of Time</title>
+        <p>Time is a supple medium. It winds itself into many shapes. It
+  surges through the heartwood. It lies upon the bark. It carves rock
+  and unfolds in song. It creates myriad structures, then entropically
+  destroys them. It races, dallies, recurs, reverses, accelerates,
+  splits and stops.</p>
+        <p>Despite its suppleness, time has definite characteristics. It forms
+  rhythms. It weaves people and plants and animals into lives and
+  seasons. It founds eras.</p>
+        <p>What are the characteristics of time in the digital era? The
+  question has been a major preoccupation for humanists and social
+  scientists in the twenty-first century. Theorists in many disciplines
+  have argued that ‘presentism’ is the dominant ‘temporal regime’ of the
+  twenty-first century
+  (<xref alt="Assmann 2020" rid="ref-assmann_is_2020-nb-article" ref-type="bibr">Assmann
+  2020</xref>;
+  <xref alt="Hartog 2017" rid="ref-hartog_regimes_2017-nb-article" ref-type="bibr">Hartog
+  2017</xref>). We inhabit a ‘broad present’
+  (<xref alt="Gumbrecht 2014" rid="ref-gumbrecht_our_2014-nb-article" ref-type="bibr">Gumbrecht
+  2014</xref>) or a ‘timeless time’
+  (<xref alt="Castells 2010" rid="ref-castells_rise_2010-nb-article" ref-type="bibr">Castells
+  2010</xref>) in which big data and frictionless communication have
+  conspired with the cult of memory to abolish the future and bring the
+  past into the present. We live in a rubble-world of accumulating fact.
+  Other theorists have diagnosed the problem as ‘temporal acceleration’.
+  We experience time as running ever faster, argues Wajcman
+  (<xref alt="2015, 77" rid="ref-wajcman_pressed_2015-nb-article" ref-type="bibr">2015,
+  77</xref>), because it has become ‘deroutinized’. We are trapped in
+  the present because we are present in so many places at once: on the
+  phone to daycare while picking up dinner ingredients in the
+  supermarket on our lunchbreak at work. Digital media are the
+  handmaidens of post-industrial capitalism. Without them, we would be
+  unable to maintain the modicum of order we currently enjoy.</p>
+        <p>A weakness of many theories of temporality is their focus on the
+  <italic>products</italic> rather than the <italic>production</italic>
+  of temporal regimes. To characterise a temporal regime, the theorist
+  considers some cultural products, such as literary texts
+  (<xref alt="Gumbrecht 2014" rid="ref-gumbrecht_our_2014-nb-article" ref-type="bibr">Gumbrecht
+  2014</xref>;
+  <xref alt="Hartog 2017" rid="ref-hartog_regimes_2017-nb-article" ref-type="bibr">Hartog
+  2017</xref>) or work-time statistics
+  (<xref alt="Castells 2010" rid="ref-castells_rise_2010-nb-article" ref-type="bibr">Castells
+  2010</xref>) and tries to determine what kind of temporal regime those
+  products represent. Such accounts necessarily raise the question: how
+  is it possible to erect a temporal regime in the first place? A
+  compelling answer is given by Orlikowski and Yates
+  (<xref alt="2002" rid="ref-orlikowski_its_2002-nb-article" ref-type="bibr">2002</xref>),
+  who argue that the temporal regime of an organisation is produced by
+  the ‘practices’ of its members. Such practices can modify a temporal
+  regime ‘implicitly’ or ‘explicitly’
+  (<xref alt="2002, 687" rid="ref-orlikowski_its_2002-nb-article" ref-type="bibr">2002,
+  687</xref>), though in either case the key force of change is
+  <italic>repetition</italic>, or ‘recurrent action’
+  (<xref alt="2002, 696" rid="ref-orlikowski_its_2002-nb-article" ref-type="bibr">2002,
+  696</xref>). Temporal regimes are rhythmical. They are produced by the
+  recurrent actions of people, who learn to act in concert as the
+  members of an orchestra.</p>
+        <p>In this paper, we build on Orlikowski and Yates’s theory of
+  temporal structuration to describe the temporal regime of Wikipedia.
+  We show that to explain Wikipedia’s temporal regime, it is necessary
+  to supplement Orlikowski and Yates’s theory of
+  <italic>repetition</italic> with a theory of time’s
+  <italic>representation</italic> and its <italic>technicity</italic>.
+  Only by accounting for these three aspects of time can we adequately
+  answer our central questions: (1) what is Wikipedia time? and (2) what
+  can it tell us about digital time more broadly?</p>
+        <p>Our central case study is
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/User:Yapperbot">Yapperbot/uncurrenter</ext-link>,
+  a ‘bot’ or computer program that polices the barrier between past and
+  present on English Wikipedia. We situate Yapperbot/uncurrenter in
+  Wikipedia’s broader sociotechnical systems. We examine how it
+  interacts with human editors. We show how it fits into Wikipedia’s
+  complex array of interfaces and data streams. We present
+  Yapperbot/uncurrenter as a prime example of the ‘technicity of time’.
+  It is a technology that attempts to make time concrete, to freeze it
+  into an object. Yapperbot/uncurrenter is like the master’s clock in an
+  eighteenth-century factory. It ticks regularly
+  (<italic>repetition</italic>), shows the time
+  (<italic>representation</italic>) and acts impersonally
+  (<italic>technicity</italic>).</p>
+        <p>Yapperbot/uncurrenter performs a single, simple task. Each hour, it
+  scans English Wikipedia, finding every article that ‘transcludes’
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/Template:Current">Template:Current</ext-link>.
+  If the article has not been edited in over five hours, it deletes the
+  template.</p>
+        <p>A ‘template’ is a microprogram that peforms a common task. In the
+  case of Template:Current, the editor inserts the code
+  <monospace>{current}</monospace> into an article. This adds a warning
+  banner to the article (Figure ), and automatically adds the article to
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/Category:Current_events">Category:Current_events</ext-link>.
+  When Yapperbot/uncurrenter deletes the template, the banner
+  disappears, as does the article’s categorisation as a ‘current event’.
+  This would seem to consign the article to the past. But here lies the
+  first twist in the tale. When Yapperbot/uncurrenter deletes
+  Template:Current, it leaves an oddly contradictory message in the
+  article’s edit history:</p>
+        <disp-quote>
+          <p>Auto-removing {{current}} - no edits in 5hrs+. The event may
+    still be current, but
+    <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/Template:Current">the
+    {{current}} template is designed only for articles which many
+    editors are editing, and is usually up for less than a
+    day</ext-link>.</p>
+        </disp-quote>
+        <p>On English Wikipedia, an event can be ‘current’ without being
+  <monospace>{current}</monospace>. This contradiction lies at the heart
+  of Wikipedia’s temporal regime. When Wikipedia’s English editors
+  debated the need for Yapperbot/uncurrenter, they ran straight into the
+  contradiction between two different understandings of time. To
+  stabilise Wikipedia’s temporal regime, they had to resolve this
+  contradiction. As we show below, Wikipedia’s English editors made the
+  radical move to try and abolish the present, a path that editors of
+  other-language Wikipedias have refused to take.</p>
+        <sec id="nb-code-cell-2-nb-article" specific-use="notebook-code">
+          <code language="r script">knitr::include_graphics("images/banner_collage.png")</code>
+          <fig>
+            <caption>
+              <p>Template:Current in Italian, Hindi, English, French,
+    Korean and German (as of 14 March 2023)</p>
+            </caption>
+            <graphic mimetype="image" mime-subtype="png" xlink:href="images/banner_collage.png"/>
+          </fig>
+        </sec>
+        <p>Wikipedia is one of the few places where where the construction of
+  a temporal regime can be (almost) directly observed. Unlike other
+  prominent social media platforms, Wikipedia is an ‘open’ project,
+  every one of whose facets can be publicly altered and debated. The
+  encyclopaedia can only be changed in public. Nearly every step in the
+  construction of the temporal regime leaves an easily-recovered mark.
+  It may appear that an ‘open’ platform such as Wikipedia could never
+  tolerate something as closed as a temporal <italic>regime</italic>,
+  but as Tkacz
+  (<xref alt="2015" rid="ref-tkacz_wikipedia_2015-nb-article" ref-type="bibr">2015</xref>)
+  shows, Wikipedia’s openness has not prevented it from developing a
+  restrictive ‘frame’ of rules and concepts that govern its activities.
+  Quite the contrary. Wikipedia is not only the most open of social
+  networks—it is surely also the most highly organised.</p>
+        <p>Wikipedia is also a place where ‘technicities of time’ are
+  especially prominent. Large parts of the encyclopedia are managed by
+  bots such as Yapperbot/uncurrenter, which are powerful actors in
+  Wikipedia’s sociotechnical system
+  (<xref alt="Niederer and Dijck 2010" rid="ref-niederer_wisdom_2010-nb-article" ref-type="bibr">Niederer
+  and Dijck 2010</xref>;
+  <xref alt="Dijck 2013, 137–40" rid="ref-dijck_culture_2013-nb-article" ref-type="bibr">Dijck
+  2013, 137–40</xref>;
+  <xref alt="R. Stuart Geiger and Ribes 2010" rid="ref-geiger_work_2010-nb-article" ref-type="bibr">R.
+  Stuart Geiger and Ribes 2010</xref>;
+  <xref alt="R. Stuart Geiger and Halfaker 2013" rid="ref-geiger_when_2013-nb-article" ref-type="bibr">R.
+  Stuart Geiger and Halfaker 2013</xref>,
+  <xref alt="2017" rid="ref-geiger_operationalizing_2017-nb-article" ref-type="bibr">2017</xref>;
+  <xref alt="Tkacz 2015, 111–19" rid="ref-tkacz_wikipedia_2015-nb-article" ref-type="bibr">Tkacz
+  2015, 111–19</xref>;
+  <xref alt="Halfaker and Riedl 2012" rid="ref-halfaker_bots_2012-nb-article" ref-type="bibr">Halfaker
+  and Riedl 2012</xref>;
+  <xref alt="Livingstone 2016" rid="ref-livingstone_population_2016-nb-article" ref-type="bibr">Livingstone
+  2016</xref>). Bots are best understand as users of the platform,
+  rather than as extensions of their human developers. Indeed, Wikipedia
+  bots have ordinary user accounts like human Wikipedians, although they
+  also have special privileges and their actions are tracked separately
+  by the system. Bots incarnate or enact Wikipedia’s culture, as Stuart
+  Geiger has revealed in a pathbreaking series of papers
+  (<xref alt="R. Stuart Geiger 2009" rid="ref-geiger_social_2009-nb-article" ref-type="bibr">R.
+  Stuart Geiger 2009</xref>,
+  <xref alt="2011" rid="ref-geiger_lives_2011-nb-article" ref-type="bibr">2011</xref>,
+  <xref alt="2013" rid="ref-geiger_are_2013-nb-article" ref-type="bibr">2013</xref>;
+  <xref alt="R. Stuart Geiger 2017" rid="ref-geiger_beyond_2017-nb-article" ref-type="bibr">R.
+  Stuart Geiger 2017</xref>; see also
+  <xref alt="Kennedy 2010" rid="ref-kennedy_textual_2010-nb-article" ref-type="bibr">Kennedy
+  2010</xref>). To understand bots, he explains, it is not sufficient to
+  read the source code, although there may well be important policies,
+  procedures or ideals ‘encoded’ in the source
+  (<xref alt="2017, 9" rid="ref-geiger_beyond_2017-nb-article" ref-type="bibr">2017,
+  9</xref>). Instead, it is essential to observe how bots act in the
+  wild, and to observe how human users and other bots interact with
+  <italic>them</italic>
+  (<xref alt="2011" rid="ref-geiger_lives_2011-nb-article" ref-type="bibr">2011</xref>;
+  <xref alt="2017" rid="ref-geiger_beyond_2017-nb-article" ref-type="bibr">2017</xref>).
+  In this spirit, we pursue Yapperbot/uncurrenter through Wikipedia, to
+  see how it works and whom it fights to uphold Wikipedia’s temporal
+  regime.</p>
+        <p>Our discussion falls into four main sections. In
+  <xref alt="How to make time" rid="how-to-make-time-nb-article">How to make
+  time</xref>, we present a theory of ‘temporal mapping’ to show how
+  temporal regimes can be produced through repetition, representation
+  and technicity. In
+  <xref alt="Wikipedia time (1): the primacy of the past" rid="wikipedia-time-1-the-primacy-of-the-past-nb-article">Wikipedia
+  time (1): the primacy of the past</xref>, we consider existing
+  research into Wikipedia’s temporal regime, and consider the various
+  ways that time enters into the encyclopaedia. In
+  <xref alt="The birth of the bot that makes history" rid="the-birth-of-the-bot-that-makes-history-nb-article">The
+  birth of the bot that makes history</xref>, we describe the series of
+  events that led to Yapperbot/uncurrenter’s creation, and use a range
+  of qualitative and quantitiative methods to analyse its contributions
+  to Wikipedia. Finally, in
+  <xref alt="Wikipedia time (2): encyclopaedia time" rid="wikipedia-time-2-encyclopaedia-time-nb-article">Wikipedia
+  time (2): encyclopaedia time</xref>, we offer our conclusions about
+  Wikipedia’s temporal regime, contextualising Wikipedia as one in a
+  long line of encyclopaedic projects that attempt to encompass time. We
+  conclude that Wikipedia’s temporal regime is <italic>complex regime of
+  historicity</italic>. It is <italic>complex</italic> because it is a
+  clash of many temporalities, which are contested by the people and
+  other actors on the platform. It is <italic>historicist</italic>
+  because it attempts to situate its human participants in the process
+  of history through literary representation. The example of Wikipedia’s
+  <italic>complex historicity</italic> supports the idea that time
+  remains contingent. There is no fixed regime of digital time or
+  network time. Time is out there for the making.</p>
+      </sec>
+      <sec id="how-to-make-time-nb-article">
+        <title>How to make time</title>
+        <p>We make temporal regimes by mixing time and space. We map time. The
+  crying of the infant, the waxing of the moon, the rising of the dough,
+  the coming of the moths, the shadow of the sundial, the alignment of
+  the text, the stellar orientation of the standing stones—all are maps,
+  which crystallise time in space. Whether this mapping occurs by
+  analysis or synthesis depends on your view of time. For Henri Bergson,
+  the ‘spatialization’ of time is analytic. Time is fundamentally
+  <italic>duration</italic> [<italic>durée</italic>]. Our basic
+  experience of time is continuous. When we spatialize time, we divide
+  it, for instance when split it into hours and minutes, and map these
+  divisions onto the clock
+  (<xref alt="1984, 71–72" rid="ref-bergson_oeuvres_1984-nb-article" ref-type="bibr">1984,
+  71–72</xref>). For Arthur Schopenhauer, by contrast, the
+  spatialization of time is synthetic. Our basic experience of time is
+  discontinuous. Time is an endless series of unique moments:
+  ‘Succession is the whole being of time’
+  (<xref alt="Schopenhauer 1999, vol. 1" rid="ref-schopenhauer_werke_1999-nb-article" ref-type="bibr">Schopenhauer
+  1999, vol. 1</xref>, p. 37).<xref ref-type="fn" rid="fn1-nb-article">1</xref> We
+  can only form a conception of the ‘duration’ [<italic>Dauer</italic>]
+  of things when time and space are united in the ‘understanding’
+  [<italic>Verstand</italic>]
+  (<xref alt="1999, vol. 1" rid="ref-schopenhauer_werke_1999-nb-article" ref-type="bibr">1999,
+  vol. 1</xref>, p. 40). Had Schopenhauer experienced the cinema, he
+  might have chosen it as his metaphor. From the whirring filmstrip of
+  individual moments, we project the movie of life. Bergson rejected the
+  cinema as a metaphor for consciousness
+  (<xref alt="1984, 752ff" rid="ref-bergson_oeuvres_1984-nb-article" ref-type="bibr">1984,
+  752ff</xref>). For him, the Kantian view of time as succession
+  insufficiently distinguishes time from space. To think time as
+  succession, we need to use a spatial metaphor such as a ‘line’ or
+  ‘chain’, and ‘juxtapose’ time’s moments along it
+  (<xref alt="1984, 68" rid="ref-bergson_oeuvres_1984-nb-article" ref-type="bibr">1984,
+  68</xref>).<xref ref-type="fn" rid="fn2-nb-article">2</xref> A Kantian like
+  Schopenhauer might reply that Bergson is too empirical. What makes it
+  possible for Bergson to experience time as a non-spatial duration, if
+  not the synthetic activity of the understanding?</p>
+        <p>Whichever theory of spatialization we adopt, it is clear that there
+  are many ways to map time. The time of the wheat is not the time of
+  the Twitter feed. The sheer variety of temporal mappings is a key
+  theme in the work of Mikhail Bakhtin. In his classic study of the
+  ‘chronotope’, Bakhtin argues that different forms of literature are
+  defined by their different forms of time
+  (<xref alt="1981, 85" rid="ref-bakhtin_dialogic_1981-nb-article" ref-type="bibr">1981,
+  85</xref>). Greek romance is charactersised by ‘adventure-time’
+  (<xref alt="1981, 87" rid="ref-bakhtin_dialogic_1981-nb-article" ref-type="bibr">1981,
+  87</xref>), modern fiction by ‘historical time’
+  (<xref alt="1981, 165" rid="ref-bakhtin_dialogic_1981-nb-article" ref-type="bibr">1981,
+  165</xref>), Dostoyevsky’s existential novels by ‘mystery- and
+  carnvial-time’
+  (<xref alt="1981, 249" rid="ref-bakhtin_dialogic_1981-nb-article" ref-type="bibr">1981,
+  249</xref>). The time-mapping technology in this case is writing.
+  Writers shape time with words. Words can shape time literally, for
+  instance when Greek romanciers stitch together the moments of
+  adventure-time using ‘link-words’ such as ‘suddenly’ or ‘at that
+  moment’
+  (<xref alt="1981, 92" rid="ref-bakhtin_dialogic_1981-nb-article" ref-type="bibr">1981,
+  92</xref>). Words can shape time symbolically, for instance when a
+  writer portrays the ‘path of life’ as a road
+  (<xref alt="1981, 120" rid="ref-bakhtin_dialogic_1981-nb-article" ref-type="bibr">1981,
+  120</xref>). Bakhtin demonstrates how a technology such as writing can
+  constitute different forms of time; indeed, his researches support the
+  more radical argument of Bernard Stiegler, who claims that ‘organized
+  inorganic beings’ such as novels might be generally
+  ‘<italic>constitutive</italic> … of temporality as well as spatiality’
+  (<xref alt="1998, 17" rid="ref-stiegler_technics_1998-nb-article" ref-type="bibr">1998,
+  17</xref>). We experience time and space through the maps we make of
+  them.</p>
+        <p>Maps structure time by structuring attention. The Sunderland
+  petitioners in 1800: ‘many people are obliged to be up at all hours of
+  the night to attend the tides’ (quoted in
+  <xref alt="Thompson 1967, 60" rid="ref-thompson_time_1967-nb-article" ref-type="bibr">Thompson
+  1967, 60</xref>). To <italic>attend</italic>. The tides rise and fall
+  (<italic>repetition</italic>). Through their height, they tell the the
+  hour, day, month and season (<italic>representation</italic>). They
+  are known partly by sight, and partly by moon-phase and tide-chart and
+  plumb-line (<italic>technicity</italic>). To attend upon the tides is
+  to know not only <italic>what</italic> time it is (high tide, spring),
+  but <italic>what kind</italic> of time it is (to depart or return). In
+  this way, attention plays a ‘constructive role … in fabricating tools
+  and technical ensembles’
+  (<xref alt="Hayles 2012, 91" rid="ref-hayles_how_2012-nb-article" ref-type="bibr">Hayles
+  2012, 91</xref>). The boat, the compass, the fishing-line and the
+  fisher are fused together by attention on the tides.</p>
+        <p>Through the power of attention, temporal <italic>maps</italic> can
+  uphold temporal <italic>regimes</italic>. The classic example comes
+  from the Industrial Revolution. Thompson
+  (<xref alt="1967" rid="ref-thompson_time_1967-nb-article" ref-type="bibr">1967</xref>)
+  memorably describes the scene. As the ‘need for the synchronization of
+  labour’ grew, so did the need for ‘[a]ttention to time’
+  (<xref alt="Thompson 1967, 70" rid="ref-thompson_time_1967-nb-article" ref-type="bibr">Thompson
+  1967, 70</xref>)—or rather, the need for a particular kind of
+  attention, which Thompson calls ‘time-discipline’. Masters used the
+  factory clock (a map) to impose time-discipline on their workers (a
+  regime). They fiddled with the clock to extract more hours of labour.
+  They handed out gold watches for long service. Workers themselves
+  would blow a windfall on a watch of their own—for the status, or the
+  power? This example demonstrates why the repetition-theory of
+  Orlikowski and Yates
+  (<xref alt="2002" rid="ref-orlikowski_its_2002-nb-article" ref-type="bibr">2002</xref>)
+  must be supplemented by the concepts of representation and technicity.
+  The ‘recurrent action’ of factory workers can only be fully explained
+  if we include the clock, which represented time as a succession of
+  hours and minutes to be spent working, and which legitimated the new
+  temporal regime by its (apparent) impersonality.</p>
+        <p>Not all temporal maps are as strict or authoritative as Thompson’s
+  factory-clock. Theorists of <italic>technicity</italic> observe that
+  technical objects vary greatly in their degree of ‘concretization’
+  (<xref alt="Stiegler 1998" rid="ref-stiegler_technics_1998-nb-article" ref-type="bibr">Stiegler
+  1998</xref>). Concretization is a process of unification. As a
+  technology becomes more concrete, its parts become ‘organs’ that
+  ‘function more and more as parts of a whole’
+  (<xref alt="Stiegler 1998, 71" rid="ref-stiegler_technics_1998-nb-article" ref-type="bibr">Stiegler
+  1998, 71</xref>). It thus becomes autonomous. It ceases to be a
+  ‘utensil’ of a human ‘actor’; it becomes itself an ‘actor’ with human
+  ‘operators’
+  (<xref alt="Stiegler 1998, 66" rid="ref-stiegler_technics_1998-nb-article" ref-type="bibr">Stiegler
+  1998, 66</xref>). The drying of hops was once regulated by the dryer,
+  who touched and smelt the cones to determine the drying-time. The
+  dryer relied on comparatively abstract technology (the oast-house and
+  its cowl) to regulate the time by regulating the temperature and
+  humidity. Today, the dryer is a machine, which determines the
+  drying-time autonomously using clocks and sensors. Such a concrete
+  technology in effect concretizes time itself. The drying-time is
+  nothing but the time it takes for the machine to work.</p>
+        <p>In the same way we characterise technicities as
+  <italic>concrete</italic> or <italic>abstract</italic>, we can
+  characterise repetitions as <italic>regular</italic> or
+  <italic>irregular</italic>, and representations as
+  <italic>clear</italic> or <italic>vague</italic>. Thompson
+  (<xref alt="1967" rid="ref-thompson_time_1967-nb-article" ref-type="bibr">1967</xref>)
+  repeatedly stresses the ‘regularity’ of capitalist work-patterns, as
+  opposed to the ‘irregularity’ of work in pre-capitalist temporal
+  regimes. While we may reject Thompson’s schematism, we must accept his
+  observation that repetition can vary in its lawfulness and
+  predictability. The tanpura drones regularly while the sitar wanders
+  in endless novelty. In much the same way, a representation of time can
+  be clear and bright or vague and suggestive. A modern composer gives
+  the tempo in beats per minute, where a Romantic requests the orchestra
+  to play <italic>Bewegt, doch nicht schnell</italic>.</p>
+        <p>Temporal regimes are seldom unitary. They combine many temporal
+  maps to create a ‘multiplicity’
+  (<xref alt="Orlikowski and Yates 2002, 687" rid="ref-orlikowski_its_2002-nb-article" ref-type="bibr">Orlikowski
+  and Yates 2002, 687</xref>) or ‘complex’ of temporalities
+  (<xref alt="Hayles 2012, 89" rid="ref-hayles_how_2012-nb-article" ref-type="bibr">Hayles
+  2012, 89</xref>). This complexity is especially apparent on the plane
+  of representation. Digital media can present many different interfaces
+  to time. A Wikipedia article represents time as a connected narrative
+  on the ‘Article’ tab, as a list of versions on the ‘View history’ tab,
+  as an ongoing debate between editors on the ‘Talk’ tab, as a
+  time-series of web hits on the Pageviews tool, as a pie-chart of
+  contributions on the XTools interface, as an immutable series of
+  transactions in the underlying MYSQL database, and so on. Such
+  interfaces form a single unstable ‘complex’ because they are folded
+  together by Wikipedia’s various actors. This complexity leads to
+  contradiction, which leads to contention, which led, in one case, to
+  Yapperbot/uncurrenter.</p>
+        <p>In sum, we define a temporal regime as a system of temporal maps
+  that structure a particular form of life through the modulation of
+  human attention. We can now refine our research questions. How do
+  Wikipedians map time? Which mappings are established, which are
+  contested, and how does Yapperbot/uncurrenter fit among them? How has
+  digital technology changed the nature of temporal mapping?</p>
+      </sec>
+      <sec id="wikipedia-time-1-the-primacy-of-the-past-nb-article">
+        <title>Wikipedia time (1): the primacy of the past</title>
+        <p>
+          <italic>TODO: Rewrite/adapt</italic>
+        </p>
+        <p>How does Wikipedia portray the past? Scholars typically give three
+  answers. Some argue that Wikipedia produces <italic>history</italic>:
+  it represents the past in literary form. Wikipedia history may be more
+  “colorful,” “anecdotal” and “factualist” than “professional history,”
+  observes Roy Rosenzweig, but history it most certainly is
+  (<xref alt="Rosenzweig 2006, 142" rid="ref-rosenzweig_can_2006-nb-article" ref-type="bibr">Rosenzweig
+  2006, 142</xref>). Others argue that Wikipedia articles comprise
+  <italic>collective memories</italic> that evoke shared experiences.
+  From this perspective, Wikipedia’s Talk pages are more important than
+  the articles themselves, and its editors are more important than its
+  readers. As Christian Pentzold argues, Wikipedia’s Talk pages are
+  non-physical “memory places,” where editors meet to “negotiat[e]” the
+  “memorable elements” of their experiences
+  (<xref alt="Pentzold 2009, 264" rid="ref-pentzold_fixing_2009-nb-article" ref-type="bibr">Pentzold
+  2009, 264</xref>). Numerous scholars have followed in Pentzold’s wake
+  to examine how editors “build” or “form” collective memories in
+  Wikipedia
+  (<xref alt="Ferron and Massa 2011b" rid="ref-ferron_collective_2011-nb-article" ref-type="bibr">Ferron
+  and Massa 2011b</xref>,
+  <xref alt="2011a" rid="ref-ferron_arab_2011-nb-article" ref-type="bibr">2011a</xref>;
+  <xref alt="Porter, Krafft, and Keegan 2020" rid="ref-porter_visual_2020-nb-article" ref-type="bibr">Porter,
+  Krafft, and Keegan 2020</xref>). A third group of scholars argue that
+  Wikipedia is a repository of <italic>facts</italic>. Wikipedia may
+  well publish works of history and store collective memories, but its
+  main role is to produce atomistic facts that are propagated through
+  knowledge graphs
+  (<xref alt="Ford 2020" rid="ref-ford_rise_2020-nb-article" ref-type="bibr">Ford
+  2020</xref>,
+  <xref alt="2022" rid="ref-ford_writing_2022-nb-article" ref-type="bibr">2022</xref>).
+  Wikipedia may be <italic>memory</italic> to thousands of editors. It
+  may be <italic>history</italic> to millions of readers. But it is mere
+  <italic>fact</italic> to billions of search requests and API
+  calls.</p>
+        <p>These approaches are not mutually exclusive. Search engines,
+  readers and editors all produce and consume Wikipedia in different
+  ways, and a complete account of the encyclopedia must include them
+  all. In which case, we must ask: how are the historical, memorial and
+  factual aspects of Wikipedia related?</p>
+        <p>One way to approach this question is to focus precisely on the
+  <italic>pastness</italic> of history, memory and fact. Pastness is
+  central to Wikipedia’s self-definition. “Wikipedia is not a crystal
+  ball,” reads
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/WP:NOT">a
+  famous policy</ext-link>, wherein we also read that Wikipedia is “not
+  a newspaper.” It is the pastness of Wikipedia that allows it to
+  function simultaneously as history, memory and fact. Pastness is
+  obviously a feature of both history and memory: I cannot remember an
+  event nor write its history until it has happened. The pastness of
+  <italic>fact</italic> is less obvious. Wikipedia contains facts about
+  fictional spacecraft, embroidery techniques and the heat death of the
+  universe. In what sense can such facts be said to be “past”?</p>
+        <p>Wikipedia itself provides an answer in two of its foundational
+  policies. According to
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/Wikipedia:No_original_research">‘No
+  Original Research’</ext-link>, no new facts are to be admitted to the
+  encyclopaedia. The only allowable facts are—the <italic>old</italic>.
+  According to
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/Wikipedia:Neutral_point_of_view">‘Neutral
+  Point of View’</ext-link>, no controversial facts are to be admitted
+  to the encyclopaedia. The only allowable facts are—the
+  <italic>settled</italic>. Facts are geological. Only time can grind
+  down the seashells of evidence and bring forth the limestone of
+  objectivity. Editors who wish to include new or unsettled facts in the
+  encyclopaedia are advised that
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/Wikipedia:There_is_no_deadline">‘There
+  is no deadline’</ext-link>. <italic>Þæs oferēode; þisses swa
+  mæg.</italic> That passed; so may this. Eventually everything is
+  past.</p>
+        <p>Despite its supposed pastness, Wikipedia is well-known as a source
+  of information on current events. It is ‘An Encylopedia with Breaking
+  News’
+  (<xref alt="Keegan 2019" rid="ref-keegan_encyclopedia_2019-nb-article" ref-type="bibr">Keegan
+  2019</xref>). Current events dominate Wikipedia, accounting for the
+  lion’s share of user contributions and page views at any given time
+  (<xref alt="Keegan, Gergle, and Contractor 2011" rid="ref-keegan_hot_2011-nb-article" ref-type="bibr">Keegan,
+  Gergle, and Contractor 2011</xref>). Scholars have analysed
+  Wikipedia’s coverage of current events in detail. We now know how
+  Wikipedia’s editors clash over the nature and definition of current
+  events
+  (<xref alt="Ford 2022" rid="ref-ford_writing_2022-nb-article" ref-type="bibr">Ford
+  2022</xref>;
+  <xref alt="Pentzold 2009" rid="ref-pentzold_fixing_2009-nb-article" ref-type="bibr">Pentzold
+  2009</xref>), how they link current events into larger thematic
+  structures
+  (<xref alt="Twyman, Keegan, and Shaw 2017" rid="ref-twyman_black_2017-nb-article" ref-type="bibr">Twyman,
+  Keegan, and Shaw 2017</xref>), how they adopt newsroom practices to
+  co-ordinate their efforts
+  (<xref alt="Avieson 2019" rid="ref-avieson_breaking_2019-nb-article" ref-type="bibr">Avieson
+  2019</xref>), how they revisit old articles to commemorate traumatic
+  events
+  (<xref alt="Ferron and Massa 2014" rid="ref-ferron_beyond_2014-nb-article" ref-type="bibr">Ferron
+  and Massa 2014</xref>), and how they shape the interpretation of
+  events using images
+  (<xref alt="Porter, Krafft, and Keegan 2020" rid="ref-porter_visual_2020-nb-article" ref-type="bibr">Porter,
+  Krafft, and Keegan 2020</xref>). One thing we <italic>don’t</italic>
+  know is how Wikipedia’s editors decide what is ‘current’. How does
+  Wikipedia distinguish the past from the present at the very threshold
+  of time? How does it resolve the contradiction between the pastness of
+  the encyclopaedia and the presentness of the current?</p>
+        <p>Most readers of Wikipedia will have seen what editors do when an
+  article trespasses on the present: mark it with one of the available
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/Wikipedia:Current_event_templates">Current
+  Event Templates</ext-link>. The main template is
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/Template:Current">Template:Current</ext-link>,
+  which at the time of writing is available on 116 language editions of
+  Wikipedia. When the template is added to an article, a familiar banner
+  appears at the top of the page (Figure ), and the article is
+  automatically added to
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/Category:Current_events">Category:Current
+  Events</ext-link> or a related category. Each language edition has its
+  own distinct version of Template:Current, and may also sport a range
+  of related Templates. French Wikipedia, for instance, distinguishes
+  ‘Événements en cours’ [ongoing events] from ‘Événements récents’
+  [recent events] in its
+  <ext-link ext-link-type="uri" xlink:href="https://fr.wikipedia.org/wiki/Mod%C3%A8le:%C3%89v%C3%A9nement_en_cours">main
+  template</ext-link>, and provides several related templates such as
+  <ext-link ext-link-type="uri" xlink:href="https://fr.wikipedia.org/wiki/Mod%C3%A8le:Bataille_en_cours">Modèle:Bataille
+  en cours</ext-link> [Template:Ongoing battle] and
+  <ext-link ext-link-type="uri" xlink:href="https://fr.wikipedia.org/wiki/Mod%C3%A8le:Mort_r%C3%A9cente">Modèle:Mort
+  récente</ext-link> [Template:Recent death]. German Wikipedia, by
+  contrast, has only a single
+  <ext-link ext-link-type="uri" xlink:href="https://de.wikipedia.org/wiki/Vorlage:Laufendes_Ereignis">Current
+  Events template</ext-link>, but it is customisable, so that editors
+  can replace the phrase “aktuelles Ereignis” [current event] in the
+  banner with a more specific description such as “die derzeitige
+  Sportveranstaltung” [the ongoing sporting event].</p>
+        <p>New twist in the tale: a user ‘killed’ Yapperbot/uncurrent on
+  24/4/2023 because
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/w/index.php?diff=1151461527&amp;oldid=986550108&amp;title=User%3AYapperbot%2Fkill%2FUncurrenter">they
+  complained it had removed {{current}} from a current
+  event</ext-link>.</p>
+        <p>On the surface, Template:Current might seem like a simple
+  phenomenon. Editors mark an article when it is “current,” then remove
+  the template when its currency is ended. Avieson
+  (<xref alt="2019" rid="ref-avieson_breaking_2019-nb-article" ref-type="bibr">2019</xref>)
+  likens Template:Current to the “live” icon on a newspaper blog or
+  television news. While Template:Current is present, the article
+  functions as live coverage; when the template is removed, the article
+  gradually becomes encyclopaedic.</p>
+        <p>But the use of Template:Current is not simple, and has vexed
+  Wikipedia’s editors for years. Avieson
+  (<xref alt="2019" rid="ref-avieson_breaking_2019-nb-article" ref-type="bibr">2019</xref>)
+  herself grapples with the problem. Although she argues for a
+  distinction between “news” and “encyclopaedias,” she also observes
+  that Wikipedia’s coverage of current events “blurs the boundaries of
+  both news and temporality.” These blurred boundaries are a problem for
+  Wikipedia’s editors, and editors in different langauges have clarified
+  the distinction between past, present and future in different ways. In
+  this context, English Wikipedia is extremist. Unlike other language
+  editions, English Wikipedia strictly polices the use of
+  Template:Current with a bot:
+  <ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/User:Yapperbot">Yapperbot/uncurrenter</ext-link>.
+  Yapperbot/uncurrenter scans English Wikipedia hourly, examining every
+  article that includes Template:Current and deleting the template if
+  the article has not been edited in the last five hours. English
+  Wikipedia is also one of the few larger language editions without a
+  <ext-link ext-link-type="uri" xlink:href="https://wikipedia.org/wiki/Template:Future">Template:Future</ext-link>
+  to mark events that have yet to occur. English Wikipedia deleted
+  Template:Future in 2009 after an official process, and several
+  attempts to resurrect the template have foundered. Meanwhile French,
+  Italian, Bengali, Chinese and 51 other-language Wikipedias maintain a
+  Template:Future.</p>
+        <p>Why does practice vary across the different language editions? What
+  led to the extremely strict approach of English Wikipedia, in which
+  Template:Current is ruthlessly policed by an artificial agent, and the
+  future is not explicitly marked? What can this tell us about
+  Wikipedia’s “temporal regime”
+  (<xref alt="Assmann 2020" rid="ref-assmann_is_2020-nb-article" ref-type="bibr">Assmann
+  2020</xref>)?</p>
+        <p>We try to answer these questions by focussing on
+  Yapperbot/uncurrenter. We describe the history of Template:Current and
+  recount the debates that led to the bot’s creation. We then examine
+  Yapperbot/uncurrenter’s contributions to English Wikipedia, comparing
+  its practice with the practice of human editors on English Wikipedia
+  and other-language Wikipedias.</p>
+      </sec>
+      <sec id="the-birth-of-the-bot-that-makes-history-nb-article">
+        <title>The birth of the bot that makes history</title>
+        <list list-type="bullet">
+          <list-item>
+            <p><italic>Qualitative methods:</italic> Reading the talk pages,
+      bot approval etc. that led to the creation of
+      Yapperbot/uncurrenter</p>
+          </list-item>
+          <list-item>
+            <p><italic>Quantitative methods:</italic> Comparison of
+      Yapperbot/uncurrenter with humans who have policed
+      Template:Current using wikkitidy
+      (<xref alt="Falk 2023" rid="ref-falk_wikkitidy_2023-nb-article" ref-type="bibr">Falk
+      2023</xref>) and the tidyverse
+      (<xref alt="Wickham et al. 2019" rid="ref-wickham_welcome_2019-nb-article" ref-type="bibr">Wickham
+      et al. 2019</xref>).</p>
+          </list-item>
+          <list-item>
+            <p><italic>Methodology:</italic> Trace ethnography
+      (<xref alt="R. Stuart Geiger and Ribes 2011" rid="ref-geiger_trace_2011-nb-article" ref-type="bibr">R.
+      Stuart Geiger and Ribes 2011</xref>); ethnography of algorithmic
+      systems
+      (<xref alt="Seaver 2017" rid="ref-seaver_algorithms_2017-nb-article" ref-type="bibr">Seaver
+      2017</xref>;
+      <xref alt="R. Stuart Geiger 2017" rid="ref-geiger_beyond_2017-nb-article" ref-type="bibr">R.
+      Stuart Geiger 2017</xref>).</p>
+          </list-item>
+        </list>
+        <sec id="nb-code-cell-3-nb-article" specific-use="notebook-code">
+          <code language="r script">get_yapperbot &lt;- function(data_dir = "data", use_cache = FALSE) {
+  data_files &lt;- list.files(data_dir)
+  yp_files = stringr::str_detect(data_files, "yapperbot-contribs-to")
+  if (!any(yp_files) | !use_cache) {
+    # Download all yapperbot's contributions
+    yapperbot &lt;- wikkitidy::wiki_action_request() %&gt;%
+      wikkitidy::get_list_of(
+        "usercontribs",
+        ucuser = "Yapperbot",
+        uclimit = "max",
+        ucprop = "comment|ids|title|timestamp",
+        ucnamespace = 0
+      ) %&gt;%
+      wikkitidy::retrieve_all() %&gt;% 
+      filter(stringr::str_detect(comment, "current"))
+    write_csv(
+      yapperbot,
+      file.path(
+        data_dir,
+        glue::glue("yapperbot-contribs-to-{as.integer(Sys.time())}.csv")
+        )
+    )
+  } else {
+    latest_file &lt;- sort(data_files[yp_files], decreasing = TRUE)[1]
+    yapperbot &lt;- read_csv(file = file.path(data_dir, latest_file))
+  }
+  # Final transformations before import into document
+  yapperbot %&gt;%
+    mutate(timestamp = lubridate::as_datetime(timestamp),
+           date = lubridate::as_date(timestamp))
+}
+
+yapperbot &lt;- get_yapperbot(use_cache = T)</code>
+          <sec id="nb-code-cell-3-output-0-nb-article" specific-use="notebook-output">
+            <preformat>Rows: 1648 Columns: 10
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (3): user, title, comment
+dbl  (5): userid, pageid, revid, parentid, ns
+lgl  (1): texthidden
+dttm (1): timestamp
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</preformat>
+          </sec>
+        </sec>
+        <p>
+          <italic>How did `Yapperbot/uncurrenter’ come about? What were the
+  debates and discussions of the editors? What was the perceived problem
+  the bot was supposed to fix?</italic>
+        </p>
+        <p>
+          <italic>What does the bot actually do? How does that compare with
+  what it is supposed to do?</italic>
+        </p>
+        <p>How many pages is yapperbot uncurrenting per day?</p>
+        <sec id="nb-code-cell-4-nb-article" specific-use="notebook-code">
+          <code language="r script">yapperbot %&gt;%
+  ggplot(aes(date)) +
+  geom_bar() +
+  labs(
+    title = "Yapperbot usually uncurrents less than five articles a day",
+    x = "Day",
+    y = "Deletions of Template:Current"
+  )</code>
+          <graphic mimetype="image" mime-subtype="png" xlink:href="the-bot-that-makes-history_files/figure-jats/unnamed-chunk-3-1.png"/>
+        </sec>
+        <p>What was happening on that day it uncurrented 45 pages?</p>
+        <sec id="nb-code-cell-5-nb-article" specific-use="notebook-code">
+          <code language="r script">most_active_day &lt;- yapperbot %&gt;% 
+  group_by(date) %&gt;% 
+  summarise(count = n()) %&gt;% 
+  slice_max(count, n=1)
+
+yapperbot %&gt;% 
+  filter(date == most_active_day$date) %&gt;% 
+  select(pageid, title, timestamp)</code>
+          <sec id="nb-code-cell-5-output-0-nb-article" specific-use="notebook-output">
+            <preformat># A tibble: 45 × 3
+     pageid title                                            timestamp          
+      &lt;dbl&gt; &lt;chr&gt;                                            &lt;dttm&gt;             
+ 1 63362621 COVID-19 pandemic in Ethiopia                    2020-10-21 23:00:28
+ 2 63431783 COVID-19 pandemic in Northern Ireland            2020-10-21 22:00:48
+ 3 63181042 COVID-19 pandemic in Europe                      2020-10-21 22:00:41
+ 4 63178596 COVID-19 pandemic in Hong Kong                   2020-10-21 22:00:38
+ 5 63313047 COVID-19 pandemic in Moldova                     2020-10-21 21:00:43
+ 6 63239190 COVID-19 pandemic in Sweden                      2020-10-21 21:00:37
+ 7 64307024 Timeline of the COVID-19 pandemic in October 20… 2020-10-21 20:00:49
+ 8 63395521 COVID-19 pandemic in Sarawak                     2020-10-21 20:00:45
+ 9 63391509 COVID-19 pandemic in Quebec                      2020-10-21 20:00:39
+10 63389195 COVID-19 pandemic in Sabah                       2020-10-21 20:00:36
+# ℹ 35 more rows</preformat>
+          </sec>
+        </sec>
+        <p>How often does Yapperbot have to remove the template more than
+  once?</p>
+        <sec id="nb-code-cell-6-nb-article" specific-use="notebook-code">
+          <code language="r script">yapperbot %&gt;% 
+  group_by(pageid) %&gt;% 
+  summarise(count = n()) %&gt;% 
+  group_by(count) %&gt;% 
+  summarise(num_pages = n())</code>
+          <sec id="nb-code-cell-6-output-0-nb-article" specific-use="notebook-output">
+            <preformat># A tibble: 7 × 2
+  count num_pages
+  &lt;int&gt;     &lt;int&gt;
+1     1      1236
+2     2       133
+3     3        23
+4     4         9
+5     5         4
+6     6         2
+7     9         1</preformat>
+          </sec>
+        </sec>
+        <p>Which page had to be uncurrented nine times?</p>
+        <sec id="nb-code-cell-7-nb-article" specific-use="notebook-code">
+          <code language="r script">yapperbot %&gt;% 
+  group_by(pageid, title) %&gt;% 
+  summarise(count = n()) %&gt;% 
+  filter(count &gt; 4) %&gt;% 
+  arrange(desc(count))</code>
+          <sec id="nb-code-cell-7-output-0-nb-article" specific-use="notebook-output">
+            <preformat>`summarise()` has grouped output by 'pageid'. You can override using the
+`.groups` argument.</preformat>
+          </sec>
+          <sec id="nb-code-cell-7-output-1-nb-article" specific-use="notebook-output">
+            <preformat># A tibble: 7 × 3
+# Groups:   pageid [7]
+    pageid title                                            count
+     &lt;dbl&gt; &lt;chr&gt;                                            &lt;int&gt;
+1 70168267 Siege of Mariupol                                    9
+2 65760352 Tigray War                                           6
+3 70161957 Siege of Chernihiv                                   6
+4 64399515 2020–2021 Belarusian protests                        5
+5 70157964 Timeline of the 2022 Russian invasion of Ukraine     5
+6 70160923 Battle of Kharkiv (2022)                             5
+7 70809573 2022–2023 monkeypox outbreak                         5</preformat>
+          </sec>
+        </sec>
+      </sec>
+      <sec id="wikipedia-time-2-encyclopaedia-time-nb-article">
+        <title>Wikipedia time (2): encyclopaedia time</title>
+        <p>
+          <italic>Compared to other temporal regimes</italic>
+        </p>
+      </sec>
+    </body>
+    <back>
+      <ref-list>
+        <title/>
+        <ref id="ref-porter_visual_2020-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Porter</surname>
+                <given-names>Emily</given-names>
+              </name>
+              <name>
+                <surname>Krafft</surname>
+                <given-names>P. M.</given-names>
+              </name>
+              <name>
+                <surname>Keegan</surname>
+                <given-names>Brian</given-names>
+              </name>
+            </person-group>
+            <article-title>Visual Narratives and Collective Memory across Peer-Produced Accounts of Contested Sociopolitical Events</article-title>
+            <source>ACM Transactions on Social Computing</source>
+            <year iso-8601-date="2020-02">2020</year>
+            <month>02</month>
+            <date-in-citation content-type="access-date">
+              <year iso-8601-date="2023-01-09">2023</year>
+              <month>01</month>
+              <day>09</day>
+            </date-in-citation>
+            <volume>3</volume>
+            <issue>1</issue>
+            <issn>2469-7818</issn>
+            <uri>http://doi.org/10.1145/3373147</uri>
+            <pub-id pub-id-type="doi">10.1145/3373147</pub-id>
+            <fpage>4:1</fpage>
+            <lpage>4:20</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-twyman_black_2017-nb-article">
+          <element-citation publication-type="paper-conference">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Twyman</surname>
+                <given-names>Marlon</given-names>
+              </name>
+              <name>
+                <surname>Keegan</surname>
+                <given-names>Brian C.</given-names>
+              </name>
+              <name>
+                <surname>Shaw</surname>
+                <given-names>Aaron</given-names>
+              </name>
+            </person-group>
+            <article-title>Black Lives Matter in Wikipedia: Collaboration and Collective Memory around Online Social Movements</article-title>
+            <source>Proceedings of the 2017 ACM Conference on Computer Supported Cooperative Work and Social Computing</source>
+            <year iso-8601-date="2017-02">2017</year>
+            <month>02</month>
+            <date-in-citation content-type="access-date">
+              <year iso-8601-date="2023-01-03">2023</year>
+              <month>01</month>
+              <day>03</day>
+            </date-in-citation>
+            <uri>http://arxiv.org/abs/1611.01257</uri>
+            <pub-id pub-id-type="doi">10.1145/2998181.2998232</pub-id>
+            <fpage>1400</fpage>
+            <lpage>1412</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-pentzold_fixing_2009-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Pentzold</surname>
+                <given-names>Christian</given-names>
+              </name>
+            </person-group>
+            <article-title>Fixing the floating gap: The online encyclopaedia Wikipedia as a global memory place</article-title>
+            <source>Memory Studies</source>
+            <year iso-8601-date="2009-05">2009</year>
+            <month>05</month>
+            <date-in-citation content-type="access-date">
+              <year iso-8601-date="2023-01-03">2023</year>
+              <month>01</month>
+              <day>03</day>
+            </date-in-citation>
+            <volume>2</volume>
+            <issue>2</issue>
+            <issn>1750-6980, 1750-6999</issn>
+            <uri>http://journals.sagepub.com/doi/10.1177/1750698008102055</uri>
+            <pub-id pub-id-type="doi">10.1177/1750698008102055</pub-id>
+            <fpage>255</fpage>
+            <lpage>272</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-castells_rise_2010-nb-article">
+          <element-citation publication-type="book">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Castells</surname>
+                <given-names>Manuel</given-names>
+              </name>
+            </person-group>
+            <source>The rise of the network society</source>
+            <publisher-name>Wiley-Blackwell</publisher-name>
+            <publisher-loc>Chichester, West Sussex ; Malden, MA</publisher-loc>
+            <year iso-8601-date="2010">2010</year>
+            <edition>2nd ed., with a new pref</edition>
+            <isbn>978-1-4051-9686-4</isbn>
+          </element-citation>
+        </ref>
+        <ref id="ref-ford_writing_2022-nb-article">
+          <element-citation publication-type="book">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Ford</surname>
+                <given-names>Heather</given-names>
+              </name>
+            </person-group>
+            <source>Writing the revolution: Wikipedia and the survival of facts in the digital age</source>
+            <publisher-name>The MIT Press</publisher-name>
+            <publisher-loc>Cambridge, Massachusetts</publisher-loc>
+            <year iso-8601-date="2022">2022</year>
+            <isbn>978-0-262-04629-9</isbn>
+          </element-citation>
+        </ref>
+        <ref id="ref-rosenzweig_can_2006-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Rosenzweig</surname>
+                <given-names>Roy</given-names>
+              </name>
+            </person-group>
+            <article-title>Can History Be Open Source? Wikipedia and the Future of the Past</article-title>
+            <source>The Journal of American History</source>
+            <year iso-8601-date="2006">2006</year>
+            <date-in-citation content-type="access-date">
+              <year iso-8601-date="2023-01-23">2023</year>
+              <month>01</month>
+              <day>23</day>
+            </date-in-citation>
+            <volume>93</volume>
+            <issue>1</issue>
+            <issn>0021-8723</issn>
+            <uri>http://www.jstor.org/stable/4486062</uri>
+            <pub-id pub-id-type="doi">10.2307/4486062</pub-id>
+            <fpage>117</fpage>
+            <lpage>146</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-tkacz_wikipedia_2015-nb-article">
+          <element-citation publication-type="book">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Tkacz</surname>
+                <given-names>Nathaniel</given-names>
+              </name>
+            </person-group>
+            <source>Wikipedia and the politics of openness</source>
+            <publisher-name>University of Chicago Press</publisher-name>
+            <publisher-loc>Chicago ; London</publisher-loc>
+            <year iso-8601-date="2015">2015</year>
+            <isbn>978-0-226-19227-7 978-0-226-19230-7</isbn>
+          </element-citation>
+        </ref>
+        <ref id="ref-wajcman_pressed_2015-nb-article">
+          <element-citation publication-type="book">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Wajcman</surname>
+                <given-names>Judy</given-names>
+              </name>
+            </person-group>
+            <source>Pressed for time: The acceleration of life in digital capitalism</source>
+            <publisher-name>The University of Chicago Press</publisher-name>
+            <publisher-loc>Chicago</publisher-loc>
+            <year iso-8601-date="2015">2015</year>
+            <isbn>978-0-226-19650-3</isbn>
+            <pub-id pub-id-type="doi">10.7208/9780226196503</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="ref-keegan_encyclopedia_2019-nb-article">
+          <element-citation publication-type="chapter">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Keegan</surname>
+                <given-names>Brian</given-names>
+              </name>
+            </person-group>
+            <article-title>An encyclopedia with breaking news</article-title>
+            <source>Wikipedia@ 20: Stories of an Incomplete Revolution</source>
+            <person-group person-group-type="editor">
+              <name>
+                <surname>Reagle</surname>
+                <given-names>Joseph</given-names>
+              </name>
+              <name>
+                <surname>Koerner</surname>
+                <given-names>Jackie</given-names>
+              </name>
+            </person-group>
+            <publisher-name>MIT Press</publisher-name>
+            <publisher-loc>Cambridge, Mass</publisher-loc>
+            <year iso-8601-date="2019">2019</year>
+            <uri>https://doi.org/10.7551/mitpress/12366.003.0007</uri>
+            <fpage>55</fpage>
+            <lpage>70</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-avieson_breaking_2019-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Avieson</surname>
+                <given-names>Bunty</given-names>
+              </name>
+            </person-group>
+            <article-title>Breaking news on Wikipedia: Collaborating, collating and competing</article-title>
+            <source>First Monday</source>
+            <year iso-8601-date="2019-04">2019</year>
+            <month>04</month>
+            <date-in-citation content-type="access-date">
+              <year iso-8601-date="2023-01-30">2023</year>
+              <month>01</month>
+              <day>30</day>
+            </date-in-citation>
+            <issn>1396-0466</issn>
+            <uri>https://firstmonday.org/ojs/index.php/fm/article/view/9530</uri>
+            <pub-id pub-id-type="doi">10.5210/fm.v24i5.9530</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="ref-keegan_hot_2011-nb-article">
+          <element-citation publication-type="paper-conference">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Keegan</surname>
+                <given-names>Brian</given-names>
+              </name>
+              <name>
+                <surname>Gergle</surname>
+                <given-names>Darren</given-names>
+              </name>
+              <name>
+                <surname>Contractor</surname>
+                <given-names>Noshir</given-names>
+              </name>
+            </person-group>
+            <article-title>Hot off the wiki: Dynamics, practices, and structures in Wikipedia’s coverage of the Tōhoku catastrophes</article-title>
+            <source>Proceedings of the 7th International Symposium on Wikis and Open Collaboration</source>
+            <publisher-name>ACM</publisher-name>
+            <publisher-loc>Mountain View California</publisher-loc>
+            <year iso-8601-date="2011-10">2011</year>
+            <month>10</month>
+            <date-in-citation content-type="access-date">
+              <year iso-8601-date="2023-01-30">2023</year>
+              <month>01</month>
+              <day>30</day>
+            </date-in-citation>
+            <isbn>978-1-4503-0909-7</isbn>
+            <uri>https://dl.acm.org/doi/10.1145/2038558.2038577</uri>
+            <pub-id pub-id-type="doi">10.1145/2038558.2038577</pub-id>
+            <fpage>105</fpage>
+            <lpage>113</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-ferron_arab_2011-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Ferron</surname>
+                <given-names>Michela</given-names>
+              </name>
+              <name>
+                <surname>Massa</surname>
+                <given-names>Paolo</given-names>
+              </name>
+            </person-group>
+            <article-title>The Arab Spring wikirevolutions: Wikipedia as a lens for studying the real-time formation of collective memories of revolutions</article-title>
+            <source>International Journal of Communication</source>
+            <year iso-8601-date="2011">2011</year>
+            <volume>5</volume>
+            <fpage>20</fpage>
+            <lpage/>
+          </element-citation>
+        </ref>
+        <ref id="ref-ferron_beyond_2014-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Ferron</surname>
+                <given-names>Michela</given-names>
+              </name>
+              <name>
+                <surname>Massa</surname>
+                <given-names>Paolo</given-names>
+              </name>
+            </person-group>
+            <article-title>Beyond the encyclopedia: Collective memories in Wikipedia</article-title>
+            <source>Memory Studies</source>
+            <year iso-8601-date="2014">2014</year>
+            <volume>7</volume>
+            <issue>1</issue>
+            <fpage>22</fpage>
+            <lpage>45</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-gumbrecht_our_2014-nb-article">
+          <element-citation publication-type="book">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Gumbrecht</surname>
+                <given-names>Hans Ulrich</given-names>
+              </name>
+            </person-group>
+            <source>Our broad present: Time and contemporary culture</source>
+            <publisher-name>Columbia University Press</publisher-name>
+            <publisher-loc>New York</publisher-loc>
+            <year iso-8601-date="2014">2014</year>
+            <isbn>978-0-231-16360-6 978-0-231-16361-3</isbn>
+          </element-citation>
+        </ref>
+        <ref id="ref-ferron_collective_2011-nb-article">
+          <element-citation publication-type="paper-conference">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Ferron</surname>
+                <given-names>Michela</given-names>
+              </name>
+              <name>
+                <surname>Massa</surname>
+                <given-names>Paolo</given-names>
+              </name>
+            </person-group>
+            <article-title>Collective memory building in Wikipedia: The case of North African uprisings</article-title>
+            <source>Proceedings of the 7th International Symposium on Wikis and Open Collaboration</source>
+            <publisher-name>Association for Computing Machinery</publisher-name>
+            <publisher-loc>New York, NY, USA</publisher-loc>
+            <year iso-8601-date="2011-10">2011</year>
+            <month>10</month>
+            <date-in-citation content-type="access-date">
+              <year iso-8601-date="2023-02-26">2023</year>
+              <month>02</month>
+              <day>26</day>
+            </date-in-citation>
+            <isbn>978-1-4503-0909-7</isbn>
+            <uri>https://doi.org/10.1145/2038558.2038578</uri>
+            <pub-id pub-id-type="doi">10.1145/2038558.2038578</pub-id>
+            <fpage>114</fpage>
+            <lpage>123</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-ford_rise_2020-nb-article">
+          <element-citation publication-type="chapter">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Ford</surname>
+                <given-names>Heather</given-names>
+              </name>
+            </person-group>
+            <article-title>Rise of the Underdog</article-title>
+            <source>Wikipedia@20: Stories of an Incomplete Revolution</source>
+            <person-group person-group-type="editor">
+              <name>
+                <surname>Reagle</surname>
+                <given-names>Joseph</given-names>
+              </name>
+              <name>
+                <surname>Koerner</surname>
+                <given-names>Jackie</given-names>
+              </name>
+            </person-group>
+            <publisher-name>MIT Press</publisher-name>
+            <publisher-loc>Cambridge, Mass</publisher-loc>
+            <year iso-8601-date="2020-10">2020</year>
+            <month>10</month>
+            <date-in-citation content-type="access-date">
+              <year iso-8601-date="2023-02-27">2023</year>
+              <month>02</month>
+              <day>27</day>
+            </date-in-citation>
+            <uri>https://direct.mit.edu/books/book/4956/chapter/1879827/Rise-of-the-Underdog</uri>
+            <fpage>189</fpage>
+            <lpage>201</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-assmann_is_2020-nb-article">
+          <element-citation publication-type="book">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Assmann</surname>
+                <given-names>Aleida</given-names>
+              </name>
+            </person-group>
+            <source>Is Time out of Joint?: On the Rise and Fall of the Modern Time Regime</source>
+            <publisher-name>Cornell University Press</publisher-name>
+            <publisher-loc>Ithaca, UNITED STATES</publisher-loc>
+            <year iso-8601-date="2020">2020</year>
+            <date-in-citation content-type="access-date">
+              <year iso-8601-date="2023-01-26">2023</year>
+              <month>01</month>
+              <day>26</day>
+            </date-in-citation>
+            <isbn>978-1-5017-4245-3</isbn>
+            <uri>http://ebookcentral.proquest.com/lib/uts/detail.action?docID=5964894</uri>
+          </element-citation>
+        </ref>
+        <ref id="ref-geiger_when_2013-nb-article">
+          <element-citation publication-type="paper-conference">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Geiger</surname>
+                <given-names>R. Stuart</given-names>
+              </name>
+              <name>
+                <surname>Halfaker</surname>
+                <given-names>Aaron</given-names>
+              </name>
+            </person-group>
+            <article-title>When the levee breaks: Without bots, what happens to Wikipedia’s quality control processes?</article-title>
+            <source>Proceedings of the 9th International Symposium on Open Collaboration</source>
+            <year iso-8601-date="2013">2013</year>
+            <fpage>1</fpage>
+            <lpage>6</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-geiger_work_2010-nb-article">
+          <element-citation publication-type="paper-conference">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Geiger</surname>
+                <given-names>R. Stuart</given-names>
+              </name>
+              <name>
+                <surname>Ribes</surname>
+                <given-names>David</given-names>
+              </name>
+            </person-group>
+            <article-title>The work of sustaining order in Wikipedia: The banning of a vandal</article-title>
+            <source>Proceedings of the 2010 ACM conference on Computer supported cooperative work</source>
+            <year iso-8601-date="2010">2010</year>
+            <fpage>117</fpage>
+            <lpage>126</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-geiger_are_2013-nb-article">
+          <element-citation publication-type="paper-conference">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Geiger</surname>
+                <given-names>R. Stuart</given-names>
+              </name>
+            </person-group>
+            <article-title>Are computers merely" supporting" cooperative work: Towards an ethnography of bot development</article-title>
+            <source>Proceedings of the 2013 conference on Computer supported cooperative work companion</source>
+            <year iso-8601-date="2013">2013</year>
+            <fpage>51</fpage>
+            <lpage>56</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-geiger_social_2009-nb-article">
+          <element-citation publication-type="paper-conference">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Geiger</surname>
+                <given-names>R. Stuart</given-names>
+              </name>
+            </person-group>
+            <article-title>The social roles of bots and assisted editing programs</article-title>
+            <source>Proceedings of the 5th International Symposium on Wikis and Open Collaboration</source>
+            <year iso-8601-date="2009">2009</year>
+            <fpage>1</fpage>
+            <lpage>2</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-geiger_lives_2011-nb-article">
+          <element-citation publication-type="chapter">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Geiger</surname>
+                <given-names>R. Stuart</given-names>
+              </name>
+            </person-group>
+            <article-title>The lives of bots</article-title>
+            <source>Critical Point of View: A Wikipedia Reader</source>
+            <person-group person-group-type="editor">
+              <name>
+                <surname>Lovink</surname>
+                <given-names>Geert</given-names>
+              </name>
+              <name>
+                <surname>Tkacz</surname>
+                <given-names>Nathaniel</given-names>
+              </name>
+            </person-group>
+            <publisher-name>Amsterdam</publisher-name>
+            <publisher-loc>Institute of Network Cultures</publisher-loc>
+            <year iso-8601-date="2011">2011</year>
+            <fpage>78</fpage>
+            <lpage>93</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-geiger_operationalizing_2017-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Geiger</surname>
+                <given-names>R. Stuart</given-names>
+              </name>
+              <name>
+                <surname>Halfaker</surname>
+                <given-names>Aaron</given-names>
+              </name>
+            </person-group>
+            <article-title>Operationalizing conflict and cooperation between automated software agents in wikipedia: A replication and expansion of’even good bots fight’</article-title>
+            <source>Proceedings of the ACM on Human-Computer Interaction</source>
+            <year iso-8601-date="2017">2017</year>
+            <volume>1</volume>
+            <issue>CSCW</issue>
+            <fpage>1</fpage>
+            <lpage>33</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-geiger_beyond_2017-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Geiger</surname>
+                <given-names>R Stuart</given-names>
+              </name>
+            </person-group>
+            <article-title>Beyond opening up the black box: Investigating the role of algorithmic systems in Wikipedian organizational culture</article-title>
+            <source>Big Data &amp; Society</source>
+            <year iso-8601-date="2017-12">2017</year>
+            <month>12</month>
+            <date-in-citation content-type="access-date">
+              <year iso-8601-date="2023-02-28">2023</year>
+              <month>02</month>
+              <day>28</day>
+            </date-in-citation>
+            <volume>4</volume>
+            <issue>2</issue>
+            <issn>2053-9517, 2053-9517</issn>
+            <uri>http://journals.sagepub.com/doi/10.1177/2053951717730735</uri>
+            <pub-id pub-id-type="doi">10.1177/2053951717730735</pub-id>
+            <fpage>205395171773073</fpage>
+            <lpage/>
+          </element-citation>
+        </ref>
+        <ref id="ref-niederer_wisdom_2010-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Niederer</surname>
+                <given-names>Sabine</given-names>
+              </name>
+              <name>
+                <surname>Dijck</surname>
+                <given-names>José van</given-names>
+              </name>
+            </person-group>
+            <article-title>Wisdom of the crowd or technicity of content? Wikipedia as a sociotechnical system</article-title>
+            <source>New Media &amp; Society</source>
+            <year iso-8601-date="2010-12">2010</year>
+            <month>12</month>
+            <date-in-citation content-type="access-date">
+              <year iso-8601-date="2023-02-28">2023</year>
+              <month>02</month>
+              <day>28</day>
+            </date-in-citation>
+            <volume>12</volume>
+            <issue>8</issue>
+            <issn>1461-4448</issn>
+            <uri>https://doi.org/10.1177/1461444810365297</uri>
+            <pub-id pub-id-type="doi">10.1177/1461444810365297</pub-id>
+            <fpage>1368</fpage>
+            <lpage>1387</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-halfaker_bots_2012-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Halfaker</surname>
+                <given-names>Aaron</given-names>
+              </name>
+              <name>
+                <surname>Riedl</surname>
+                <given-names>John</given-names>
+              </name>
+            </person-group>
+            <article-title>Bots and Cyborgs: Wikipedia’s Immune System</article-title>
+            <source>Computer</source>
+            <year iso-8601-date="2012-03">2012</year>
+            <month>03</month>
+            <date-in-citation content-type="access-date">
+              <year iso-8601-date="2023-02-28">2023</year>
+              <month>02</month>
+              <day>28</day>
+            </date-in-citation>
+            <volume>45</volume>
+            <issue>3</issue>
+            <issn>0018-9162</issn>
+            <uri>http://ieeexplore.ieee.org/document/6163451/</uri>
+            <pub-id pub-id-type="doi">10.1109/MC.2012.82</pub-id>
+            <fpage>79</fpage>
+            <lpage>82</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-seaver_algorithms_2017-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Seaver</surname>
+                <given-names>Nick</given-names>
+              </name>
+            </person-group>
+            <article-title>Algorithms as culture: Some tactics for the ethnography of algorithmic systems</article-title>
+            <source>Big data &amp; society</source>
+            <year iso-8601-date="2017">2017</year>
+            <volume>4</volume>
+            <issue>2</issue>
+            <fpage>2053951717738104</fpage>
+            <lpage/>
+          </element-citation>
+        </ref>
+        <ref id="ref-dijck_culture_2013-nb-article">
+          <element-citation publication-type="book">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Dijck</surname>
+                <given-names>José van</given-names>
+              </name>
+            </person-group>
+            <source>The culture of connectivity: A critical history of social media</source>
+            <publisher-name>Oxford University Press</publisher-name>
+            <publisher-loc>Oxford ; New York</publisher-loc>
+            <year iso-8601-date="2013">2013</year>
+            <isbn>978-0-19-997077-3 978-0-19-997078-0</isbn>
+          </element-citation>
+        </ref>
+        <ref id="ref-kennedy_textual_2010-nb-article">
+          <element-citation publication-type="chapter">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Kennedy</surname>
+                <given-names>Krista</given-names>
+              </name>
+            </person-group>
+            <article-title>Textual Machinery: Authorial Agency and Bot-Written Texts in Wikipedia</article-title>
+            <source>The Responsibilities of Rhetoric</source>
+            <person-group person-group-type="editor">
+              <name>
+                <surname>Smith</surname>
+                <given-names>Michelle</given-names>
+              </name>
+              <name>
+                <surname>Warnick</surname>
+                <given-names>Barbara</given-names>
+              </name>
+            </person-group>
+            <publisher-name>Waveland</publisher-name>
+            <publisher-loc>Long Grove, Illinois</publisher-loc>
+            <year iso-8601-date="2010">2010</year>
+            <uri>https://surface.syr.edu/wp/1</uri>
+            <fpage>303</fpage>
+            <lpage>309</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-livingstone_population_2016-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Livingstone</surname>
+                <given-names>Randall M.</given-names>
+              </name>
+            </person-group>
+            <article-title>Population automation: An interview with Wikipedia bot pioneer Ram-Man</article-title>
+            <source>First Monday</source>
+            <year iso-8601-date="2016-01">2016</year>
+            <month>01</month>
+            <date-in-citation content-type="access-date">
+              <year iso-8601-date="2023-02-28">2023</year>
+              <month>02</month>
+              <day>28</day>
+            </date-in-citation>
+            <issn>1396-0466</issn>
+            <uri>https://firstmonday.org/ojs/index.php/fm/article/view/6027</uri>
+            <pub-id pub-id-type="doi">10.5210/fm.v21i1.6027</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="ref-hartog_regimes_2017-nb-article">
+          <element-citation publication-type="book">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Hartog</surname>
+                <given-names>François</given-names>
+              </name>
+            </person-group>
+            <source>Regimes of historicity: Presentism and experiences of time</source>
+            <publisher-name>Columbia University Press</publisher-name>
+            <publisher-loc>New York</publisher-loc>
+            <year iso-8601-date="2017">2017</year>
+            <edition>Paperback edition</edition>
+            <isbn>978-0-231-16377-4</isbn>
+          </element-citation>
+        </ref>
+        <ref id="ref-geiger_trace_2011-nb-article">
+          <element-citation publication-type="paper-conference">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Geiger</surname>
+                <given-names>R. Stuart</given-names>
+              </name>
+              <name>
+                <surname>Ribes</surname>
+                <given-names>David</given-names>
+              </name>
+            </person-group>
+            <article-title>Trace Ethnography: Following Coordination through Documentary Practices</article-title>
+            <source>2011 44th Hawaii International Conference on System Sciences</source>
+            <year iso-8601-date="2011-01">2011</year>
+            <month>01</month>
+            <pub-id pub-id-type="doi">10.1109/HICSS.2011.455</pub-id>
+            <fpage>1</fpage>
+            <lpage>10</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-wickham_welcome_2019-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Wickham</surname>
+                <given-names>Hadley</given-names>
+              </name>
+              <name>
+                <surname>Averick</surname>
+                <given-names>Mara</given-names>
+              </name>
+              <name>
+                <surname>Bryan</surname>
+                <given-names>Jennifer</given-names>
+              </name>
+              <name>
+                <surname>Chang</surname>
+                <given-names>Winston</given-names>
+              </name>
+              <name>
+                <surname>McGowan</surname>
+                <given-names>Lucy D’Agostino</given-names>
+              </name>
+              <name>
+                <surname>François</surname>
+                <given-names>Romain</given-names>
+              </name>
+              <name>
+                <surname>Grolemund</surname>
+                <given-names>Garrett</given-names>
+              </name>
+              <name>
+                <surname>Hayes</surname>
+                <given-names>Alex</given-names>
+              </name>
+              <name>
+                <surname>Henry</surname>
+                <given-names>Lionel</given-names>
+              </name>
+              <name>
+                <surname>Hester</surname>
+                <given-names>Jim</given-names>
+              </name>
+              <name>
+                <surname>Kuhn</surname>
+                <given-names>Max</given-names>
+              </name>
+              <name>
+                <surname>Pedersen</surname>
+                <given-names>Thomas Lin</given-names>
+              </name>
+              <name>
+                <surname>Miller</surname>
+                <given-names>Evan</given-names>
+              </name>
+              <name>
+                <surname>Bache</surname>
+                <given-names>Stephan Milton</given-names>
+              </name>
+              <name>
+                <surname>Müller</surname>
+                <given-names>Kirill</given-names>
+              </name>
+              <name>
+                <surname>Ooms</surname>
+                <given-names>Jeroen</given-names>
+              </name>
+              <name>
+                <surname>Robinson</surname>
+                <given-names>David</given-names>
+              </name>
+              <name>
+                <surname>Seidel</surname>
+                <given-names>Dana Paige</given-names>
+              </name>
+              <name>
+                <surname>Spinu</surname>
+                <given-names>Vitalie</given-names>
+              </name>
+              <name>
+                <surname>Takahashi</surname>
+                <given-names>Kohske</given-names>
+              </name>
+              <name>
+                <surname>Vaughan</surname>
+                <given-names>Davis</given-names>
+              </name>
+              <name>
+                <surname>Wilke</surname>
+                <given-names>Claus</given-names>
+              </name>
+              <name>
+                <surname>Woo</surname>
+                <given-names>Kara</given-names>
+              </name>
+              <name>
+                <surname>Yutani</surname>
+                <given-names>Hiroaki</given-names>
+              </name>
+            </person-group>
+            <article-title>Welcome to the Tidyverse</article-title>
+            <source>Journal of Open Source Software</source>
+            <year iso-8601-date="2019-11">2019</year>
+            <month>11</month>
+            <date-in-citation content-type="access-date">
+              <year iso-8601-date="2023-03-27">2023</year>
+              <month>03</month>
+              <day>27</day>
+            </date-in-citation>
+            <volume>4</volume>
+            <issue>43</issue>
+            <issn>2475-9066</issn>
+            <uri>https://joss.theoj.org/papers/10.21105/joss.01686</uri>
+            <pub-id pub-id-type="doi">10.21105/joss.01686</pub-id>
+            <fpage>1686</fpage>
+            <lpage/>
+          </element-citation>
+        </ref>
+        <ref id="ref-falk_wikkitidy_2023-nb-article">
+          <element-citation publication-type="book">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Falk</surname>
+                <given-names>Michael</given-names>
+              </name>
+            </person-group>
+            <source>Wikkitidy: Tidy analysis of Wikipedia in R</source>
+            <year iso-8601-date="2023">2023</year>
+            <uri>https://wikihistories.github.io/wikkitidy/</uri>
+          </element-citation>
+        </ref>
+        <ref id="ref-orlikowski_its_2002-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Orlikowski</surname>
+                <given-names>Wanda J.</given-names>
+              </name>
+              <name>
+                <surname>Yates</surname>
+                <given-names>JoAnne</given-names>
+              </name>
+            </person-group>
+            <article-title>It’s about time: Temporal structuring in organizations</article-title>
+            <source>Organization Science</source>
+            <year iso-8601-date="2002-12">2002</year>
+            <month>12</month>
+            <date-in-citation content-type="access-date">
+              <year iso-8601-date="2023-03-28">2023</year>
+              <month>03</month>
+              <day>28</day>
+            </date-in-citation>
+            <volume>13</volume>
+            <issue>6</issue>
+            <issn>10477039</issn>
+            <uri>https://www.proquest.com/docview/213829873/abstract/57070C934917444CPQ/1</uri>
+            <fpage>684</fpage>
+            <lpage>700</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-thompson_time_1967-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Thompson</surname>
+                <given-names>E. P.</given-names>
+              </name>
+            </person-group>
+            <article-title>Time, Work-Discipline, and Industrial Capitalism</article-title>
+            <source>Past &amp; Present</source>
+            <year iso-8601-date="1967">1967</year>
+            <date-in-citation content-type="access-date">
+              <year iso-8601-date="2023-03-31">2023</year>
+              <month>03</month>
+              <day>31</day>
+            </date-in-citation>
+            <issue>38</issue>
+            <issn>0031-2746</issn>
+            <uri>https://www.jstor.org/stable/649749</uri>
+            <fpage>56</fpage>
+            <lpage>97</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-bergson_oeuvres_1984-nb-article">
+          <element-citation publication-type="book">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Bergson</surname>
+                <given-names>Henri</given-names>
+              </name>
+            </person-group>
+            <source>Œuvres</source>
+            <person-group person-group-type="editor">
+              <name>
+                <surname>Robinet</surname>
+                <given-names>André</given-names>
+              </name>
+            </person-group>
+            <publisher-name>Presses universitaires de France</publisher-name>
+            <publisher-loc>Paris</publisher-loc>
+            <year iso-8601-date="1984">1984</year>
+            <edition>4e</edition>
+            <isbn>978-2-13-038495-3</isbn>
+          </element-citation>
+        </ref>
+        <ref id="ref-bakhtin_dialogic_1981-nb-article">
+          <element-citation publication-type="book">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Bakhtin</surname>
+                <given-names>Mikhail</given-names>
+              </name>
+            </person-group>
+            <source>The Dialogic Imagination: Four Essays</source>
+            <person-group person-group-type="editor">
+              <name>
+                <surname>Holquist</surname>
+                <given-names>Michael</given-names>
+              </name>
+            </person-group>
+            <publisher-name>University of Texas Press</publisher-name>
+            <publisher-loc>Austin</publisher-loc>
+            <year iso-8601-date="1981">1981</year>
+          </element-citation>
+        </ref>
+        <ref id="ref-stiegler_technics_1998-nb-article">
+          <element-citation publication-type="book">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Stiegler</surname>
+                <given-names>Bernard</given-names>
+              </name>
+            </person-group>
+            <source>Technics and time</source>
+            <publisher-name>Stanford University Press</publisher-name>
+            <publisher-loc>Stanford, Calif</publisher-loc>
+            <year iso-8601-date="1998">1998</year>
+            <isbn>978-0-8047-3040-2 978-0-8047-3041-9 978-0-8047-3012-9</isbn>
+          </element-citation>
+        </ref>
+        <ref id="ref-schopenhauer_werke_1999-nb-article">
+          <element-citation publication-type="book">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Schopenhauer</surname>
+                <given-names>Arthur</given-names>
+              </name>
+            </person-group>
+            <source>Werke in 5 Bänden mit einem Beibuch</source>
+            <person-group person-group-type="editor">
+              <name>
+                <surname>Lütkehaus</surname>
+                <given-names>Ludger</given-names>
+              </name>
+            </person-group>
+            <publisher-name>Haffmans Verlag</publisher-name>
+            <year iso-8601-date="1999">1999</year>
+            <edition>2</edition>
+            <isbn>978-3-96022-011-4</isbn>
+          </element-citation>
+        </ref>
+        <ref id="ref-hayles_how_2012-nb-article">
+          <element-citation publication-type="book">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Hayles</surname>
+                <given-names>N. Katherine</given-names>
+              </name>
+            </person-group>
+            <source>How we think: Digital media and contemporary technogenesis</source>
+            <publisher-name>The University of Chicago Press</publisher-name>
+            <publisher-loc>Chicago ; London</publisher-loc>
+            <year iso-8601-date="2012">2012</year>
+            <isbn>978-0-226-32140-0 978-0-226-32142-4</isbn>
+          </element-citation>
+        </ref>
+      </ref-list>
+      <fn-group>
+        <fn id="fn1-nb-article">
+          <label>1</label>
+          <p>Succession ist das ganze Wesen der Zeit.</p>
+        </fn>
+        <fn id="fn2-nb-article">
+          <label>2</label>
+          <p>In fact, Bergson distinguishes ‘la succession
+    pure’ from ‘la succession se développant en espace’; he identifies
+    Kantian succession as the second kind
+    (<xref alt="1984, 151" rid="ref-bergson_oeuvres_1984-nb-article" ref-type="bibr">1984,
+    151</xref>).</p>
+        </fn>
+      </fn-group>
+    </back>
+  </sub-article>
+</article>
