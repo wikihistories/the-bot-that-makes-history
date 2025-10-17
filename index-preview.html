@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="generator" content="quarto-1.9.7">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+    <meta name="author" content="Michael Falk">
+    <meta name="keywords" content="Wikipedia; bots; epistemic virtue; temporality">
+
+    <title>The bots that make history</title>
+    <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      div.columns{display: flex; gap: min(4vw, 1.5em);}
+      div.column{flex: auto; overflow-x: auto;}
+      div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+      ul.task-list{list-style: none;}
+      ul.task-list li input[type="checkbox"] {
+        width: 0.8em;
+        margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+        vertical-align: middle;
+      }
+      /* CSS for syntax highlighting */
+      html { -webkit-text-size-adjust: 100%; }
+      pre > code.sourceCode { white-space: pre; position: relative; }
+      pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+      pre > code.sourceCode > span:empty { height: 1.2em; }
+      .sourceCode { overflow: visible; }
+      code.sourceCode > span { color: inherit; text-decoration: inherit; }
+      div.sourceCode { margin: 1em 0; }
+      pre.sourceCode { margin: 0; }
+      @media screen {
+      div.sourceCode { overflow: auto; }
+      }
+      @media print {
+      pre > code.sourceCode { white-space: pre-wrap; }
+      pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+      }
+      pre.numberSource code
+        { counter-reset: source-line 0; }
+      pre.numberSource code > span
+        { position: relative; left: -4em; counter-increment: source-line; }
+      pre.numberSource code > span > a:first-child::before
+        { content: counter(source-line);
+          position: relative; left: -1em; text-align: right; vertical-align: baseline;
+          border: none; display: inline-block;
+          -webkit-touch-callout: none; -webkit-user-select: none;
+          -khtml-user-select: none; -moz-user-select: none;
+          -ms-user-select: none; user-select: none;
+          padding: 0 4px; width: 4em;
+        }
+      pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+      div.sourceCode
+        {   }
+      @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+      }
+      /* CSS for citations */
+      div.csl-bib-body { }
+      div.csl-entry {
+        clear: both;
+        margin-bottom: 0em;
+      }
+      .hanging-indent div.csl-entry {
+        margin-left:2em;
+        text-indent:-2em;
+      }
+      div.csl-left-margin {
+        min-width:2em;
+        float:left;
+      }
+      div.csl-right-inline {
+        margin-left:2em;
+        padding-left:1em;
+      }
+      div.csl-indent {
+        margin-left: 2em;
+      }    </style>
+
+    <style>
+      body.hypothesis-enabled #quarto-embed-header {
+        padding-right: 36px;
+      }
+
+      #quarto-embed-header {
+        height: 3em;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: solid 1px;
+      }
+
+      #quarto-embed-header h6 {
+        font-size: 1.1em;
+        padding-top: 0.6em;
+        margin-left: 1em;
+        margin-right: 1em;
+        font-weight: 400;
+      }
+
+      #quarto-embed-header a.quarto-back-link,
+      #quarto-embed-header a.quarto-download-embed {
+        font-size: 0.8em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        margin-left: 1em;
+        margin-right: 1em;
+      }
+
+      .quarto-back-container {
+        padding-left: 0.5em;
+        display: flex;
+      }
+
+      .headroom {
+          will-change: transform;
+          transition: transform 200ms linear;
+      }
+
+      .headroom--pinned {
+          transform: translateY(0%);
+      }
+
+      .headroom--unpinned {
+          transform: translateY(-100%);
+      }      
+    </style>
+
+    <script>
+    window.document.addEventListener("DOMContentLoaded", function () {
+
+      var header = window.document.querySelector("#quarto-embed-header");
+      const titleBannerEl = window.document.querySelector("body > #title-block-header");
+      if (titleBannerEl) {
+        titleBannerEl.style.paddingTop = header.clientHeight + "px";
+      }
+      const contentEl = window.document.getElementById('quarto-content');
+      for (const child of contentEl.children) {
+        child.style.paddingTop = header.clientHeight + "px";
+        child.style.marginTop = "1em";
+      }
+
+      // Use the article root if the `back` call doesn't work. This isn't perfect
+      // but should typically work
+      window.quartoBackToArticle = () => {
+        var currentUrl = window.location.href;
+        window.history.back();
+        setTimeout(() => {
+            // if location was not changed in 100 ms, then there is no history back
+            if(currentUrl === window.location.href){              
+                // redirect to site root
+                window.location.href = "index.html";
+            }
+        }, 100);
+      }
+
+      const headroom = new window.Headroom(header, {
+        tolerance: 5,
+        onPin: function () {
+        },
+        onUnpin: function () {
+        },
+      });
+      headroom.init();
+    });
+    </script>
+
+    
+<script src="site_libs/manuscript-notebook/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-4b8f3efb9ceac21f82bfa7fe99788039.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-2f6c3e8fd97326c31fad98019b1803af.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+     <style>html{ scroll-behavior: smooth; }</style>  <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">  
+      <meta name="citation_title" content="The bots that make history">
+<meta name="citation_keywords" content="Wikipedia; bots; epistemic virtue; temporality">
+<meta name="citation_author" content="Michael Falk">
+<meta name="citation_language" content="en">
+<meta name="citation_reference" content="citation_title=An encyclopedia with breaking news;,citation_author=Brian Keegan;,citation_editor=Joseph Reagle;,citation_editor=Jackie Koerner;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_fulltext_html_url=https://doi.org/10.7551/mitpress/12366.003.0007;,citation_inbook_title=Wikipedia@ 20: Stories of an Incomplete Revolution;">
+<meta name="citation_reference" content="citation_title=Hot off the wiki: Dynamics, practices, and structures in Wikipedia’s coverage of the Tōhoku catastrophes;,citation_author=Brian Keegan;,citation_author=Darren Gergle;,citation_author=Noshir Contractor;,citation_publication_date=2011-10;,citation_cover_date=2011-10;,citation_year=2011;,citation_fulltext_html_url=https://dl.acm.org/doi/10.1145/2038558.2038577;,citation_doi=10.1145/2038558.2038577;,citation_isbn=978-1-4503-0909-7;,citation_conference_title=Proceedings of the 7th International Symposium on Wikis and Open Collaboration;,citation_conference=ACM;">
+<meta name="citation_reference" content="citation_title=Breaking news on Wikipedia: Collaborating, collating and competing;,citation_abstract=When a major global news event occurs, such as the Easter bombings in Sri Lanka or the March shootings in New Zealand, Wikipedia contributors from around the world come together in a virtual newsroom to craft a narrative, followed closely by readers seeking the latest information. In any given month, the site’s most popular articles — both in number of views and number of edits — are those reporting breaking news. Wikipedia’s protocols of “no original research” mean the contributors must draw on the work of journalists, collating and re-purposing what has been published online. Taking as a case study the 2014 Sydney hostage crisis this paper analyzes Wikipedia’s breaking news practices and the ways the Internet is changing perceptions of news.;,citation_author=Bunty Avieson;,citation_publication_date=2019-04;,citation_cover_date=2019-04;,citation_year=2019;,citation_fulltext_html_url=https://firstmonday.org/ojs/index.php/fm/article/view/9530;,citation_doi=10.5210/fm.v24i5.9530;,citation_issn=1396-0466;,citation_journal_title=First Monday;">
+<meta name="citation_reference" content="citation_title=Pressed for time: The acceleration of life in digital capitalism;,citation_abstract=The technologically tethered, iPhone-addicted figure is an image we can easily conjure. Most of us complain that there aren’t enough hours in the day and too many e-mails in our thumb-accessible inboxes. This widespread perception that life is faster than it used to be is now ingrained in our culture, and smartphones and the Internet are continually being blamed. But isn’t the sole purpose of the smartphone to give us such quick access to people and information that we’ll be free to do other things? Isn’t technology supposed to make our lives easier? In Pressed for Time, Judy Wajcman explains why we immediately interpret our experiences with digital technology as inexorably accelerating everyday life. She argues that we are not mere hostages to communication devices, and the sense of always being rushed is the result of the priorities and parameters we ourselves set rather than the machines that help us set them. Indeed, being busy and having action-packed lives has become valorized by our productivity driven culture. Wajcman offers a bracing historical perspective, exploring the commodification of clock time, and how the speed of the industrial age became identified with progress. She also delves into the ways time-use differs for diverse groups in modern societies, showing how changes in work patterns, family arrangements, and parenting all affect time stress. Bringing together empirical research on time use and theoretical debates about dramatic digital developments, this accessible and engaging book will leave readers better versed in how to use technology to navigate life’s fast lane.;,citation_author=Judy Wajcman;,citation_publication_date=2015;,citation_cover_date=2015;,citation_year=2015;,citation_doi=10.7208/9780226196503;,citation_isbn=978-0-226-19650-3;">
+<meta name="citation_reference" content="citation_title=Wikipedia and the politics of openness;,citation_author=Nathaniel Tkacz;,citation_publication_date=2015;,citation_cover_date=2015;,citation_year=2015;,citation_isbn=978-0-226-19227-7 978-0-226-19230-7;">
+<meta name="citation_reference" content="citation_title=Writing the revolution: Wikipedia and the survival of facts in the digital age;,citation_abstract=&amp;amp;amp;quot;Looks at how knowledge or &amp;quot;facts&quot; are produced and distributed by Wikipedia, from a primarily male, North American/European perspective&quot;–;,citation_author=Heather Ford;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_isbn=978-0-262-04629-9;">
+<meta name="citation_reference" content="citation_title=Digital Media and the Making of Network Temporality;,citation_abstract=This book presents an exciting new theory of time for a world built on hyper-fast digital media networks. Computers have changed the human social experience enormously. We’re becoming familiar with many of the macro changes, but we rarely consider the complex, underlying mechanics of how a technology interacts with our social, political and economic worlds. And we cannot explain how the mechanics of a technology are being translated into social influence unless we understand the role of time in that process. Offering an original reconsideration of temporality, Philip Pond explains how super-powerful computers and global webs of connection have remade time through speed. The book introduces key developments in network time theory and explains their importance, before presenting a new model of time which seeks to reconcile the traditionally separate subjective and objective approaches to time theory and measurement.;,citation_author=Philip Pond;,citation_publication_date=2021-05;,citation_cover_date=2021-05;,citation_year=2021;,citation_doi=10.4324/9781003174226;,citation_isbn=978-1-003-17422-6;">
+<meta name="citation_reference" content="citation_title=24/7 : Time and temporality in the network society;,citation_abstract=xvii, 284 p. : 23 cm; Includes bibliographical references and index; New temporal perspectives in the &amp;amp;amp;quot;high-speed society&amp;quot; / Carmen Leccardi – Network time / Robert Hassan – Speed = distance/time : chronotopographies of action / Mike Crang – Protocols and the irreducible traces of embodiment : the Viterbi algorithm and the mosaic of machine time / Adrian Mackenzie – Truth at twelve thousand frames per second : The matrix and time-image cinema / Darren Tofts – The fallen present : time in the mix / Andrew Murphie – Stacking and continuity : on temporal regimes in popular culture / Thomas Hylland Eriksen – Indifference of the networked presence : on time management of the self / Geert Lovink – The presence of others : network experience as an antidote to the subjectivity of time / Jack Petranker – CyberLack / David R. Loy – Time robbers, time rebels : limits to fast capital / Ben Agger – Finding time and place for trust in ICT network organizations / Hans Rämö – The clock-time paradox : time regimes in the network society / Ida H. J. Sabelis;,citation_publication_date=2007;,citation_cover_date=2007;,citation_year=2007;,citation_fulltext_html_url=http://archive.org/details/247timetemporali0000unse;,citation_isbn=978-0-8047-5196-4 978-0-8047-5197-1;">
+<meta name="citation_reference" content="citation_title=1992–2022;,citation_author=Robert Hassan;,citation_publication_date=2022-02;,citation_cover_date=2022-02;,citation_year=2022;,citation_fulltext_html_url=https://doi.org/10.1177/0961463X211073558;,citation_issue=1;,citation_doi=10.1177/0961463X211073558;,citation_issn=0961-463X;,citation_volume=31;,citation_journal_title=Time &amp;amp;amp; Society;">
+<meta name="citation_reference" content="citation_title=The Condition of Digitality: A Post-Modern Marxism for the Practice of Digital Life;,citation_abstract=David Harvey’s The Condition of Postmodernity rationalised capitalism’s transformation during an extraordinary year: 1989. It gave theoretical expression to a material and cultural reality that was just then getting properly started – globalisation and postmodernity – whilst highlighting the geo-spatial limits to accumulation imposed by our planet. However this landmark publication, author Robert Hassan argues, did not address the arrival of digital technology, the quantum leap represented by the move from an analogue world to a digital economy and the rapid creation of a global networked society. Considering first the contexts of 1989 and Harvey’s work, then the idea of humans as analogue beings he argues this arising new human condition of digitality leads to alienation not only from technology but also the environment. This condition he suggests, is not an ideology of time and space but a reality stressing that Harvey’s time-space compression takes on new features including those of “outward” and “inward” globalisation and the commodification of all spheres of existence. Lastly the author considers culture’s role drawing on Rahel Jaeggi’s theories to make the case for a post-modern Marxism attuned to the most significant issue of our age. Stimulating and theoretically wide-ranging The Condition of Digitality recognises post-modernity’s radical new form as a reality and the urgent need to assert more democratic control over digitality.;,citation_author=Robert Hassan;,citation_publication_date=2020;,citation_cover_date=2020;,citation_year=2020;,citation_fulltext_html_url=https://www.jstor.org/stable/j.ctvw1d5k0;,citation_isbn=978-1-912656-67-7;">
+<meta name="citation_reference" content="citation_title=Thirty years of &amp;amp;amp;lt;i&amp;gt;Time &amp; Society&amp;lt;/i&amp;gt; : The challenges for time studies revisited;,citation_author=Barbara Adam;,citation_publication_date=2022-02;,citation_cover_date=2022-02;,citation_year=2022;,citation_fulltext_html_url=http://journals.sagepub.com/doi/10.1177/0961463X211073004;,citation_issue=1;,citation_doi=10.1177/0961463X211073004;,citation_issn=0961-463X, 1461-7463;,citation_volume=31;,citation_journal_title=Time &amp;amp; Society;">
+<meta name="citation_reference" content="citation_title=Four meditations on time and future relations;,citation_abstract=In four short meditations, approaches to time and the future are explored through both a time and futures lens. A compressed poetic form of expression is used to distil the essence of the processes involved. The shapes emerge in the writing and once discernable they begin to guide the choice of words. Theory becomes a playful activity that draws on a deep and extensive pool of time theory. The first meditation expresses the difficulty for conventional social science to engage with the future. The second depicts temporal relations of modernity that encompass features shared by humanity across the ages. The third piece explores time encoded in nature, money and society. The last meditation engages with approaches to sustainability and indicates the significant differences that arise with the respective standpoints of the present future and future present. It closes the circle back to the first meditation on disciplinary challenges presented by the temporal and engagement with future presents.;,citation_author=Barbara Adam;,citation_publication_date=2018-11;,citation_cover_date=2018-11;,citation_year=2018;,citation_fulltext_html_url=http://journals.sagepub.com/doi/10.1177/0961463X18789222;,citation_issue=3;,citation_doi=10.1177/0961463X18789222;,citation_issn=0961-463X, 1461-7463;,citation_volume=27;,citation_journal_title=Time &amp;amp;amp; Society;">
+<meta name="citation_reference" content="citation_title=Time;,citation_author=Barbara Adam;,citation_publication_date=2004;,citation_cover_date=2004;,citation_year=2004;,citation_isbn=978-0-7456-2777-9 978-0-7456-2778-6;,citation_series_title=Key concepts;">
+<meta name="citation_reference" content="citation_title=Time: A vocabulary of the present;,citation_editor=Joel Burges;,citation_editor=Amy J. Elias;,citation_publication_date=2016;,citation_cover_date=2016;,citation_year=2016;,citation_isbn=978-1-4798-2170-9 978-1-4798-7484-2;">
+<meta name="citation_reference" content="citation_title=L’ordre du temps;,citation_author=Krzysztof Pomian;,citation_publication_date=1984;,citation_cover_date=1984;,citation_year=1984;,citation_isbn=978-2-07-070143-8;,citation_series_title=Bibliothèque des histoires;">
+<meta name="citation_reference" content="citation_title=Digital Timescapes: Technology, Temporality and Society;,citation_abstract=Digital technologies are having a profound effect on the temporalities of individuals, households and organisations. We now expect to be able to instantly source a vast array of information at any time and from anywhere, as well as buy goods with the click of a button and have them delivered within hours, while time management apps and locative media have altered how everyday scheduling and mobility unfolds. Digital Timescapes makes the case that we have transitioned to an era where the production and experience of time is qualitatively different to the pre-digital era. Rob Kitchin provides a synoptic account of this transition, charting how digital technologies, in a wide range of manifestations, are reconfiguring everyday temporalities. Attention is focused on the temporalities associated with six sets of everyday practices: history and memory; politics and policy; governance and governmentality; mobility and logistics; planning and development; and work and labour. Critically, how to challenge and reorder digitally mediated temporal power is examined through the development of an ethics of temporal care and temporal justice. Conceptually and empirically rich, Digital Timescapes is an essential guide to our new temporal regime. It will be of interest to students and scholars of Media Studies, Science and Technology Studies, Sociology, Anthropology, Human Geography, and History and Memory Studies, as well as those who are interested in how digital technologies are transforming society.;,citation_author=Rob Kitchin;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=http://ebookcentral.proquest.com/lib/uts/detail.action?docID=7187252;,citation_isbn=978-1-5095-5685-4;">
+<meta name="citation_reference" content="citation_title=Making, managing and experiencing “the now”: Digital media and the compression and pacing of “real-time”;,citation_abstract=Digital media time is commonly described as “real-time”. But what does this term refer to? How is “real-time” made, managed and experienced? This article explores these questions, drawing on interviews with UK-based digital media professionals. Its specific concern is with how accounts of the time of digital media indicate a particular, yet supple, temporality, which emphasises “the now”. I draw on current literature that explores how real-time is a temporality capable of being stretched and condensed, or variously compressed and paced. While much of this literature focuses on the technological fabrication of real-time, I explore how “the now” is produced through the interplay between human and non-human practices. Through discussion of the interviews, the article concentrates on social, cultural and affective dimensions of “the now”, fleshing out more technologically focused work and contributing to understanding of a prevalent way in which time is organised in contemporary digital societies.;,citation_author=Rebecca Coleman;,citation_publication_date=2020-09;,citation_cover_date=2020-09;,citation_year=2020;,citation_fulltext_html_url=https://doi.org/10.1177/1461444820914871;,citation_issue=9;,citation_doi=10.1177/1461444820914871;,citation_issn=1461-4448;,citation_volume=22;,citation_journal_title=New Media &amp;amp;amp; Society;">
+<meta name="citation_reference" content="citation_title=Friending the Past: The Sense of History in the Digital Age;,citation_author=Alan Liu;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_fulltext_html_url=http://ebookcentral.proquest.com/lib/usyd/detail.action?docID=5393716;,citation_isbn=978-0-226-45200-5;">
+<meta name="citation_reference" content="citation_title=How we think: Digital media and contemporary technogenesis;,citation_author=N. Katherine Hayles;,citation_publication_date=2012;,citation_cover_date=2012;,citation_year=2012;,citation_isbn=978-0-226-32140-0 978-0-226-32142-4;">
+<meta name="citation_reference" content="citation_title=Business network becoming: Figurations of time, change and process;,citation_abstract=Concepts such as “time” and “change” are always presaged by metaphor, narratives and other “tropes” and are therefore, representations invented by association, analogy, indirect inferences and figuration. If these representations change, then their meaning also changes. In this paper, we argue that dominant figurations of time have been predominantly mechanistic and a consequence of “substance” metaphysics. The mechanistic metaphor of time constructs comprehensions of time that are linear, homogenous and clock-like. As with any analogical representations, this type of figuration favors some aspects of time and diminishes others. Our proposition is that if we apply an alternative “process metaphysics” to time, then this is associated with different figurative representations. In this paper, we make specific reference to the IMP research tradition where we explore “holographic or rhizomic time” as a different temporal metaphor. We illustrate what linear clock time reveals and hides in a “centered” epistemology and explore what an adoption of “holographic” time would allow us to see, and discuss some of the benefits and limitations of this different figuration of time, which promotes a “de-centered” epistemology.;,citation_author=Sid Lowe;,citation_author=Michel Rod;,citation_publication_date=2018-01;,citation_cover_date=2018-01;,citation_year=2018;,citation_fulltext_html_url=https://www.sciencedirect.com/science/article/pii/S0019850117307915;,citation_doi=10.1016/j.indmarman.2017.10.012;,citation_issn=0019-8501;,citation_volume=68;,citation_journal_title=Industrial Marketing Management;">
+<meta name="citation_reference" content="citation_title=The right-time web: Theorizing the kairologic of algorithmic media;,citation_abstract=Facebook?s goal for their ?News Feed is to show everyone the right content at the right time so they don?t miss the stories that are important to them.? In a mediated environment obsessed with real-time?of near instantaneous content production and delivery?the question of what constitutes right-time has curiously been overlooked. In this article, I argue that the notion of right-time presented in the above mission statement is reflective not just of Facebook?s algorithmic workings but also of a new temporal regime produced by an increasingly algorithmic media landscape. The article draws on social theory, media studies, and rhetoric, as well as a variety of empirical materials such as patent documents, media industry documents and public discourse to argue for the existence of an ?Eigenzeit? of algorithmic media that hinges on the classic Greek notion of ?kairos,? understood as an opportune time, timeliness, or indeed, ?right-time.?;,citation_author=Taina Bucher;,citation_publication_date=2020-09;,citation_cover_date=2020-09;,citation_year=2020;,citation_fulltext_html_url=https://doi.org/10.1177/1461444820913560;,citation_issue=9;,citation_doi=10.1177/1461444820913560;,citation_issn=1461-4448;,citation_volume=22;,citation_journal_title=New Media &amp;amp;amp; Society;">
+<meta name="citation_reference" content="citation_title=’Is’ to ’Was’: Coordination and Commemoration on Posthumous Wikipedia Biographies;,citation_abstract=Following the deaths of notable people, Wikipedians incorporate this new knowledge by updating or creating biographical articles. Drawing on literature from death studies and peer production, we demonstrate how the creation of these &amp;amp;amp;quot;wiki-bituaries&amp;quot; requires complex coordination work and highlight processes of commemoration and memorialization within socio-technical systems. Using the corpus of 6,132 articles about people who died in 2012, we examine the network relationships and contribution dynamics of users who perform this work and identify behavioral and content dynamics on the biographical articles about the deceased. The collaborations that emerge from posthumous editing of these biographies are sites of significant activity that coalesce into complex but temporary collaborations. Based on these findings, we argue that Wikipedia has re-imagined the obituary into a genre for creating memory spaces in which the death of a subject prompts a form of &quot;death work&quot; involving the collective re-evaluation of article content and a transition into a new mode of data stewardship.;,citation_author=Brian C. Keegan;,citation_author=Jed R. Brubaker;,citation_publication_date=2015-02;,citation_cover_date=2015-02;,citation_year=2015;,citation_fulltext_html_url=https://dl.acm.org/doi/10.1145/2675133.2675238;,citation_doi=10.1145/2675133.2675238;,citation_isbn=978-1-4503-2922-4;,citation_conference_title=Proceedings of the 18th ACM Conference on Computer Supported Cooperative Work &amp;amp; Social Computing;,citation_conference=Association for Computing Machinery;,citation_series_title=CSCW ’15;">
+<meta name="citation_reference" content="citation_title=Werke in 5 Bänden mit einem Beibuch;,citation_abstract=Herausgegeben von Ludger Lütkehaus. Die einzige Ausgabe mit allen zu Lebzeiten des Philosophen publizierten Werken in der von ihm autorisierten Fassung! „Mit dieser Werkausgabe wäre Schopenhauer selbst sicherlich höchst zufrieden, der Herr Rezensent ist es mit Sicherheit und erlaubt sich mit den Worten des Meisters ein Urteil abzugeben: genial!“, so Marco Louis im Internet-Magazin Haruspex. Seit Jahren vergriffen, ist die Lütkehaus-Edition inzwischen eine gesuchte Werkausgabe auf dem Antiquariatsmarkt. Jetzt erscheint sie neu in einer hübschen Broschurausgabe - und das selbstredend exklusiv bei Zweitausendeins;,citation_author=Arthur Schopenhauer;,citation_editor=Ludger Lütkehaus;,citation_publication_date=1999;,citation_cover_date=1999;,citation_year=1999;,citation_isbn=978-3-96022-011-4;">
+<meta name="citation_reference" content="citation_title=Technics and time;,citation_author=Bernard Stiegler;,citation_publication_date=1998;,citation_cover_date=1998;,citation_year=1998;,citation_isbn=978-0-8047-3040-2 978-0-8047-3041-9 978-0-8047-3012-9;,citation_series_title=Meridian;">
+<meta name="citation_reference" content="citation_title=The Dialogic Imagination: Four Essays;,citation_author=Mikhail Bakhtin;,citation_editor=Michael Holquist;,citation_publication_date=1981;,citation_cover_date=1981;,citation_year=1981;">
+<meta name="citation_reference" content="citation_title=Œuvres;,citation_author=Henri Bergson;,citation_editor=André Robinet;,citation_publication_date=1984;,citation_cover_date=1984;,citation_year=1984;,citation_isbn=978-2-13-038495-3;">
+<meta name="citation_reference" content="citation_title=Tech-TOC: Complex Temporalities in Living and Technical Beings › electronic book review;,citation_abstract=At least since Henri Bergson’s (2005, 1913) concept of Duration, a strong distinction has been drawn between temporality as process (according to Bergson, unextended, heterogeneous time at once multiplicitous and unified, graspable only through intuition and human experience) and temporality as measured (homogenous, spatialized, objective and &amp;amp;amp;quot;scientific&amp;quot; time). Its contributions to the history of philosophy;,citation_author=Katherine Hayles;,citation_publication_date=2012-04;,citation_cover_date=2012-04;,citation_year=2012;,citation_fulltext_html_url=https://electronicbookreview.com/essay/tech-toc-complex-temporalities-in-living-and-technical-beings/;,citation_journal_title=Electronic Book Review;">
+<meta name="citation_reference" content="citation_title=Encyclopedic Discourse;,citation_author=Hilary A. Clark;,citation_publication_date=1992;,citation_cover_date=1992;,citation_year=1992;,citation_fulltext_html_url=https://www.jstor.org/stable/3685349;,citation_issue=1;,citation_doi=10.2307/3685349;,citation_issn=0049-2426;,citation_volume=21;,citation_journal_title=SubStance;">
+<meta name="citation_reference" content="citation_title=Resonance: A sociology of the relationship to the world;,citation_abstract=Summary: The pace of modern life is undoubtedly speeding up, yet this acceleration does not seem to have made us any happier or more content. If acceleration is the problem, then the solution, argues Hartmut Rosa in this major new work, lies in &amp;amp;amp;quot;resonance.&amp;quot; The quality of a human life cannot be measured simply in terms of resources, options, and moments of happiness; instead, we must consider our relationship to, or resonance with, the world. Applying his theory of resonance to many domains of human activity, Rosa describes the full spectrum of ways in which we establish our relationship to the world, from the act of breathing to the adoption of culturally distinct worldviews. He then turns to the realms of concrete experience and action - family and politics, work and sports, religion and art - in which we as late modern subjects seek out resonance. This task is proving ever more difficult as modernity’s logic of escalation is both cause and consequence of a distorted relationship to the world, at individual and collective levels. As Rosa shows, all the great crises of modern society - the environmental crisis, the crisis of democracy, the psychological crisis - can also be understood and analyzed in terms of resonance and our broken relationship to the world around us. Building on his now classic work on acceleration, Rosa’s new book is a major new contribution to the theory of modernity, showing how our problematic relation to the world is at the crux of some of the most pressing issues we face today. This bold renewal of critical theory for our times will be of great interest to students and scholars across the social sciences and humanities.;,citation_author=Hartmut Rosa;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_isbn=978-1-5095-1989-7;">
+<meta name="citation_reference" content="citation_title=Time, Work-Discipline, and Industrial Capitalism;,citation_author=E. P. Thompson;,citation_publication_date=1967;,citation_cover_date=1967;,citation_year=1967;,citation_fulltext_html_url=https://www.jstor.org/stable/649749;,citation_issue=38;,citation_issn=0031-2746;,citation_journal_title=Past &amp;amp;amp; Present;">
+<meta name="citation_reference" content="citation_title=The Past and the Present in the Present;,citation_abstract=This lecture starts by considering the old problem of how to account for social change theoretically and criticises some of the models used because, either they see the social process in terms used by the actors and so are unable to explain how it is that actors can change those terms, or they see the mechanisms of change as occurring in terms totally alien to the actors and so are unable to explain how these mechanisms can be transformed into meaningful action. The source of this problem is traced to Durkheim’s notion that cognition is socially determined. By contrast it is argued that those concepts which are moulded to social structure are not typical of knowledge but only found in ritual discourse, while the concepts using non-ritual discourse are constrained by such factors as the requirements of human action on nature. This means that there are terms available to actors by which the social order can be criticised since not all terms are moulded by it. Finally it is suggested that such notions as social structure only refer to ritualized folk statements about society, statements expressed in ritual discourse precisely with those concepts which are given as demonstrations of the theory of the cultural relativity of cognition. The Durkheimian correlation between society and cognition is merely a correlation of only certain ethical statements and certain aspects of cognition. This type of discourse is present in different types of society in varying amounts according to the degree of instituted hierarchy that these societies manifest. Anthropological theories about the conceptualisation of time are given as an example of the general argument.;,citation_author=Maurice Bloch;,citation_publication_date=1977;,citation_cover_date=1977;,citation_year=1977;,citation_fulltext_html_url=https://www.jstor.org/stable/2800799;,citation_issue=2;,citation_doi=10.2307/2800799;,citation_issn=0025-1496;,citation_volume=12;,citation_journal_title=Man;">
+<meta name="citation_reference" content="citation_title=The Cultural Anthropology of Time: A Critical Essay;,citation_author=Nancy D. Munn;,citation_publication_date=1992;,citation_cover_date=1992;,citation_year=1992;,citation_fulltext_html_url=https://www.jstor.org/stable/2155982;,citation_issn=0084-6570;,citation_volume=21;,citation_journal_title=Annual Review of Anthropology;">
+<meta name="citation_reference" content="citation_title=Rethinking time’s arrow: Bergson, Deleuze and the anthropology of time;,citation_abstract=Since the early 1970s, time has come to the fore as a constitutive element of social analysis in the guise of what I term here ’fluid time’. Anthropologists of multiple theoretical persuasions now take for granted that social life exists in ’time’, ’flow’, or ’flux’, and this temporal ontology is commonly accepted as a universal, if habitually unquestioned, attribute of human experience. Similarly, it underpins today’s dominant paradigm of ’processual’ analysis, in its many forms. Yet this concept is notably under-theorized, in keeping with a history of uneven study by social scientists of time. In this article I draw on anthropological approaches by Gell and Munn, and philosophical work by Bergson and Deleuze, to put forward a critical theorization. I then discuss its ramifications. Ultimately, I argue that this model points to a rapprochement between the anthropological study of time and history, sociality and temporality, and an enhanced role for temporal analysis in anthropological theory.;,citation_author=Matt Hodges;,citation_publication_date=2008-12;,citation_cover_date=2008-12;,citation_year=2008;,citation_fulltext_html_url=http://journals.sagepub.com/doi/10.1177/1463499608096646;,citation_issue=4;,citation_doi=10.1177/1463499608096646;,citation_issn=1463-4996, 1741-2641;,citation_volume=8;,citation_journal_title=Anthropological Theory;">
+<meta name="citation_reference" content="citation_title=It’s about time: Temporal structuring in organizations;,citation_abstract=This paper proposes the notion of temporal structuring as a way of understanding and studying time as an enacted phenomenon within organizations. It suggests that through their everyday action, actors produce and reproduce a variety of temporal structures which in turn shape the temporal rhythm and form of their ongoing practices. A focus on temporal structuring, combined with a practice perspective, allows the subjective-objective dichotomy that underlies much of the existing research on time in organizations to be bridged. After developing the notion of temporal structuring, the paper illustrates its use in the context of prior empirical study. The paper concludes by outlining some implications of temporal structuring for organizational research on time.;,citation_author=Wanda J. Orlikowski;,citation_author=JoAnne Yates;,citation_publication_date=2002-12;,citation_cover_date=2002-12;,citation_year=2002;,citation_fulltext_html_url=https://www.proquest.com/docview/213829873/abstract/57070C934917444CPQ/1;,citation_issue=6;,citation_issn=10477039;,citation_volume=13;,citation_journal_title=Organization Science;">
+<meta name="citation_reference" content="citation_title=From the tree to the labyrinth: Historical studies on the sign and interpretation;,citation_author=Umberto Eco;,citation_publication_date=2014;,citation_cover_date=2014;,citation_year=2014;,citation_isbn=978-0-674-04918-5;">
+<meta name="citation_reference" content="citation_title=Summa Technologiae;,citation_abstract=The Polish writer Stanislaw Lem is best known to English-speaking readers as the author of the 1961 science fiction novel Solaris, adapted into a meditative film by Andrei Tarkovsky in 1972 and remade in 2002 by Steven Soderbergh. Throughout his writings, comprising dozens of science fiction novels and short stories, Lem offered deeply philosophical and bitingly satirical reflections on the limitations of both science and humanity. In Summa Technologiae–his major work of nonfiction, first published in 1964 and now available in English for the first time–Lem produced an engaging and caustically logical philosophical treatise about human and nonhuman life in its past, present, and future forms. After five decades Summa Technologiae has lost none of its intellectual or critical significance. Indeed, many of Lem’s conjectures about future technologies have now come true: from artificial intelligence, bionics, and nanotechnology to the dangers of information overload, the concept underlying Internet search engines, and the idea of virtual reality. More important for its continued relevance, however, is Lem’s rigorous investigation into the parallel development of biological and technical evolution and his conclusion that technology will outlive humanity. Preceding Richard Dawkins’s understanding of evolution as a blind watchmaker by more than two decades, Lem posits evolution as opportunistic, shortsighted, extravagant, and illogical. Strikingly original and still timely, Summa Technologiae resonates with a wide range of contemporary debates about information and new media, the life sciences, and the emerging relationship between technology and humanity.;,citation_author=Stanisław Lem;,citation_author=Joanna Zylinska;,citation_publication_date=2013;,citation_cover_date=2013;,citation_year=2013;,citation_fulltext_html_url=http://ebookcentral.proquest.com/lib/uts/detail.action?docID=1204686;,citation_isbn=978-0-8166-8903-3;">
+<meta name="citation_reference" content="citation_title=The Politics of Real-time: A Device Perspective on Social Media Platforms and Search Engines;,citation_abstract=This paper enquires into the politics of real-time in online media. It suggests that real-time cannot be accounted for as a universal temporal frame in which events happen, but explores the making of real-time from a device perspective focusing on the temporalities of platforms. Based on an empirical study exploring the pace at which various online media produce new content, we trace the different rhythms, patterns or tempos created by the interplay of devices, users? web activities and issues. What emerges are distinct forms of ?realtimeness? which are not external from but specific to devices, organized through socio-technical arrangements and practices of use. Realtimeness thus unflattens more general accounts of the real-time web and research, and draws attention to the agencies built into specific platform temporalities and the political economies of making real-time.;,citation_author=Esther Weltevrede;,citation_author=Anne Helmond;,citation_author=Carolin Gerlitz;,citation_publication_date=2014-11;,citation_cover_date=2014-11;,citation_year=2014;,citation_fulltext_html_url=https://doi.org/10.1177/0263276414537318;,citation_issue=6;,citation_doi=10.1177/0263276414537318;,citation_issn=0263-2764;,citation_volume=31;,citation_journal_title=Theory, Culture &amp;amp;amp; Society;">
+<meta name="citation_reference" content="citation_title=Futures Past: On the Semantics of Historical Time;,citation_author=Reinhart Koselleck;,citation_publication_date=1985;,citation_cover_date=1985;,citation_year=1985;">
+<meta name="citation_reference" content="citation_title=Trace Ethnography: Following Coordination through Documentary Practices;,citation_abstract=We detail the methodology of ’trace ethnography’, which combines the richness of participant- observation with the wealth of data in logs so as to reconstruct patterns and practices of users in distributed sociotechnical systems. Trace ethnography is a flexible, powerful technique that is able to capture many distributed phenomena that are otherwise difficult to study. Our approach integrates and extends a number of longstanding techniques across the social and computational sciences, and can be combined with other methods to provide rich descriptions of collaboration and organization.;,citation_author=R. Stuart Geiger;,citation_author=David Ribes;,citation_publication_date=2011-01;,citation_cover_date=2011-01;,citation_year=2011;,citation_doi=10.1109/HICSS.2011.455;,citation_conference_title=2011 44th Hawaii International Conference on System Sciences;">
+<meta name="citation_reference" content="citation_title=Life in the fast lane? Towards a sociology of technology and time;,citation_abstract=Assumptions about the pace of life speeding up abound in contemporary social theory. While many factors are contributing to this phenomenon, information and communication technologies are seen as the main drivers. This article considers the way social theorists analyse the concepts of time and speed and then examines how these claims might be assessed in the light of empirical research. Such research shows that time compression has multiple dimensions, and that the effect of digital devices like the mobile phone is not simply one of acceleration. In particular, I suggest that the social studies of technology offers a richer analysis of the reciprocal relationship between technological innovation and changing time practices. My argument is that while the hitherto neglected temporal dimension in sociological theory is now being addressed, there is an urgent need for increased dialogue to connect social theory with detailed empirical studies. Without this, we will continue to have difficulty distinguishing social science from science fiction.;,citation_author=Judy Wajcman;,citation_publication_date=2008;,citation_cover_date=2008;,citation_year=2008;,citation_fulltext_html_url=https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1468-4446.2007.00182.x;,citation_issue=1;,citation_doi=10.1111/j.1468-4446.2007.00182.x;,citation_issn=1468-4446;,citation_volume=59;,citation_journal_title=The British Journal of Sociology;">
+<meta name="citation_reference" content="citation_title=Networked News Time: How slow—or fast—do publics need news to be?;,citation_author=Mike Ananny;,citation_publication_date=2016-05;,citation_cover_date=2016-05;,citation_year=2016;,citation_fulltext_html_url=https://www.tandfonline.com/doi/full/10.1080/21670811.2015.1124728;,citation_issue=4;,citation_doi=10.1080/21670811.2015.1124728;,citation_issn=2167-0811, 2167-082X;,citation_volume=4;,citation_journal_title=Digital Journalism;">
+<meta name="citation_reference" content="citation_title=Regimes of historicity: Presentism and experiences of time;,citation_author=François Hartog;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;,citation_isbn=978-0-231-16377-4;,citation_series_title=European Perspectives a series in social thought and cultural criticism;">
+<meta name="citation_reference" content="citation_title=Anthropocene Time;,citation_abstract=Beginning with the question of how a sense of geological time remains strangely withdrawn in contemporary discussions of the Anthropocene in the human sciences and yields place to the more human-centered time of world history, this article proceeds to discuss the differences between human-historical time and the time of geology as they relate to the concept of the Anthropocene. The article discusses the difficulty of developing a mode of thinking about the present that would attempt to hold together these two rather different senses of time and ends with a ground-clearing exercise that might enable the development of such thought.;,citation_author=Dipesh Chakrabarty;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_fulltext_html_url=https://onlinelibrary.wiley.com/doi/abs/10.1111/hith.12044;,citation_issue=1;,citation_doi=10.1111/hith.12044;,citation_issn=1468-2303;,citation_volume=57;,citation_journal_title=History and Theory;">
+<meta name="citation_reference" content="citation_title=Historical Futures;,citation_abstract=This article outlines the agenda of a collective research project that aims to explore modalities of historical futures that constitute our current historical condition. To present the collective work adequately, we have teamed up with History and Theory and initiated a long-term serial publishing experiment. In the coming years, each issue of the journal will feature contributions to this research endeavor. In our project-opening piece, we briefly introduce the experiment and the premises of the collective research agenda. We begin by recounting the many ways in which increasingly towering novel future prospects have begun to capture the scholarly world’s attention across disciplinary boundaries. We then introduce the notion of historical futures. Crediting theoretical inspirations and paying intellectual debts to conceptual relatives, we define “historical futures” as the plurality of transitional relations between apprehensions of the past and anticipated futures. At the core of the article, we formulate our call for a collective investigation of modalities of historical futures and sketch three basic sets of concerns that the explorative works in this experiment may address: kinds of transitions from past to futures, kinds of anticipatory practices, and kinds of registers as interpretive tools that position such practices on a variety of spectrums between two poles (for instance, a value register with the poles of catastrophic and redemptive futures). Finally, we close with a brief note about the necessity of collective endeavors.;,citation_author=Zoltán Boldizsár Simon;,citation_author=Marek Tamm;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://onlinelibrary.wiley.com/doi/abs/10.1111/hith.12190;,citation_issue=1;,citation_doi=10.1111/hith.12190;,citation_issn=1468-2303;,citation_volume=60;,citation_journal_title=History and Theory;">
+<meta name="citation_reference" content="citation_title=Population automation: An interview with Wikipedia bot pioneer Ram-Man;,citation_abstract=Software robots (“bots”) play a major role across the Internet today, including on Wikipedia, the world’s largest online encyclopedia. Bots complete over 20 percent of all edits to the project, yet often their work goes unnoticed by other users. Their initial integration onto Wikipedia was not uncontested and highlighted the opposing philosophies of “inclusionists” and “deletionists” who influenced the early years of the project. This paper presents an in-depth interview with Wikipedia user Ram-Man, an early bot operator on the site and creator or the rambot, the first mass-editing bot. Topics discussed include the social and technical climate of early Wikipedia, the creation of bot policies and bureaucracy, and the legacy of rambot and Ram-Man’s work.;,citation_author=Randall M. Livingstone;,citation_publication_date=2016-01;,citation_cover_date=2016-01;,citation_year=2016;,citation_fulltext_html_url=https://firstmonday.org/ojs/index.php/fm/article/view/6027;,citation_doi=10.5210/fm.v21i1.6027;,citation_issn=1396-0466;,citation_journal_title=First Monday;">
+<meta name="citation_reference" content="citation_title=Textual Machinery: Authorial Agency and Bot-Written Texts in Wikipedia;,citation_author=Krista Kennedy;,citation_editor=Michelle Smith;,citation_editor=Barbara Warnick;,citation_publication_date=2010;,citation_cover_date=2010;,citation_year=2010;,citation_fulltext_html_url=https://surface.syr.edu/wp/1;,citation_inbook_title=The Responsibilities of Rhetoric;">
+<meta name="citation_reference" content="citation_title=Scaling Consensus: Increasing Decentralization in Wikipedia Governance;,citation_author=Andrea Forte;,citation_author=Amy Bruckman;,citation_publication_date=2008-01;,citation_cover_date=2008-01;,citation_year=2008;,citation_fulltext_html_url=https://ieeexplore.ieee.org/document/4438860/;,citation_doi=10.1109/HICSS.2008.383;,citation_conference_title=Proceedings of the 41st Annual Hawaii International Conference on System Sciences (HICSS 2008);,citation_conference=IEEE;">
+<meta name="citation_reference" content="citation_title=The use of software tools and autonomous bots against vandalism: Eroding Wikipedia’s moral order?;,citation_author=Paul B. Laat;,citation_publication_date=2015-09;,citation_cover_date=2015-09;,citation_year=2015;,citation_fulltext_html_url=http://link.springer.com/10.1007/s10676-015-9366-9;,citation_issue=3;,citation_doi=10.1007/s10676-015-9366-9;,citation_issn=1388-1957, 1572-8439;,citation_volume=17;,citation_journal_title=Ethics and Information Technology;">
+<meta name="citation_reference" content="citation_title=The culture of connectivity: A critical history of social media;,citation_author=José Van Dijck;,citation_publication_date=2013;,citation_cover_date=2013;,citation_year=2013;,citation_isbn=978-0-19-997077-3 978-0-19-997078-0;">
+<meta name="citation_reference" content="citation_title=Algorithms as culture: Some tactics for the ethnography of algorithmic systems;,citation_author=Nick Seaver;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;,citation_issue=2;,citation_volume=4;,citation_journal_title=Big data &amp;amp;amp; society;">
+<meta name="citation_reference" content="citation_title=Bots and Cyborgs: Wikipedia’s Immune System;,citation_author=Aaron Halfaker;,citation_author=John Riedl;,citation_publication_date=2012-03;,citation_cover_date=2012-03;,citation_year=2012;,citation_fulltext_html_url=http://ieeexplore.ieee.org/document/6163451/;,citation_issue=3;,citation_doi=10.1109/MC.2012.82;,citation_issn=0018-9162;,citation_volume=45;,citation_journal_title=Computer;">
+<meta name="citation_reference" content="citation_title=Wisdom of the crowd or technicity of content? Wikipedia as a sociotechnical system;,citation_abstract=Wikipedia is often considered as an example of ?collaborative knowledge?. Researchers have contested the value of Wikipedia content on various accounts. Some have disputed the ability of anonymous amateurs to produce quality information, while others have contested Wikipedia?s claim to accuracy and neutrality. Even if these concerns about Wikipedia as an encyclopaedic genre are relevant, they misguidedly focus on human agents only. Wikipedia?s advance is not only enabled by its human resources, but is equally defined by the technological tools and managerial dynamics that structure and maintain its content. This article analyses the sociotechnical system ? the intricate collaboration between human users and automated content agents ? that defines Wikipedia as a knowledge instrument.;,citation_author=Sabine Niederer;,citation_author=José Dijck;,citation_publication_date=2010-12;,citation_cover_date=2010-12;,citation_year=2010;,citation_fulltext_html_url=https://doi.org/10.1177/1461444810365297;,citation_issue=8;,citation_doi=10.1177/1461444810365297;,citation_issn=1461-4448;,citation_volume=12;,citation_journal_title=New Media &amp;amp;amp; Society;">
+<meta name="citation_reference" content="citation_title=Beyond opening up the black box: Investigating the role of algorithmic systems in Wikipedian organizational culture;,citation_abstract=Scholars and practitioners across domains are increasingly concerned with algorithmic transparency and opacity, interrogating the values and assumptions embedded in automated, black-boxed systems, particularly in user-generated content platforms. I report from an ethnography of infrastructure in Wikipedia to discuss an often understudied aspect of this topic: the local, contextual, learned expertise involved in participating in a highly automated social–technical environment. Today, the organizational culture of Wikipedia is deeply intertwined with various data-driven algorithmic systems, which Wikipedians rely on to help manage and govern the “‘anyone can edit’” encyclopedia at a massive scale. These bots, scripts, tools, plugins, and dashboards make Wikipedia more efficient for those who know how to work with them, but like all organizational culture, newcomers must learn them if they want to fully participate. I illustrate how cultural and organizational expertise is enacted around algorithmic agents by discussing two autoethnographic vignettes, which relate my personal experience as a veteran in Wikipedia. I present thick descriptions of how governance and gatekeeping practices are articulated through and in alignment with these automated infrastructures. Over the past 15 years, Wikipedian veterans and administrators have made specific decisions to support administrative and editorial workflows with automation in particular ways and not others. I use these cases of Wikipedia’s bot-supported bureaucracy to discuss several issues in the fields of critical algorithms studies; critical data studies; and fairness, accountability, and transparency in machine learning—most principally arguing that scholarship and practice must go beyond trying to “‘open up the black box’” of such systems and also examine sociocultural processes like newcomer socialization.;,citation_author=R. Stuart Geiger;,citation_publication_date=2017-12;,citation_cover_date=2017-12;,citation_year=2017;,citation_fulltext_html_url=http://journals.sagepub.com/doi/10.1177/2053951717730735;,citation_issue=2;,citation_doi=10.1177/2053951717730735;,citation_issn=2053-9517, 2053-9517;,citation_volume=4;,citation_journal_title=Big Data &amp;amp;amp; Society;">
+<meta name="citation_reference" content="citation_title=The lives of bots;,citation_author=R. Stuart Geiger;,citation_editor=Geert Lovink;,citation_editor=Nathaniel Tkacz;,citation_publication_date=2011;,citation_cover_date=2011;,citation_year=2011;,citation_inbook_title=Critical Point of View: A Wikipedia Reader;">
+<meta name="citation_reference" content="citation_title=Operationalizing conflict and cooperation between automated software agents in wikipedia: A replication and expansion of’even good bots fight’;,citation_author=R. Stuart Geiger;,citation_author=Aaron Halfaker;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;,citation_issue=CSCW;,citation_volume=1;,citation_journal_title=Proceedings of the ACM on Human-Computer Interaction;">
+<meta name="citation_reference" content="citation_title=Bot-based collective blocklists in Twitter: The counterpublic moderation of harassment in a networked public space;,citation_author=R. Stuart Geiger;,citation_publication_date=2016;,citation_cover_date=2016;,citation_year=2016;,citation_issue=6;,citation_volume=19;,citation_journal_title=Information, Communication &amp;amp;amp; Society;">
+<meta name="citation_reference" content="citation_title=The social roles of bots and assisted editing programs;,citation_author=R. Stuart Geiger;,citation_publication_date=2009;,citation_cover_date=2009;,citation_year=2009;,citation_conference_title=Proceedings of the 5th International Symposium on Wikis and Open Collaboration;">
+<meta name="citation_reference" content="citation_title=Are computers merely&amp;amp;amp;quot; supporting&amp;quot; cooperative work: Towards an ethnography of bot development;,citation_author=R. Stuart Geiger;,citation_publication_date=2013;,citation_cover_date=2013;,citation_year=2013;,citation_conference_title=Proceedings of the 2013 conference on Computer supported cooperative work companion;">
+<meta name="citation_reference" content="citation_title=Bots, bespoke, code and the materiality of software platforms;,citation_author=R. Stuart Geiger;,citation_publication_date=2014;,citation_cover_date=2014;,citation_year=2014;,citation_issue=3;,citation_volume=17;,citation_journal_title=Information, Communication &amp;amp;amp; Society;">
+<meta name="citation_reference" content="citation_title=The work of sustaining order in Wikipedia: The banning of a vandal;,citation_author=R. Stuart Geiger;,citation_author=David Ribes;,citation_publication_date=2010;,citation_cover_date=2010;,citation_year=2010;,citation_conference_title=Proceedings of the 2010 ACM conference on Computer supported cooperative work;">
+<meta name="citation_reference" content="citation_title=When the levee breaks: Without bots, what happens to Wikipedia’s quality control processes?;,citation_author=R. Stuart Geiger;,citation_author=Aaron Halfaker;,citation_publication_date=2013;,citation_cover_date=2013;,citation_year=2013;,citation_conference_title=Proceedings of the 9th International Symposium on Open Collaboration;">
+<meta name="citation_reference" content="citation_title=Is Time out of Joint?: On the Rise and Fall of the Modern Time Regime;,citation_abstract=Is, as Hamlet once complained, time out joint? Have the ways we understand the past and the future—and their relationship to the present—been reordered? The past, it seems, has returned with a vengeance: as aggressive nostalgia, as traumatic memory, or as atavistic origin narratives rooted in nation, race, or tribe. The future, meanwhile, has lost its utopian glamor, with the belief in progress and hope for a better future eroded by fears of ecological collapse. In this provocative book, Aleida Assmann argues that the apparently solid moorings of our temporal orientation have collapsed within the span of a generation. To understand this profound cultural crisis, she reconstructs the rise and fall of what she calls &amp;amp;amp;quot;time regime of modernity&amp;quot; that underpins notions of modernization and progress, a shared understanding that is now under threat. Is Time Out of Joint? assesses the deep change in the temporality of modern Western culture as it relates to our historical experience, historical theory, and our life-world of shared experience, explaining what we have both gained and lost during this profound transformation.;,citation_author=Aleida Assmann;,citation_publication_date=2020;,citation_cover_date=2020;,citation_year=2020;,citation_fulltext_html_url=http://ebookcentral.proquest.com/lib/uts/detail.action?docID=5964894;,citation_isbn=978-1-5017-4245-3;">
+<meta name="citation_reference" content="citation_title=Our broad present: Time and contemporary culture;,citation_author=Hans Ulrich Gumbrecht;,citation_publication_date=2014;,citation_cover_date=2014;,citation_year=2014;,citation_isbn=978-0-231-16360-6 978-0-231-16361-3;,citation_series_title=Insurrections: Critical studies in religion, politics, and culture;">
+<meta name="citation_reference" content="citation_title=Here we stand: Temporal thinking in urgent times;,citation_author=Tamson Pietsch;,citation_author=Frances Flanagan;,citation_publication_date=2020-04;,citation_cover_date=2020-04;,citation_year=2020;,citation_fulltext_html_url=https://www.tandfonline.com/doi/full/10.1080/14490854.2020.1758577;,citation_issue=2;,citation_doi=10.1080/14490854.2020.1758577;,citation_issn=1449-0854, 1833-4881;,citation_volume=17;,citation_journal_title=History Australia;">
+<meta name="citation_reference" content="citation_title=Philosophy of Socio-Technical Systems;,citation_author=Günter Ropohl;,citation_publication_date=1999-10;,citation_cover_date=1999-10;,citation_year=1999;,citation_fulltext_html_url=https://www.pdcnet.org/pdc/bvdb.nsf/purchase?openform&amp;amp;amp;fp=sptq&amp;id=sptq_1999_0004_0003_0186_0194;,citation_issue=3;,citation_doi=10.5840/techne19994311;,citation_volume=4;,citation_journal_title=Society for Philosophy and Technology Quarterly Electronic Journal;">
+<meta name="citation_reference" content="citation_title=The Platform Society;,citation_abstract=Individuals all over the world can use Airbnb to rent an apartment in a foreign city, check Coursera to find a course on statistics, join PatientsLikeMe to exchange information about one’s disease, hail a cab using Uber, or read the news through Facebook’s Instant Articles. In The Platform Society , Van Dijck, Poell, and De Waal offer a comprehensive analysis of a connective world where platforms have penetrated the heart of societies—disrupting markets and labor relations, transforming social and civic practices, and affecting democratic processes. The Platform Society analyzes intense struggles between competing ideological systems and contesting societal actors—market, government, and civil society—asking who is or should be responsible for anchoring public values and the common good in a platform society. Public values include, of course, privacy, accuracy, safety, and security; but they also pertain to broader societal effects, such as fairness, accessibility, democratic control, and accountability. Such values are the very stakes in the struggle over the platformization of societies around the globe. The Platform Society highlights how these struggles play out in four private and public sectors: news, urban transport, health, and education. Some of these conflicts highlight local dimensions, for instance, fights over regulation between individual platforms and city councils, while others address the geopolitical level where power clashes between global markets and (supra-)national governments take place.;,citation_author=José Van Dijck;,citation_author=Thomas Poell;,citation_author=Martijn De Waal;,citation_publication_date=2018-10;,citation_cover_date=2018-10;,citation_year=2018;,citation_fulltext_html_url=https://academic.oup.com/book/12378;,citation_doi=10.1093/oso/9780190889760.001.0001;,citation_isbn=978-0-19-088976-0;">
+<meta name="citation_reference" content="citation_title=What is a flag for? Social media reporting tools and the vocabulary of complaint;,citation_abstract=The flag is now a common mechanism for reporting offensive content to an online platform, and is used widely across most popular social media sites. It serves both as a solution to the problem of curating massive collections of user-generated content and as a rhetorical justification for platform owners when they decide to remove content. Flags are becoming a ubiquitous mechanism of governance—yet their meaning is anything but straightforward. In practice, the interactions between users, flags, algorithms, content moderators, and platforms are complex and highly strategic. Significantly, flags are asked to bear a great deal of weight, arbitrating both the relationship between users and platforms, and the negotiation around contentious public issues. In this essay, we unpack the working of the flag, consider alternatives that give greater emphasis to public deliberation, and consider the implications for online public discourse of this now commonplace yet rarely studied sociotechnical mechanism.;,citation_author=Kate Crawford;,citation_author=Tarleton Gillespie;,citation_publication_date=2016-03;,citation_cover_date=2016-03;,citation_year=2016;,citation_fulltext_html_url=https://doi.org/10.1177/1461444814543163;,citation_issue=3;,citation_doi=10.1177/1461444814543163;,citation_issn=1461-4448;,citation_volume=18;,citation_journal_title=New Media &amp;amp;amp; Society;">
+<meta name="citation_reference" content="citation_title=Protagoras and Meno;,citation_author=undefined Plato;,citation_publication_date=1956;,citation_cover_date=1956;,citation_year=1956;">
+<meta name="citation_reference" content="citation_title=Epistemic Values and Information Management;,citation_abstract=The philosophy of information is concerned with the nature, management, and use of information. Thus, it should be able to help us make better decisions about how to manage information (e.g., decisions about intellectual property laws, collection development policies, and Internet evaluation techniques). These decisions have knowledge acquisition as one of their principal goals. Thus, one way to improve these decisions is to clarify our epistemic values. In this article, we combine epistemology and decision analysis in an attempt to assist people in this important task.;,citation_author=Don Fallis;,citation_author=Dennis Whitcomb;,citation_publication_date=2009-05;,citation_cover_date=2009-05;,citation_year=2009;,citation_fulltext_html_url=https://doi.org/10.1080/01972240902848831;,citation_issue=3;,citation_doi=10.1080/01972240902848831;,citation_issn=0197-2243;,citation_volume=25;,citation_journal_title=The Information Society;">
+<meta name="citation_reference" content="citation_title=Wikipedia:Bot requests/Archive 80;,citation_publication_date=2022-06;,citation_cover_date=2022-06;,citation_year=2022;,citation_fulltext_html_url=https://en.wikipedia.org/w/index.php?title=Wikipedia:Bot_requests/Archive_80&amp;amp;amp;oldid=1093894076#Revival_of_User:TedderBot/CurrentPruneBot;,citation_journal_title=Wikipedia;">
+<meta name="citation_reference" content="citation_title=User:TedderBot/CurrentPruneBot;,citation_publication_date=2010-05;,citation_cover_date=2010-05;,citation_year=2010;,citation_fulltext_html_url=https://en.wikipedia.org/w/index.php?title=User:TedderBot/CurrentPruneBot&amp;amp;amp;oldid=364444513;,citation_journal_title=Wikipedia;">
+<meta name="citation_reference" content="citation_title=Template talk:Current/Archive 4;,citation_publication_date=2025-06;,citation_cover_date=2025-06;,citation_year=2025;,citation_fulltext_html_url=https://en.wikipedia.org/w/index.php?title=Template_talk:Current/Archive_4&amp;amp;amp;oldid=1294927981#Bot;,citation_journal_title=Wikipedia;">
+<meta name="citation_reference" content="citation_title=Template talk:Current/Archive 1;,citation_publication_date=2025-06;,citation_cover_date=2025-06;,citation_year=2025;,citation_fulltext_html_url=https://en.wikipedia.org/w/index.php?title=Template_talk:Current/Archive_1&amp;amp;amp;oldid=1294960489#The_latest_iteration_of_the_debate_over_how_long_this_template_should_stay_on_ongoing_current_events_(this_time_re:_COVID-19);,citation_journal_title=Wikipedia;">
+<meta name="citation_reference" content="citation_title=Template talk:Current/Archive 2;,citation_publication_date=2025-06;,citation_cover_date=2025-06;,citation_year=2025;,citation_fulltext_html_url=https://en.wikipedia.org/w/index.php?title=Template_talk:Current/Archive_2&amp;amp;amp;oldid=1294927909;,citation_journal_title=Wikipedia;">
+<meta name="citation_reference" content="citation_title=Template talk:Current/Archive 3;,citation_publication_date=2025-07;,citation_cover_date=2025-07;,citation_year=2025;,citation_fulltext_html_url=https://en.wikipedia.org/w/index.php?title=Template_talk:Current/Archive_3&amp;amp;amp;oldid=1303167741;,citation_journal_title=Wikipedia;">
+<meta name="citation_reference" content="citation_title=Template talk:Current;,citation_publication_date=2025-09;,citation_cover_date=2025-09;,citation_year=2025;,citation_fulltext_html_url=https://en.wikipedia.org/w/index.php?title=Template_talk:Current&amp;amp;amp;oldid=1313371027;,citation_journal_title=Wikipedia;">
+<meta name="citation_reference" content="citation_title=Template:Current;,citation_publication_date=2025-09;,citation_cover_date=2025-09;,citation_year=2025;,citation_fulltext_html_url=https://en.wikipedia.org/w/index.php?title=Template:Current&amp;amp;amp;oldid=1313299484#Guidelines;,citation_journal_title=Wikipedia;">
+<meta name="citation_reference" content="citation_title=Wikipedia:Bots/Requests for approval/TedderBot 5;,citation_publication_date=2022-05;,citation_cover_date=2022-05;,citation_year=2022;,citation_fulltext_html_url=https://en.wikipedia.org/w/index.php?title=Wikipedia:Bots/Requests_for_approval/TedderBot_5&amp;amp;amp;oldid=1087612555;,citation_journal_title=Wikipedia;">
+<meta name="citation_reference" content="citation_title=Editing Template:Current/doc - Wikipedia;,citation_fulltext_html_url=https://en.wikipedia.org/w/index.php?title=Template:Current/doc&amp;amp;amp;oldid=151939345;">
+<meta name="citation_reference" content="citation_title=The general inquirer: A computer approach to content analysis;,citation_author=Philip J. Stone;,citation_author=John Kirsch;,citation_publication_date=1966;,citation_cover_date=1966;,citation_year=1966;">
+<meta name="citation_reference" content="citation_title=User:Yapperbot/kill/Uncurrenter: Revision history - Wikipedia;,citation_fulltext_html_url=https://en.wikipedia.org/w/index.php?title=User:Yapperbot/kill/Uncurrenter&amp;amp;amp;action=history;">
+<meta name="citation_reference" content="citation_title=User:Yapperbot/kill/Uncurrenter;,citation_author=Deryck Chan;,citation_publication_date=2020-06;,citation_cover_date=2020-06;,citation_year=2020;,citation_fulltext_html_url=https://en.wikipedia.org/w/index.php?title=User:Yapperbot/kill/Uncurrenter&amp;amp;amp;oldid=963125579;,citation_journal_title=Wikipedia;">
+<meta name="citation_reference" content="citation_title=User:Yapperbot/kill/Uncurrenter;,citation_author=SuperTyphoonNoru;,citation_publication_date=2023-04;,citation_cover_date=2023-04;,citation_year=2023;,citation_fulltext_html_url=https://en.wikipedia.org/w/index.php?title=User:Yapperbot/kill/Uncurrenter&amp;amp;amp;oldid=1151461527;,citation_journal_title=Wikipedia;">
+<meta name="citation_reference" content="citation_title=Modèle:événement en cours;,citation_publication_date=2023-03;,citation_cover_date=2023-03;,citation_year=2023;,citation_fulltext_html_url=https://fr.wikipedia.org/w/index.php?title=Mod%C3%A8le:%C3%89v%C3%A9nement_en_cours&amp;amp;amp;oldid=202738730;,citation_journal_title=Wikipédia;">
+</head>
+
+  <body class="quarto-notebook quarto-light">
+    <div id="quarto-embed-header" class="headroom fixed-top bg-primary">
+      
+      <a onclick="window.quartoBackToArticle(); return false;" class="btn btn-primary quarto-back-link" href=""><i class="bi bi-caret-left"></i> Back to Article</a>
+      <h6><i class="bi bi-journal-code"></i> Article Notebook</h6>
+
+            <a href="./index.qmd" class="btn btn-primary quarto-download-embed" download="index.qmd">Download Source</a>
+          </div>
+
+     <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">The bots that make history</h1>
+          </div>
+
+    
+    <div class="quarto-title-meta-container">
+      <div class="quarto-title-meta-column-start">
+            <div class="quarto-title-meta-author">
+          <div class="quarto-title-meta-heading">Author</div>
+          <div class="quarto-title-meta-heading">Affiliation</div>
+          
+                <div class="quarto-title-meta-contents">
+            <p class="author"><a href="https://michaelfalk.io">Michael Falk</a> <a href="mailto:michael.falk@unimelb.edu.au" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0001-9261-8390" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        University of Melbourne
+                      </p>
+                  </div>
+                    </div>
+        
+        <div class="quarto-title-meta">
+
+                      
+          
+                
+              </div>
+      </div>
+      <div class="quarto-title-meta-column-end quarto-other-formats-target">
+      </div>
+    </div>
+
+
+    <div>
+      <div class="keywords">
+        <div class="block-title">Keywords</div>
+        <p>Wikipedia; bots; epistemic virtue; temporality</p>
+      </div>
+    </div>
+
+    <div class="quarto-other-links-text-target">
+    </div>  </div>
+</header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-death" id="toc-sec-death" class="nav-link active" data-scroll-target="#sec-death">Births and Deaths of Two Virtuous Bots</a></li>
+  <li><a href="#sec-comparison" id="toc-sec-comparison" class="nav-link" data-scroll-target="#sec-comparison">Robotic and Human Virtues</a></li>
+  <li><a href="#sec-temporality" id="toc-sec-temporality" class="nav-link" data-scroll-target="#sec-temporality">The Eye of Eternity</a></li>
+  <li><a href="#ideas" id="toc-ideas" class="nav-link" data-scroll-target="#ideas">Ideas…</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">      
+
+       <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>DATA_DIR <span class="ot">&lt;-</span> <span class="st">"data"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span>  dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="fu">file.path</span>(DATA_DIR, <span class="st">"bots.csv"</span>)),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="fu">file.path</span>(DATA_DIR, <span class="st">"yellowdesk.csv"</span>))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 5036 Columns: 12
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (3): user, title, comment
+dbl  (5): userid, pageid, revid, parentid, ns
+lgl  (2): texthidden, suppressed
+dttm (1): timestamp
+date (1): date
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+Rows: 2111 Columns: 11
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (3): user, title, comment
+dbl  (5): userid, pageid, revid, parentid, ns
+lgl  (1): texthidden
+dttm (1): timestamp
+date (1): date
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>bot_meta <span class="ot">&lt;-</span> <span class="fu">file.path</span>(DATA_DIR, <span class="st">"bots.csv"</span>) <span class="sc">|&gt;</span> <span class="fu">file.info</span>()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>human_meta <span class="ot">&lt;-</span> <span class="fu">file.path</span>(DATA_DIR, <span class="st">"yellowdesk.csv"</span>) <span class="sc">|&gt;</span> <span class="fu">file.info</span>()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>pretty_date <span class="ot">&lt;-</span> <span class="cf">function</span>(date) {<span class="fu">strftime</span>(date, <span class="at">format=</span><span class="st">"%e %B %Y"</span>)}</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_minimal</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<blockquote class="blockquote">
+<p>“bots are better behaved than people”<br>
+—Rich Farmborough, Wikipedian, quoted in <span class="citation" data-cites="geiger_lives_2011">Geiger (<a href="#ref-geiger_lives_2011" role="doc-biblioref">2011, 92</a>)</span></p>
+</blockquote>
+<p>How can you converse with a bot? Can bots be virtuous? These two questions are interrelated, and increasingly relevant, as the Internet is dominated by generated content. The virtues are essential to conversation. If the members of a conversation do not possess the correct virtues, such as truthfulness, open-mindedness, or benevolence, then conversation degrades into argument, which degrades into contest, which degrades into ideological warfare. If we <em>must</em> converse with bots, then bots <em>must</em> be virtuous. Which virtues can and should they have?</p>
+<p>These questions have been thoroughly investigated by the editors of Wikipedia, who have spent more than 20 years governing human-bot relations. Wikipedia’s governance of bots has been extensively studied by scholars, who have reached consensus that Wikipedia’s bots are autonomous agents in a human-machine “assemblage” or “socio-technical system” <span class="citation" data-cites="geiger_trace_2011 geiger_beyond_2017 geiger_lives_2011 geiger_operationalizing_2017 geiger_bot-based_2016 geiger_social_2009 geiger_are_2013 geiger_bots_2014 geiger_work_2010 geiger_when_2013 halfaker_bots_2012 niederer_wisdom_2010 van_dijck_culture_2013 tkacz_wikipedia_2015 de_laat_use_2015">(<a href="#ref-geiger_trace_2011" role="doc-biblioref">Geiger and Ribes 2011</a>, <a href="#ref-geiger_work_2010" role="doc-biblioref">2010</a>; <a href="#ref-geiger_beyond_2017" role="doc-biblioref">Geiger 2017</a>, <a href="#ref-geiger_lives_2011" role="doc-biblioref">2011</a>, <a href="#ref-geiger_bot-based_2016" role="doc-biblioref">2016</a>, <a href="#ref-geiger_social_2009" role="doc-biblioref">2009</a>, <a href="#ref-geiger_are_2013" role="doc-biblioref">2013</a>, <a href="#ref-geiger_bots_2014" role="doc-biblioref">2014</a>; <a href="#ref-geiger_operationalizing_2017" role="doc-biblioref">Geiger and Halfaker 2017</a>, <a href="#ref-geiger_when_2013" role="doc-biblioref">2013</a>; <a href="#ref-halfaker_bots_2012" role="doc-biblioref">Halfaker and Riedl 2012</a>; <a href="#ref-niederer_wisdom_2010" role="doc-biblioref">Niederer and Dijck 2010</a>; <a href="#ref-van_dijck_culture_2013" role="doc-biblioref">Van Dijck 2013, 137–40</a>; <a href="#ref-tkacz_wikipedia_2015" role="doc-biblioref">Tkacz 2015, 111–19</a>; <a href="#ref-de_laat_use_2015" role="doc-biblioref">Laat 2015</a>)</span>. While scholars agree that Wikipedia’s bots are independent agents, however, they disagree over the particular virtues of these agents. It may be widely agreed that “ideals and values” can be “encoded” in bots’ software <span class="citation" data-cites="geiger_beyond_2017">(<a href="#ref-geiger_beyond_2017" role="doc-biblioref">Geiger 2017, 9</a>)</span>, but what does encoding <em>do</em> to those ideals and values? How do Wikipedia’s bots enact the virtues of the platform?</p>
+<p>On these questions, the scholars are sharply divided. <span class="citation" data-cites="de_laat_use_2015">Laat (<a href="#ref-de_laat_use_2015" role="doc-biblioref">2015, 184</a>)</span> argues that bots lack the required “moral skills” to edit Wikipedia, and fears that bots are driving editors from the platform. By contrast, <span class="citation" data-cites="geiger_beyond_2017">Geiger (<a href="#ref-geiger_beyond_2017" role="doc-biblioref">2017</a>)</span> argues that bots should be seen as “clerks” whose “wisdom” is morally valuable. Despite this disagreement, Geiger and de Laat effectively agree on the main virtues and vices of robot agency. The main virtues of bots are uniformity, universality and efficiency. Bots do the same thing, everywhere, every time, with little effort. The main vice of bots is “rashness” <span class="citation" data-cites="geiger_lives_2011">(<a href="#ref-geiger_lives_2011" role="doc-biblioref">Geiger 2011, 91</a>)</span> or “overzeal” <span class="citation" data-cites="de_laat_use_2015">(<a href="#ref-de_laat_use_2015" role="doc-biblioref">Laat 2015, 183</a>)</span>. Bots cannot contain themselves.</p>
+<p>In this paper, I try to broaden the discussion about the virtues and vices and bots, by examining the history of two particular bots, TedderBot/CurrentPruneBot and Yapperbot/uncurrenter, which have managed the use of <a href="https://en.wikipedia.org/wiki/Template:Current">Template:Current</a> since 2010.[^mutliple_tasks] Template:Current is a prominent and controversial template, which labels articles that cover current events. At the time of writing, it exists in 119 language editions of Wikipedia (see <a href="#fig-template-collage" class="quarto-xref">Figure&nbsp;1</a>). According to an influential group of English Wikipedians, this template is grossly overused by human editors. To prevent this overuse, first TedderBot and then Yapperbot came into being. These bots certainly possess the familiar virutes of uniformity, universality and efficiency, but as I hope to show, they possess another virtue of very ancient pedigree, which is even more important in this case. TedderBot and Yapperbot are <em>eternal</em>. They exist outside time, and are not prone to the vice of temporality that afflicts human editors. It is this eternity that allows them to judge the proper use of Template:Current better than a human. To demonstrate this point, I compare the two bots to a human user, Yellowdesk, who policed the use of Template:Current before the bots came into existence. Yellowdesk wrote the guidelines that TedderBot and Yapperbot still enforce; but even Yellowdesk could not adhere to these guidelines as purely as the bots that succeeded in the role of temporal policeman.</p>
+<div id="fig-template-collage" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-template-collage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/banner_collage.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Template:Current in Italian, Hindi, English, French, Korean and German (as of 14 March 2023)."><img src="images/banner_collage.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-template-collage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Template:Current in Italian, Hindi, English, French, Korean and German (as of 14 March 2023).
+</figcaption>
+</figure>
+</div>
+<p>In what follows, I first describe the births and death of TedderBot and Yapperbot (<a href="#sec-death" class="quarto-xref">Section&nbsp;1</a>), to demonstrate how they enact the virtue of eternity on Wikipedia. In the <a href="#sec-comparison" class="quarto-xref">Section&nbsp;2</a>, I compare the editing records of Yellowdesk and the two bots to highlight the key differences between bot and human virtue on the platform. Finally in <a href="#sec-temporality" class="quarto-xref">Section&nbsp;3</a>, I reflect on the broader implications of this study for epistemology in the digital age. Are English Wikipedians right, that eternity is an essential epistemic virtue in a modern information-management system? Are they right that only bots can truly embody this virtue? What are the implications for historical knowledge in the age of GenAI?</p>
+<section id="sec-death" class="level2">
+<h2 class="anchored" data-anchor-id="sec-death">Births and Deaths of Two Virtuous Bots</h2>
+<p>The story of TedderBot and Yapperbot begins in Madrid in 2004. On 11 March 2004, dissidents bombed four trains on Madrid’s commuter network. 193 people died. Thousands more were injured. In the wake of the bombing, Wikipedians flocked to the encyclopaedia to document the event. The article on the Madrid bombings quickly became a chaotic place to work, as editors constantly reverted, duplicated and muddled one another’s edits. To control the chaos, a new template was created, <a href="https://en.wikipedia.org/wiki/Template:Current">Template:Current</a>. The Template was intended as a warning to readers and editors that an article was in flux due to intense editing—indeed, for a time there was a competing template, Template:Flux.</p>
+<p>This story is ably told by the user Yellowdesk in a post from 29 January 2014.<span class="citation" data-cites="noauthor_template_2025-1">(<a href="#ref-noauthor_template_2025-1" role="doc-biblioref"><span>“Template Talk:<span>Current</span>/<span>Archive</span> 1”</span> 2025</a>)</span> In Yellowdesk’s view, Template:Current quickly lost its original purpose. Editors took it upon themselves to mark articles as “current” even if they weren’t being intensely edited. Quiet articles describing old events would still retain the “current” banner. In 2007, Yellowdesk found that 1300 articles contained Template:Current. Many had “zero activity”—that is, no recent edits. For Yellowdesk, the situation was unacceptable, and they proposed “a plan of management.”</p>
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>yellowdesk_2007 <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(date <span class="sc">&gt;</span> <span class="st">"2007-01-01"</span>, date <span class="sc">&lt;</span> <span class="st">"2007-12-31"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">month =</span> lubridate<span class="sc">::</span><span class="fu">month</span>(date)) <span class="sc">|&gt;</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(month) <span class="sc">|&gt;</span> </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">count</span>()</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>yd_2007_jul <span class="ot">&lt;-</span> yellowdesk_2007 <span class="sc">|&gt;</span> </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(month <span class="sc">==</span> <span class="dv">7</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">pull</span>(n)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>yd_2007_aug <span class="ot">&lt;-</span> yellowdesk_2007 <span class="sc">|&gt;</span> </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(month <span class="sc">==</span> <span class="dv">8</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">pull</span>(n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<p>First Yellowdesk cleaned the mess, removing Template:Current from 685 articles in July, and from 425 in August. On the 13th of August, Yellowdesk proposed a new set of guidelines for the template. On the 18th of August, Yellowdesk added these guidelines to the template’s page. Nearly two decades later, the guidelines for Template:Current have barely changed from Yellowdesk’s original draft:</p>
+<blockquote class="blockquote">
+<ul>
+<li>This template was created for those occasions that many editors (perhaps a hundred or more) edit an article on the same day, as an advisory to editors.</li>
+<li>It is not intended to be used to mark an article that merely has recent news articles about the topic; if it were, hundreds of thousands of articles would have this template.</li>
+<li>It is expected, when used properly, that this template and its closely related templates will appear on an article for perhaps a day or two, occasionally several days.</li>
+<li>If you desire that an article be noticed as a topic about or related to a significant current event, see <a href="https://en.wikipedia.org/wiki/Wikipedia:How_the_Current_events_page_works">Wikipedia:How the Current events page works</a> <span class="citation" data-cites="noauthor_editing_nodate">(<a href="#ref-noauthor_editing_nodate" role="doc-biblioref"><span>“Editing <span>Template</span>:<span>Current</span>/Doc - <span>Wikipedia</span>”</span> n.d.</a>)</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+</ul>
+</blockquote>
+<p>Yellowdesk’s guidelines crystallise a radical ideal, which was later encoded in TedderBot and Yapperbot. According to Yellowdesk, Template:Current has nothing to do with the currency of an event. It is purely an “advisory to editors” when an article is being intensely edited. Editors may be tempted to mark article as current when the article’s subject-matter is in the present, but this would clutter the encyclopaedia; for Yelowdesk, it is obvious that having the template on “hundreds of thousands of articles” at a time would be unsightly. To mollify editors who wish to mark the currency of an article, Yellowdesk points to other systems in the encyclopaedia. Yellowdesks’s original guidelines mention the <a href="fixlink">Current events page</a>; recent revisions also mention the <a href="fixlink">In the news page</a>. <strong>REF</strong> <strong>CHECK</strong></p>
+<p>Yellowdesk wrote these guidelines three years before TedderBot came online, but already they had set the stage for automatic policing of the template. The guideline lays out a numerical criterion, which could be encoded in software: the template is warranted when “perhaps a hundred or more” editors are editing a page simultaneously. As it turns out, this is not the criterion written into the source code of either TedderBot or Yapperbot. When the bots’ developers implemented Yellowdesk’s guidelines, they changed them.</p>
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>spans <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(user) <span class="sc">|&gt;</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">start =</span> <span class="fu">min</span>(date), <span class="at">end =</span> <span class="fu">max</span>(date)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">lapse =</span> end <span class="sc">-</span> start)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<p>Instead of counting the number of active editors, TedderBot and Yapperbot count the number of hours since the last edit. TedderBot received approval on the 27th of May, 2010, for the new task of “pruning” Template:Current from “stale” pages.<span class="citation" data-cites="noauthor_wikipediabotsrequests_2022">(<a href="#ref-noauthor_wikipediabotsrequests_2022" role="doc-biblioref"><span>“Wikipedia:<span>Bots</span>/<span>Requests</span> for Approval/<span>TedderBot</span> 5”</span> 2022</a>)</span> It would regularly scan the encyclopaedia, and delete the template if there had been no edit in two hours. The two-hour span was proposed by none other than Yellowdesk. TedderBot operated for 1076 days, before it abruptly ceased operation on 30 April 2013. Some years later, user Sdkb requested that TedderBot be revived. Since its developer, tedder, was no longer active, another user, Naypta, developed a new bot.<span class="citation" data-cites="noauthor_wikipediabot_2022">(<a href="#ref-noauthor_wikipediabot_2022" role="doc-biblioref"><span>“Wikipedia:<span>Bot</span> Requests/<span>Archive</span> 80”</span> 2022</a>)</span> Yapperbot uses a slightly relaxed criterion, deleting Template:Current from articles that have not been edited in 5 hours. It has operated (almost) continually from 25 May 2020 until data was collected for this article on 6 October 2025.</p>
+<p>As if to emphasise the autonomy of bots and their ideals, none of Yellowdesk, tedder or Naypta is active on Wikipedia today. Due to tedder’s departure, TedderBot’s death in 2013 was irremediable. Yapperbot’s continued operation is precarious, because the bot is hosted on Toolforge, a server managed by Wikipedia, and Naypta has the login details. Yapperbot has outlived the humans that brought it into being, and continues to enjoy support from human editors. Every day, it refutes de Laat’s claim that Wikipedia “unequivocally” holds “creators” accountable for the behaviour of their bots <span class="citation" data-cites="de_laat_use_2015">(<a href="#ref-de_laat_use_2015" role="doc-biblioref">2015, 180</a>)</span>. Yapperbot’s creators are long gone—is it accountable no more?</p>
+<p>Of course not. Wikipedia’s editors collaborate or argue with Yapperbot in all sorts of ways. They discuss Yapperbot on its Talk page. They disagree with its removal of Template:Current, and re-insert it onto articles. They take responsibility for Yapperbot, and try to resolve the technical issues with its maintenance. They discuss the guidelines Yapperbot enforces, and debate Yapperbot’s relationship to those guidelines. In the event of a severe disagreement, they hit Yapperbot’s “kill” switch, and disable it. Yapperbot is also supported by humans and other agents far beyond Wikipedia. It is hosted on Toolforge, itself a complex system. It is written in the programming language Go, initially developed at Google, and now maintained by the Go Foundation. If Yapperbot is able to operate independently of its creator, it is partly because it is so radically dependent on so many other agents.</p>
+<p>Nonetheless, from the point of view of Wikipedia, it is Yapperbot’s relationship to human editors that is salient. To understand this relationship, I compare Yapperbot’s edit history to Tedderbot’s and Yellowdesk’s. What makes the bots different?</p>
+</section>
+<section id="sec-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="sec-comparison">Robotic and Human Virtues</h2>
+<p>The most common virtue ascribed to bots is efficiency. <span class="citation" data-cites="geiger_beyond_2017">Geiger (<a href="#ref-geiger_beyond_2017" role="doc-biblioref">2017</a>)</span> likens Wikipedia’s bots to “clerks,” who can rapidly and tirelessly perform tasks that bore human editors. The “clerk” is an old metaphor in the history of computing. In 1966, the creators of the General Inquirer likened their program “to an energetic, compulsive, but stupid clerk,” who has “no ideas of his own” <span class="citation" data-cites="stone_general_1966">(<a href="#ref-stone_general_1966" role="doc-biblioref">Stone and Kirsch 1966, 68</a>)</span>. In this context, “stupidity” is a virtue, because it allows the program to be energetic and exhaustless. It is the very intelligence of human beings, their restless imagination, that unfits them for “clerkly” duties.</p>
+<p>The virtue of clerkly efficiency is not salient in the case of Tedderbot and Yapperbot. As <a href="#fig-timeline" class="quarto-xref">Figure&nbsp;2</a> shows, the task of removing Template:Current was perfectly feasible for a human editor to perform using the tools available in Wikipedia’s first decade. In a single 28-day period, Yellowdesk was able to remove more than 1000 instances of the template, and apparently continued to police the Template effectively for the following three years. Although it was surely some relief for Yellowdesk to hand the task over to a bot, this is not a case where automation was necessary to compensate for the inefficiency of human clerks. What virtues did the bot offer instead?</p>
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-fig-timeline" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You specify binwidth in days in ggplot2</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>bin_days <span class="ot">&lt;-</span> <span class="dv">28</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># There are some huge outliers</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>y_limit <span class="ot">&lt;-</span> <span class="dv">110</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename_with</span>(stringr<span class="sc">::</span>str_to_title) <span class="sc">|&gt;</span> </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">User =</span> forcats<span class="sc">::</span><span class="fu">fct_relevel</span>(User, <span class="fu">c</span>(<span class="st">"Yellowdesk"</span>, <span class="st">"TedderBot"</span>, <span class="st">"Yapperbot"</span>))</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> Date, <span class="at">fill =</span> User)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> bin_days, <span class="at">stat =</span> <span class="st">"bin"</span>) <span class="sc">+</span> </span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, y_limit), <span class="at">oob =</span> scales<span class="sc">::</span>oob_keep) <span class="sc">+</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Removals (28-day increments)"</span>) <span class="sc">+</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">facet_grid</span>(<span class="at">rows =</span> dplyr<span class="sc">::</span><span class="fu">vars</span>(User)) <span class="sc">+</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  ggrepel<span class="sc">::</span><span class="fu">geom_label_repel</span>(</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> ggplot2<span class="sc">::</span><span class="fu">aes</span>(</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> Date,</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">label =</span> dplyr<span class="sc">::</span><span class="fu">if_else</span>(</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">after_stat</span>(count) <span class="sc">&gt;=</span> y_limit, <span class="co"># condition</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        ggplot2<span class="sc">::</span><span class="fu">after_stat</span>(count), <span class="co"># consequent</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>        <span class="cn">NA</span> <span class="co"># alternative</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">"bin"</span>,</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">binwidth =</span> bin_days,</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> y_limit,</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">direction =</span> <span class="st">"x"</span>, <span class="co"># only 'repel' labels horizontally</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">min.segment.length =</span> <span class="dv">0</span>,</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">seed =</span> <span class="dv">102</span> <span class="co"># Chosen to make the labels move to the right</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 742 rows containing missing values or values outside the scale range
+(`geom_label_repel()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="fig-timeline" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-timeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="">
+<a href="index_files/figure-html/fig-timeline-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Timeline of Template:Current removels by TedderBot, Yapperbot and Yellowdesk. Two large outliers are labelled."><img src="index_files/figure-html/fig-timeline-1.png" class="img-fluid figure-img" width="672"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-timeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Timeline of Template:Current removels by TedderBot, Yapperbot and Yellowdesk. Two large outliers are labelled.
+</figcaption>
+</figure>
+</div>
+</div>
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>bot_comment_tbl <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(user <span class="sc">==</span> <span class="st">"TedderBot"</span> <span class="sc">|</span> user <span class="sc">==</span> <span class="st">"Yapperbot"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(user, comment) <span class="sc">|&gt;</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">count</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(user, n)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>yd_comment_tbl <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(user <span class="sc">==</span> <span class="st">"Yellowdesk"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(user, comment) <span class="sc">|&gt;</span> </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">count</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(user, <span class="fu">desc</span>(n))</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>bot_comment_tbl <span class="sc">|&gt;</span> </span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename_with</span>(stringr<span class="sc">::</span>str_to_title) <span class="sc">|&gt;</span> </span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="tbl-bot-comments" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-bot-comments-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Unique comments left by TedderBot and Yapperbot when removing Template:Current
+</figcaption>
+<div aria-describedby="tbl-bot-comments-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 94%">
+<col style="width: 2%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">User</th>
+<th style="text-align: left;">Comment</th>
+<th style="text-align: right;">N</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">TedderBot</td>
+<td style="text-align: left;">[[User:TedderBot/CurrentPruneBot|remove stale current-event template]], please see [[WP:CAFET]]. (bot edit)</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TedderBot</td>
+<td style="text-align: left;">[[User:TedderBot/CurrentPruneBot|remove stale current-event template]], please see [[WP:CET]]. (bot edit)</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Yapperbot</td>
+<td style="text-align: left;">Removing the {{current}} template as the article hasn’t been edited in over five hours. Did I get this wrong? Please revert me and check my userpage!</td>
+<td style="text-align: right;">57</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Yapperbot</td>
+<td style="text-align: left;">Auto-removing {{current}} - no edits in 5hrs+. The event may still be current, but [[Template:Current|the {{current}} template is designed only for articles which many editors are editing, and is usually up for less than a day]].</td>
+<td style="text-align: right;">2962</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div></div>
+</div></div>
+<p>One virtue, certainly, is Geiger’s “uniformity.” Compared to Yellowdesk, both Tedderbot and Yapperbot are extremely consistent in their messaging, as seen in <a href="#tbl-bot-comments" class="quarto-xref">Table&nbsp;1</a>. When a bot or human edits Wikipedia, they leave a comment explaining what they have done. In all their years policing Template:Current, TedderBot and Yapperbot removed Template:Current 5036 times, but only left two unique comments each time. By contrast, Yellowdesk used 1206 comments for 2111 removals of Template:Current. Of course, many of the inconsistencies in Yellowdesks’s comments are insignificant. Essentially the same comment is phrased in a slightly different way. But some of the differences between Yellowdesk’s comments <em>are</em> significant, as shown in <a href="#tbl-yellowdesk-comments" class="quarto-xref">Table&nbsp;2</a>.</p>
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>yd_comments_n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>yd_comment_tbl <span class="sc">|&gt;</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">hundreds =</span> stringr<span class="sc">::</span><span class="fu">str_detect</span>(comment, <span class="st">"hundreds"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(hundreds) <span class="sc">|&gt;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">|&gt;</span> </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">slice_head</span>(<span class="at">n =</span> yd_comments_n) <span class="sc">|&gt;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename_with</span>(stringr<span class="sc">::</span>str_to_title) <span class="sc">|&gt;</span> </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="st">`</span><span class="at">Contains 'hundreds'</span><span class="st">`</span> <span class="ot">=</span> Hundreds) <span class="sc">|&gt;</span> </span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">row_spec</span>(<span class="at">row =</span> yd_comments_n, <span class="at">extra_css =</span> <span class="st">"border-bottom-width: 1px; border-bottom-color: var(--bs-table-striped-color);"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="tbl-yellowdesk-comments" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-yellowdesk-comments-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Yellowdesk’s most frequently used comments when removing Template:Current, divided between comments that contain the word ‘hundreds’ and those that don’t.
+</figcaption>
+<div aria-describedby="tbl-yellowdesk-comments-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">User</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Comment</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">N</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Contains 'hundreds'</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Yellowdesk</td>
+<td style="text-align: left;">Removed {{Current}} tag, intended for articles edited by many on the same day. See: [[Template talk:Current#Policy for using {{current}}]]</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Yellowdesk</td>
+<td style="text-align: left;">Removed {{current sport}}</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Yellowdesk</td>
+<td style="text-align: left;">Removed {{Current&amp;#124;date=April 2007}}. Not current.</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Yellowdesk</td>
+<td style="text-align: left;">Not current. Removed {{Current}} tag. See: [[Template talk:Current#Policy for using {{current}}]]</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; border-bottom-width: 1px; border-bottom-color: var(--bs-table-striped-color);">Yellowdesk</td>
+<td style="text-align: left; border-bottom-width: 1px; border-bottom-color: var(--bs-table-striped-color);">Removed {{current sports transaction}} for lack of citations. If the topic is in the news there is a citation available, making this template superfluous. Cite the news item</td>
+<td style="text-align: right; border-bottom-width: 1px; border-bottom-color: var(--bs-table-striped-color);">15</td>
+<td style="text-align: left; border-bottom-width: 1px; border-bottom-color: var(--bs-table-striped-color);">FALSE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Yellowdesk</td>
+<td style="text-align: left;">Removed aging {{Current}} tag. This tag is intended for articles edited by hundreds on the same day. See: [[Template talk:Current#Policy for using {{current}}]]</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: left;">TRUE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Yellowdesk</td>
+<td style="text-align: left;">Removed {{Current}} tag, intended for articles edited by hundreds on the same day. See: [[Template talk:Current#Policy for using {{current}}]]</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: left;">TRUE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Yellowdesk</td>
+<td style="text-align: left;">Removed aged {{Current}} tag, intended for articles edited by hundreds on the same day. See: [[Template talk:Current#Policy for using {{current}}]]</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: left;">TRUE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Yellowdesk</td>
+<td style="text-align: left;">Removed aging {{Current}} tag. This tag is intended for articles edited by hundreds. See: [[Template talk:Current#Policy for using {{current}}]]</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: left;">TRUE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Yellowdesk</td>
+<td style="text-align: left;">Removed aging {{Current}} tag. The tag is intended for articles edited by hundreds on the same day. See: [[Template talk:Current#Policy for using {{current}}]]</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: left;">TRUE</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div></div>
+</div></div>
+<p>Yellowdesk frequently explained to fellow editors that Template:Current was related to the volume of edits, rather than the supposed “currency” of the article. To support this claim, Yellowdesk would frequently link to the <a href="https://en.wikipedia.org/wiki/Template_talk:Current">Talk page of Template:Current</a>. After Yellowdesk’s Guidelines appeared on the page for Template:Current, they would link to these instead (n = 26). If we filter out the comments that contain the keyword “hundreds,” however, we can see that Yellowdesks’s commentary did not always hove rigidly to the Guidelines. Often, Yellowdesk would simply state that an event was “not current,” wihout explaining the special meaning of “current” in Wikipedia. Similarly, Yellowdesk would sometimes make other arguments about the proper use of Template:Current, for example, arguing that an article could not be “current” if it lacked citations.</p>
+<p>By contrast, TedderBot and Yapperbot consistently explain their actions in all cases (<a href="#tbl-bot-comments" class="quarto-xref">Table&nbsp;1</a>). Tedderbot would leave the message “<a href="https://en.wikipedia.org/wiki/User:TedderBot/CurrentPruneBot">remove stale current-event template</a>, please see <a href="https://en.wikipedia.org/wiki/Wikipedia:Current_event_templates">WP:CET</a>. (bot edit).” The two links lead to: (1) a page in TedderBot’s user area, explaining its role in “pruning” Template:Current; and (2) a Wikipedia “essay” explaining the nature and use of Template:Current and some similar templates. Yapperbot’s comments are even more rhetorical. In its current configuration, Yapperbot explains the criterion it uses (“no edits in 5+ hours”), the reason it applies this criterion (“the template is designed only for articles which many editors are editing”), and its expected outcome (the template “is usually up for less than a day”). Rather than linking to its own page, or an informal essay, it links directly to the page for <a href="https://en.wikipedia.org/wiki/Template:Current">Template:Current</a>, where Yellowdesks’s Guidelines, in somewhat modified form, still stand to justify Yapperbot’s actions.</p>
+<p>In this case, the virtue of uniformity takes on a new meaning. It is not only that TedderBot and Yapperbot <em>act</em> uniformly. They also <em>explain themselves</em> uniformly. When we focus on the actions of TedderBot and Yapperbot, uniformity is a <em>moral</em> virtue: a fair judge applies laws uniformly to everyone. When we focus on the communications of TedderBot and Yapperbot, uniformity becomes an <em>epistemic</em> virtue: an information system will be more reliable if its actors use terms and labels in a consistent way for consistent reasons. TedderBot and Yapperbot, despite being bots, are arguably better teachers than Yellowdesk. Yellowdesk did not always have the energy or wherewithal to write the ideal comment. Sometimes Yellowdesk would muddy the waters with extraneous considerations (no citations), or simple ambiguities (“not current”). By contrast, TedderBot and Yapperbot always inform their human interlocutors exactly why their actions are correct.</p>
+<p>This example undermines <span class="citation" data-cites="de_laat_use_2015">Laat (<a href="#ref-de_laat_use_2015" role="doc-biblioref">2015</a>)</span>’s argument that bots are unable to exercise “moral skills.” He argues that only humans can be “tactful, forgiving and supportive,” and implies that tact, forgiveness, and support are the essential moral skills for the deliberation of an encylcopaedia. TedderBot and Yapperbot may not be “forgiving,” but there commentary is certainly “tactfully” phrased, and pedagogically “supportive.” Humans probably do not expect “forgiveness” from a bot, but seen one way, forgiveness is simply a kind of pliability, and bots can be pliable in their own way, as Yapperbot hints in its original comment: “Did I get this wrong? Please revert me a check my userpage!” In its initial configuration, Yapperbot actively invited disagreement. Once its trial period was over, and it was fully approved, its comment became more self-certain.</p>
+<p>Nonetheless, humans can and do disagree with Yapperbot. Sometimes they disagree with Yapperbot by taking its original advice, and reversing its decisions. I have downloaded a dataset of 38 articles from which Tedderbot, Yapperbot or Yellowdesk have had to remove Template:Current more than 3 times. In the full version of this paper, I hope to analyse this data, and reveal the similarities and differences between human-human edit disputes, and human-bot edit disputes. I have the text of each revision, along with the metadata such as the timestamp and comment of the edit.</p>
+<p>If an editor is not satisfied with reversing a bot’s decision, they have another option. Wikipedia’s bots usually (always?) have multiple kill switches, which visually dominate the bot’s user page (<a href="#fig-yapperbot-homepage" class="quarto-xref">Figure&nbsp;3</a>). Each kill switch has its own Wikipedia page, where its usage is recorded. Yapperbot/uncurrenter has been killed three times in its five years of operation: once on 18 June 2020 by Deryck Chan, accidentally on 26 October 2020 by KESHA69, and once on 24 April 2023 by SuperTyphoonNoru <span class="citation" data-cites="noauthor_useryapperbotkilluncurrenter_nodate">(<a href="#ref-noauthor_useryapperbotkilluncurrenter_nodate" role="doc-biblioref"><span>“User:<span>Yapperbot</span>/Kill/<span>Uncurrenter</span>: <span>Revision</span> History - <span>Wikipedia</span>”</span> n.d.</a>)</span>. In the first two instances, the killing was rapidly reversed, but in the third instance, it took a month till WikiCleanerMan reverted SuperTyphoonNoru’s edit. Three months later, Pppery protected the page <a href="https://en.wikipedia.org/wiki/User:Yapperbot/kill/Uncurrenter">User:Yapperbot/kill/Uncurrenter</a>, so that only users with a reasonable edit history would be able kill the bot.</p>
+<p>When Deryck Chan and SuperTyphoonNoru killed Yapperbot, they had a genuine dispute with the bot. Both of them disagreed with Yapperbot’s definition of “current.” Deryck <span class="citation" data-cites="chan_useryapperbotkilluncurrenter_2020">Chan (<a href="#ref-chan_useryapperbotkilluncurrenter_2020" role="doc-biblioref">2020</a>)</span> disputed the link between currency and intense editing:</p>
+<blockquote class="blockquote">
+<p>“Current” marks the fact that the event described by an article is still ongoing, not necessarily that much editing is taking place, which is what {{inuse}} is for.</p>
+</blockquote>
+<p>Deryck Chan then translated this argument into an argument about the bot’s code: it should only removed Template:Current after 24 hours without edits, rather than 5 hours. When <span class="citation" data-cites="supertyphoonnoru_useryapperbotkilluncurrenter_2023">SuperTyphoonNoru (<a href="#ref-supertyphoonnoru_useryapperbotkilluncurrenter_2023" role="doc-biblioref">2023</a>)</span> killed Yapperbot, they left a much simpler message on the kill page:</p>
+<blockquote class="blockquote">
+<p>Death.</p>
+</blockquote>
+<p>In their edit comment, however, they expressed a similar view to Deryck Chan’s: “Removed a current template from a current event.” Like Deryck Chan, SuperTyphoonNoru objected to the decision made by Yellowdesk and their allies 16 years before, to restrict Template:Current not to “current” events, but to events undergoing intense editing. Yapperbot had politely reminded both Deryck Chan and SuperTyphoonNoru that this is what “current” means on English Wikipedia: “The event may still be current,” wrote Yapperbot, but Template:Current is for actively edited articles. Yapperbot backed up this statement with a link to the page for Template:Current, where Deryck Chan and SuperTyphoonNoru could both have read Yellowdesks strict guidelines. Nonetheless, the bot allowed them to shut it off, and politely desisted from its task. Only when human allies stepped in, and permitted it again to operate, did it resume its job enforcing an old and apparently settled policy on the encyclopaedia.</p>
+<div id="fig-yapperbot-homepage" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-yapperbot-homepage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/yapperbot-homepage.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Yapperbot’s user page, including its global and task-specific kill switches."><img src="images/yapperbot-homepage.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-yapperbot-homepage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Yapperbot’s user page, including its global and task-specific kill switches.
+</figcaption>
+</figure>
+</div>
+<p>The virtues and vices of bots and humans can be hard to distinguish. On Wikipedia, where bots are carefully managed, bots can display apparently human virtues, such as politeness, accountability, and pliability (if not exactly “forgiveness”), while humans can display bot-like qualities such as uniformity, e.g.&nbsp;in Yellowdesks’s hundreds of edit comments that mention “hundreds” of edits. Not only can bot-virtues be hard to distinguish from human-virtues, but virtues can also be difficult to distinguish from vices. Geiger and De Laat argue that bots are “rash” or “overzealous.” Both seem to imagine situations where bots over-act, or do too much. But as the case of Yapperbot shows, bots can also be excessively deferential. Bots can under-act, or refrain too much. This, at least, was Pppery’s judgement, when they “protected” Yapperbot’s kill-switch, making it a little less pliable to its human opponents. If bots can be bot vicious and virtuous, this only underscores their autonomy. Yapperbot now stands alone, running code written by Naypta, enforcing guidelines drafted by Yellowdesk. Naypta and Yellowdesk are not longer active, but Yapperbot lives on, politely reminding English Wikipedians every day about the nature of time.</p>
+</section>
+<section id="sec-temporality" class="level2">
+<h2 class="anchored" data-anchor-id="sec-temporality">The Eye of Eternity</h2>
+<p>To conclude, I want to consider the nature of time on Wikipedia. Yapperbot constantly contradicts itself, arguing that an article can be “current” without being “{{current}}”. On other language editions of Wikipedia, there is no such contradiction. For instance, on French Wikipedia, Template:Current is divided into two modes, “Événement récent” (recent event) and “Événement en cours” (ongoing event) <span class="citation" data-cites="noauthor_modeevenement_2023">(<a href="#ref-noauthor_modeevenement_2023" role="doc-biblioref"><span>“Modèle:événement En Cours”</span> 2023</a>)</span>. Editors can use these templates simply to indicate whether an article describes an event that finished recently (récent) or is still “unrolling itself” (se déroule) in the present. There is no bot to enforce the template. There is no counter-intuitive definition of “en cours” or “récent” in terms of editing intensity. French Wikipedia seems to be typical. I have not been able to locate a language edition that resembles English in its strict definition and enforcement of “currency.”</p>
+<p>In this context, the decision of English Wikipedians may seem strange. Why would they want such a strict and counter-intuitive definition of “currency” to prevail in their encyclopaedia? As I argued above, even before the rise of Tedderbot, Yellowdesk had already articulated a view of time that lent itself to enforcement by a bot. If time is simply a function of the number of edits, then a piece of software can easily enforce the boundaries of time. Yellowdesk’s view clearly dominates English Wikipedia, but it also rubs against deeply held convictions of English Wikipedians. Yellowdesk themself could not suppress the urge to give “not current” as a reason to remove Template:Current, and decades after the first accepted draft of Yellowdesk’s guidelines, users such as Deryck Chan and SuperTyphoonNoru continue to assume that “current” means on Wikipedia what it means in ordinary speech.</p>
+<p>In my view, the English Wikipedias have grasped something very fundamental about the nature of encyclopaedic discourse, and Yapperbot is a virtuous member of a community of knowledge. Encyclopaedias are eternal. They seek to encompass or encircle all knowledge, and that encircling operation is necessarily atemporal in intention, even if the activity of producing the encyclopaedia unfolds in time. In the final version of this paper, I hope to explain this point with the help of Umberto <span class="citation" data-cites="eco_tree_2014">Eco (<a href="#ref-eco_tree_2014" role="doc-biblioref">2014</a>)</span>, Hilary <span class="citation" data-cites="clark_encyclopedic_1992">Clark (<a href="#ref-clark_encyclopedic_1992" role="doc-biblioref">1992</a>)</span>, Bernhard <span class="citation" data-cites="stiegler_technics_1998">Stiegler (<a href="#ref-stiegler_technics_1998" role="doc-biblioref">1998</a>)</span>, Don Fallis and Dennis Whitcomb <span class="citation" data-cites="fallis_epistemic_2009">(<a href="#ref-fallis_epistemic_2009" role="doc-biblioref">2009</a>)</span>. For now though, I will simply sum up what I see as Yapperbot’s prime virtue. Like the great historian Manning Clark, Yapperbot has “an eye for eternity.” It is poetic in its optimism that all events will find their place in a universal story, and poignant in its vulnerability, as it continues to run on a server that no-one can access, using code that no-one can repair. May it remain current for a while yet.</p>
+</section>
+<section id="ideas" class="level2">
+<h2 class="anchored" data-anchor-id="ideas">Ideas…</h2>
+<p>Is it worth loking at daily edit rhythms?</p>
+<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="cell-fig-daily-routine" class="cell" data-fig-caption="Daily cycles of edits by the three police officers.">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">hour =</span> lubridate<span class="sc">::</span><span class="fu">hour</span>(timestamp)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(user, date, hour) <span class="sc">|&gt;</span> </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">n =</span> dplyr<span class="sc">::</span><span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(user, hour) <span class="sc">|&gt;</span> </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(n), <span class="at">sd =</span> <span class="fu">sd</span>(n)) <span class="sc">|&gt;</span> </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(hour, mean, <span class="at">colour =</span> user)) <span class="sc">+</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'user'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="fig-daily-routine" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-daily-routine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="">
+<a href="index_files/figure-html/fig-daily-routine-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: "><img src="index_files/figure-html/fig-daily-routine-1.png" id="fig-daily-routine" class="img-fluid figure-img" width="672"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-daily-routine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4
+</figcaption>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="references" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-chan_useryapperbotkilluncurrenter_2020" class="csl-entry" role="listitem">
+Chan, Deryck. 2020. <span>“User:<span>Yapperbot</span>/Kill/<span>Uncurrenter</span>.”</span> <em>Wikipedia</em>. <a href="https://en.wikipedia.org/w/index.php?title=User:Yapperbot/kill/Uncurrenter&amp;oldid=963125579">https://en.wikipedia.org/w/index.php?title=User:Yapperbot/kill/Uncurrenter&amp;oldid=963125579</a>.
+</div>
+<div id="ref-clark_encyclopedic_1992" class="csl-entry" role="listitem">
+Clark, Hilary A. 1992. <span>“Encyclopedic <span>Discourse</span>.”</span> <em>SubStance</em> 21 (1): 95–110. <a href="https://doi.org/10.2307/3685349">https://doi.org/10.2307/3685349</a>.
+</div>
+<div id="ref-eco_tree_2014" class="csl-entry" role="listitem">
+Eco, Umberto. 2014. <em>From the Tree to the Labyrinth: Historical Studies on the Sign and Interpretation</em>. Translated by Anthony Oldcorn. Cambridge, Massachusetts: Harvard University Press.
+</div>
+<div id="ref-noauthor_editing_nodate" class="csl-entry" role="listitem">
+<span>“Editing <span>Template</span>:<span>Current</span>/Doc - <span>Wikipedia</span>.”</span> n.d. Accessed October 10, 2025. <a href="https://en.wikipedia.org/w/index.php?title=Template:Current/doc&amp;oldid=151939345">https://en.wikipedia.org/w/index.php?title=Template:Current/doc&amp;oldid=151939345</a>.
+</div>
+<div id="ref-fallis_epistemic_2009" class="csl-entry" role="listitem">
+Fallis, Don, and Dennis Whitcomb. 2009. <span>“Epistemic <span>Values</span> and <span>Information</span> <span>Management</span>.”</span> <em>The Information Society</em> 25 (3): 175–89. <a href="https://doi.org/10.1080/01972240902848831">https://doi.org/10.1080/01972240902848831</a>.
+</div>
+<div id="ref-geiger_social_2009" class="csl-entry" role="listitem">
+Geiger, R. Stuart. 2009. <span>“The Social Roles of Bots and Assisted Editing Programs.”</span> In <em>Proceedings of the 5th <span>International</span> <span>Symposium</span> on <span>Wikis</span> and <span>Open</span> <span>Collaboration</span></em>, 1–2.
+</div>
+<div id="ref-geiger_lives_2011" class="csl-entry" role="listitem">
+———. 2011. <span>“The Lives of Bots.”</span> In <em>Critical <span>Point</span> of <span>View</span>: <span>A</span> <span>Wikipedia</span> <span>Reader</span></em>, edited by Geert Lovink and Nathaniel Tkacz, 78–93. Institute of Network Cultures: Amsterdam.
+</div>
+<div id="ref-geiger_are_2013" class="csl-entry" role="listitem">
+———. 2013. <span>“Are Computers Merely" Supporting" Cooperative Work: <span>Towards</span> an Ethnography of Bot Development.”</span> In <em>Proceedings of the 2013 Conference on <span>Computer</span> Supported Cooperative Work Companion</em>, 51–56.
+</div>
+<div id="ref-geiger_bots_2014" class="csl-entry" role="listitem">
+———. 2014. <span>“Bots, Bespoke, Code and the Materiality of Software Platforms.”</span> <em>Information, Communication &amp; Society</em> 17 (3): 342–56.
+</div>
+<div id="ref-geiger_bot-based_2016" class="csl-entry" role="listitem">
+———. 2016. <span>“Bot-Based Collective Blocklists in <span>Twitter</span>: The Counterpublic Moderation of Harassment in a Networked Public Space.”</span> <em>Information, Communication &amp; Society</em> 19 (6): 787–803.
+</div>
+<div id="ref-geiger_beyond_2017" class="csl-entry" role="listitem">
+———. 2017. <span>“Beyond Opening up the Black Box: <span>Investigating</span> the Role of Algorithmic Systems in <span>Wikipedian</span> Organizational Culture.”</span> <em>Big Data &amp; Society</em> 4 (2): 205395171773073. <a href="https://doi.org/10.1177/2053951717730735">https://doi.org/10.1177/2053951717730735</a>.
+</div>
+<div id="ref-geiger_when_2013" class="csl-entry" role="listitem">
+Geiger, R. Stuart, and Aaron Halfaker. 2013. <span>“When the Levee Breaks: Without Bots, What Happens to <span>Wikipedia</span>’s Quality Control Processes?”</span> In <em>Proceedings of the 9th <span>International</span> <span>Symposium</span> on <span>Open</span> <span>Collaboration</span></em>, 1–6.
+</div>
+<div id="ref-geiger_operationalizing_2017" class="csl-entry" role="listitem">
+———. 2017. <span>“Operationalizing Conflict and Cooperation Between Automated Software Agents in Wikipedia: <span>A</span> Replication and Expansion of’even Good Bots Fight’.”</span> <em>Proceedings of the ACM on Human-Computer Interaction</em> 1 (CSCW): 1–33.
+</div>
+<div id="ref-geiger_work_2010" class="csl-entry" role="listitem">
+Geiger, R. Stuart, and David Ribes. 2010. <span>“The Work of Sustaining Order in <span>Wikipedia</span>: <span>The</span> Banning of a Vandal.”</span> In <em>Proceedings of the 2010 <span>ACM</span> Conference on <span>Computer</span> Supported Cooperative Work</em>, 117–26.
+</div>
+<div id="ref-geiger_trace_2011" class="csl-entry" role="listitem">
+———. 2011. <span>“Trace <span>Ethnography</span>: <span>Following</span> <span>Coordination</span> Through <span>Documentary</span> <span>Practices</span>.”</span> In <em>2011 44th <span>Hawaii</span> <span>International</span> <span>Conference</span> on <span>System</span> <span>Sciences</span></em>, 1–10. <a href="https://doi.org/10.1109/HICSS.2011.455">https://doi.org/10.1109/HICSS.2011.455</a>.
+</div>
+<div id="ref-halfaker_bots_2012" class="csl-entry" role="listitem">
+Halfaker, Aaron, and John Riedl. 2012. <span>“Bots and <span>Cyborgs</span>: <span>Wikipedia</span>’s <span>Immune</span> <span>System</span>.”</span> <em>Computer</em> 45 (3): 79–82. <a href="https://doi.org/10.1109/MC.2012.82">https://doi.org/10.1109/MC.2012.82</a>.
+</div>
+<div id="ref-de_laat_use_2015" class="csl-entry" role="listitem">
+Laat, Paul B. de. 2015. <span>“The Use of Software Tools and Autonomous Bots Against Vandalism: Eroding <span>Wikipedia</span>’s Moral Order?”</span> <em>Ethics and Information Technology</em> 17 (3): 175–88. <a href="https://doi.org/10.1007/s10676-015-9366-9">https://doi.org/10.1007/s10676-015-9366-9</a>.
+</div>
+<div id="ref-noauthor_modeevenement_2023" class="csl-entry" role="listitem">
+<span>“Modèle:événement En Cours.”</span> 2023. <em>Wikipédia</em>. <a href="https://fr.wikipedia.org/w/index.php?title=Mod%C3%A8le:%C3%89v%C3%A9nement_en_cours&amp;oldid=202738730">https://fr.wikipedia.org/w/index.php?title=Mod%C3%A8le:%C3%89v%C3%A9nement_en_cours&amp;oldid=202738730</a>.
+</div>
+<div id="ref-niederer_wisdom_2010" class="csl-entry" role="listitem">
+Niederer, Sabine, and José van Dijck. 2010. <span>“Wisdom of the Crowd or Technicity of Content? <span>Wikipedia</span> as a Sociotechnical System.”</span> <em>New Media &amp; Society</em> 12 (8): 1368–87. <a href="https://doi.org/10.1177/1461444810365297">https://doi.org/10.1177/1461444810365297</a>.
+</div>
+<div id="ref-stiegler_technics_1998" class="csl-entry" role="listitem">
+Stiegler, Bernard. 1998. <em>Technics and Time</em>. Translated by Werner Hamacher and David E. Wellbery. Meridian. Stanford, Calif: Stanford University Press.
+</div>
+<div id="ref-stone_general_1966" class="csl-entry" role="listitem">
+Stone, Philip J., and John Kirsch. 1966. <em>The General Inquirer: A Computer Approach to Content Analysis</em>. Cambridge, Mass: M.I.T. Press.
+</div>
+<div id="ref-supertyphoonnoru_useryapperbotkilluncurrenter_2023" class="csl-entry" role="listitem">
+SuperTyphoonNoru. 2023. <span>“User:<span>Yapperbot</span>/Kill/<span>Uncurrenter</span>.”</span> <em>Wikipedia</em>. <a href="https://en.wikipedia.org/w/index.php?title=User:Yapperbot/kill/Uncurrenter&amp;oldid=1151461527">https://en.wikipedia.org/w/index.php?title=User:Yapperbot/kill/Uncurrenter&amp;oldid=1151461527</a>.
+</div>
+<div id="ref-noauthor_template_2025-1" class="csl-entry" role="listitem">
+<span>“Template Talk:<span>Current</span>/<span>Archive</span> 1.”</span> 2025. <em>Wikipedia</em>. <a href="https://en.wikipedia.org/w/index.php?title=Template_talk:Current/Archive_1&amp;oldid=1294960489#The_latest_iteration_of_the_debate_over_how_long_this_template_should_stay_on_ongoing_current_events_(this_time_re:_COVID-19)">https://en.wikipedia.org/w/index.php?title=Template_talk:Current/Archive_1&amp;oldid=1294960489#The_latest_iteration_of_the_debate_over_how_long_this_template_should_stay_on_ongoing_current_events_(this_time_re:_COVID-19)</a>.
+</div>
+<div id="ref-tkacz_wikipedia_2015" class="csl-entry" role="listitem">
+Tkacz, Nathaniel. 2015. <em>Wikipedia and the Politics of Openness</em>. Chicago ; London: University of Chicago Press.
+</div>
+<div id="ref-noauthor_useryapperbotkilluncurrenter_nodate" class="csl-entry" role="listitem">
+<span>“User:<span>Yapperbot</span>/Kill/<span>Uncurrenter</span>: <span>Revision</span> History - <span>Wikipedia</span>.”</span> n.d. Accessed October 17, 2025. <a href="https://en.wikipedia.org/w/index.php?title=User:Yapperbot/kill/Uncurrenter&amp;action=history">https://en.wikipedia.org/w/index.php?title=User:Yapperbot/kill/Uncurrenter&amp;action=history</a>.
+</div>
+<div id="ref-van_dijck_culture_2013" class="csl-entry" role="listitem">
+Van Dijck, José. 2013. <em>The Culture of Connectivity: A Critical History of Social Media</em>. Oxford ; New York: Oxford University Press.
+</div>
+<div id="ref-noauthor_wikipediabot_2022" class="csl-entry" role="listitem">
+<span>“Wikipedia:<span>Bot</span> Requests/<span>Archive</span> 80.”</span> 2022. <em>Wikipedia</em>. <a href="https://en.wikipedia.org/w/index.php?title=Wikipedia:Bot_requests/Archive_80&amp;oldid=1093894076#Revival_of_User:TedderBot/CurrentPruneBot">https://en.wikipedia.org/w/index.php?title=Wikipedia:Bot_requests/Archive_80&amp;oldid=1093894076#Revival_of_User:TedderBot/CurrentPruneBot</a>.
+</div>
+<div id="ref-noauthor_wikipediabotsrequests_2022" class="csl-entry" role="listitem">
+<span>“Wikipedia:<span>Bots</span>/<span>Requests</span> for Approval/<span>TedderBot</span> 5.”</span> 2022. <em>Wikipedia</em>. <a href="https://en.wikipedia.org/w/index.php?title=Wikipedia:Bots/Requests_for_approval/TedderBot_5&amp;oldid=1087612555">https://en.wikipedia.org/w/index.php?title=Wikipedia:Bots/Requests_for_approval/TedderBot_5&amp;oldid=1087612555</a>.
+</div>
+</div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Due to the way that Template pages are constructed, you need to click into the ‘Edit’ tab in order to see the original guidelines at the referenced URL.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+     </main>
+<!-- /main column -->  <script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script> 
+  
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
