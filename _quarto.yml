@@ -7,14 +7,14 @@ manuscript:
 format:
   html:
     smooth-scroll: true
-  docx: default
-  jats: default
-  sagej-pdf:
-    classoption: [Crown, times, sageh]
-    header-includes: |
-      \usepackage[perpage]{footmisc}
-      \usepackage[utf8]{inputenc}
-      \usepackage[T1]{fontenc}
+  # docx: default
+  # jats: default
+  # sagej-pdf:
+  #   classoption: [Crown, times, sageh]
+  #   header-includes: |
+  #     \usepackage[perpage]{footmisc}
+  #     \usepackage[utf8]{inputenc}
+  #     \usepackage[T1]{fontenc}
 
 execute:
   freeze: auto
