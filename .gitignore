@@ -7,3 +7,7 @@
 
 /.quarto/
 /_manuscript
+
+**/*.quarto_ipynb
+
+/data/*.rds
