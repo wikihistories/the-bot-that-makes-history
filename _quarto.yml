@@ -2,7 +2,7 @@ project:
   type: manuscript
 
 manuscript:
-  article: the-bot-that-makes-history.qmd
+  article: index.qmd
 
 format:
   html:

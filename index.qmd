@@ -1,0 +1,241 @@
+---
+title: "The bots that make history"
+author:
+  - name: Michael Falk
+    orcid: 0000-0001-9261-8390
+    corresponding: true
+    email: michael.falk@unimelb.edu.au
+    affiliation: University of Melbourne
+    url: https://michaelfalk.io
+email: michael.falk@unimelb.edu.au
+abstract: ""
+keywords: Wikipedia; bots; epistemic virtue; temporality
+bibliography: wikihistories.bib
+---
+
+```{r}
+DATA_DIR <- "data"
+
+data <-  dplyr::bind_rows(
+  readr::read_csv(file.path(DATA_DIR, "bots.csv")),
+  readr::read_csv(file.path(DATA_DIR, "yellowdesk.csv"))
+  )
+
+bot_meta <- file.path(DATA_DIR, "bots.csv") |> file.info()
+human_meta <- file.path(DATA_DIR, "yellowdesk.csv") |> file.info()
+
+pretty_date <- function(date) {strftime(date, format="%e %B %Y")}
+
+ggplot2::theme_set(ggplot2::theme_minimal())
+```
+
+> "bots are better behaved than people"\
+—Rich Farmborough, Wikipedian, quoted in @geiger_lives_2011 [92]
+
+How can you converse with a bot? Can bots be virtuous? These two questions are interrelated, and increasingly relevant, as the Internet is dominated by generated content. The virtues are essential to conversation. If the members of a conversation do not possess the correct virtues, such as truthfulness, open-mindedness, or benevolence, then conversation degrades into argument, which degrades into contest, which degrades into ideological warfare. If we *must* converse with bots, then bots *must* be virtuous. Which virtues can and should they have?
+
+These questions have been thoroughly investigated by the editors of Wikipedia, who have spent more than 20 years governing human-bot relations. Wikipedia's governance of bots has been extensively studied by scholars, who have reached consensus that Wikipedia's bots are autonomous agents in a human-machine "assemblage" or "socio-technical system" [@geiger_trace_2011; @geiger_beyond_2017; @geiger_lives_2011; @geiger_operationalizing_2017; @geiger_bot-based_2016; @geiger_social_2009; @geiger_are_2013; @geiger_bots_2014; @geiger_work_2010; @geiger_when_2013; @halfaker_bots_2012; @niederer_wisdom_2010; @van_dijck_culture_2013, 137-140; @tkacz_wikipedia_2015, 111-119; @de_laat_use_2015]. While scholars agree that Wikipedia's bots are independent agents, however, they disagree over the particular virtues of these agents. It may be widely agreed that "ideals and values" can be "encoded" in bots' software [@geiger_beyond_2017, 9], but what does encoding *do* to those ideals and values? How do Wikipedia's bots enact the virtues of the platform?
+
+On these questions, the scholars are sharply divided. @de_laat_use_2015 [184] argues that bots lack the required "moral skills" to edit Wikipedia, and fears that bots are driving editors from the platform. By contrast, @geiger_beyond_2017 argues that bots should be seen as "clerks" whose "wisdom" is morally valuable. Despite this disagreement, Geiger and de Laat effectively agree on the main virtues and vices of robot agency. The main virtues of bots are uniformity, universality and efficiency. Bots do the same thing, everywhere, every time, with little effort. The main vice of bots is "rashness" [@geiger_lives_2011, 91] or "overzeal" [@de_laat_use_2015, 183]. Bots cannot contain themselves.
+
+In this paper, I try to broaden the discussion about the virtues and vices and bots, by examining the history of two particular bots, TedderBot/CurrentPruneBot and Yapperbot/uncurrenter, which have managed the use of [Template:Current](https://en.wikipedia.org/wiki/Template:Current) since 2010.[^mutliple_tasks] Template:Current is a prominent and controversial template, which labels articles that cover current events. At the time of writing, it exists in 119 language editions of Wikipedia (see @fig-template-collage). According to an influential group of English Wikipedians, this template is grossly overused by human editors. To prevent this overuse, first TedderBot and then Yapperbot came into being. These bots certainly possess the familiar virutes of uniformity, universality and efficiency, but as I hope to show, they possess another virtue of very ancient pedigree, which is even more important in this case. TedderBot and Yapperbot are *eternal*. They exist outside time, and are not prone to the vice of temporality that afflicts human editors. It is this eternity that allows them to judge the proper use of Template:Current better than a human. To demonstrate this point, I compare the two bots to a human user, Yellowdesk, who policed the use of Template:Current before the bots came into existence. Yellowdesk wrote the guidelines that TedderBot and Yapperbot still enforce; but even Yellowdesk could not adhere to these guidelines as purely as the bots that succeeded in the role of temporal policeman.
+
+[^multiple_tasks]: Since these bots' other tasks are irrelevant to this paper, I hereafter refer to them as TedderBot and Yapperbot.
+
+![Template:Current in Italian, Hindi, English, French, Korean and German (as of 14 March 2023).](images/banner_collage.png){#fig-template-collage}
+
+In what follows, I first describe the births and death of TedderBot and Yapperbot (@sec-death), to demonstrate how they enact the virtue of eternity on Wikipedia. In the @sec-comparison, I compare the editing records of Yellowdesk and the two bots to highlight the key differences between bot and human virtue on the platform. Finally in @sec-temporality, I reflect on the broader implications of this study for epistemology in the digital age. Are English Wikipedians right, that eternity is an essential epistemic virtue in a modern information-management system? Are they right that only bots can truly embody this virtue? What are the implications for historical knowledge in the age of GenAI?
+
+## Births and Deaths of Two Virtuous Bots {#sec-death}
+
+The story of TedderBot and Yapperbot begins in Madrid in 2004. On 11 March 2004, dissidents bombed four trains on Madrid's commuter network. 193 people died. Thousands more were injured. In the wake of the bombing, Wikipedians flocked to the encyclopaedia to document the event. The article on the Madrid bombings quickly became a chaotic place to work, as editors constantly reverted, duplicated and muddled one another's edits. To control the chaos, a new template was created, [Template:Current](https://en.wikipedia.org/wiki/Template:Current). The Template was intended as a warning to readers and editors that an article was in flux due to intense editing—indeed, for a time there was a competing template, Template:Flux.
+
+This story is ably told by the user Yellowdesk in a post from 29 January 2014.[@noauthor_template_2025-1] In Yellowdesk's view, Template:Current quickly lost its original purpose. Editors took it upon themselves to mark articles as "current" even if they weren't being intensely edited. Quiet articles describing old events would still retain the "current" banner. In 2007, Yellowdesk found that 1300 articles contained Template:Current. Many had "zero activity"—that is, no recent edits. For Yellowdesk, the situation was unacceptable, and they proposed "a plan of management."
+
+```{r}
+yellowdesk_2007 <- data |> 
+  dplyr::filter(date > "2007-01-01", date < "2007-12-31") |> 
+  dplyr::mutate(month = lubridate::month(date)) |> 
+  dplyr::group_by(month) |> 
+  dplyr::count()
+
+yd_2007_jul <- yellowdesk_2007 |> 
+  dplyr::filter(month == 7) |> 
+  dplyr::pull(n)
+
+yd_2007_aug <- yellowdesk_2007 |> 
+  dplyr::filter(month == 8) |> 
+  dplyr::pull(n)
+```
+
+First Yellowdesk cleaned the mess, removing Template:Current from `r yd_2007_jul` articles in July, and from `r yd_2007_aug` in August. On the 13th of August, Yellowdesk proposed a new set of guidelines for the template. On the 18th of August, Yellowdesk added these guidelines to the template's page. Nearly two decades later, the guidelines for Template:Current have barely changed from Yellowdesk's original draft:
+
+> - This template was created for those occasions that many editors (perhaps a hundred or more) edit an article on the same day, as an advisory to editors.
+> - It is not intended to be used to mark an article that merely has recent news articles about the topic; if it were, hundreds of thousands of articles would have this template.
+> - It is expected, when used properly, that this template and its closely related templates will appear on an article for perhaps a day or two, occasionally several days.
+> - If you desire that an article be noticed as a topic about or related to a significant current event, see [Wikipedia:How the Current events page works](https://en.wikipedia.org/wiki/Wikipedia:How_the_Current_events_page_works) [@noauthor_editing_nodate][^view_guidelines]
+
+[^view_guidelines]: Due to the way that Template pages are constructed, you need to click into the 'Edit' tab in order to see the original guidelines at the referenced URL.
+
+Yellowdesk's guidelines crystallise a radical ideal, which was later encoded in TedderBot and Yapperbot. According to Yellowdesk, Template:Current has nothing to do with the currency of an event. It is purely an "advisory to editors" when an article is being intensely edited. Editors may be tempted to mark article as current when the article's subject-matter is in the present, but this would clutter the encyclopaedia; for Yelowdesk, it is obvious that having the template on "hundreds of thousands of articles" at a time would be unsightly. To mollify editors who wish to mark the currency of an article, Yellowdesk points to other systems in the encyclopaedia. Yellowdesks's original guidelines mention the [Current events page](fixlink); recent revisions also mention the [In the news page](fixlink). **REF** **CHECK**
+
+Yellowdesk wrote these guidelines three years before TedderBot came online, but already they had set the stage for automatic policing of the template. The guideline lays out a numerical criterion, which could be encoded in software: the template is warranted when "perhaps a hundred or more" editors are editing a page simultaneously. As it turns out, this is not the criterion written into the source code of either TedderBot or Yapperbot. When the bots' developers implemented Yellowdesk's guidelines, they changed them.
+
+```{r}
+spans <- data |> 
+  dplyr::group_by(user) |> 
+  dplyr::summarise(start = min(date), end = max(date)) |> 
+  dplyr::mutate(lapse = end - start)
+```
+
+Instead of counting the number of active editors, TedderBot and Yapperbot count the number of hours since the last edit. TedderBot received approval on the 27th of May, 2010, for the new task of "pruning" Template:Current from "stale" pages.[@noauthor_wikipediabotsrequests_2022] It would regularly scan the encyclopaedia, and delete the template if there had been no edit in two hours. The two-hour span was proposed by none other than Yellowdesk. TedderBot operated for `r dplyr::filter(spans, user == "TedderBot") |> dplyr::pull(lapse) |> as.integer()` days, before it abruptly ceased operation on `r dplyr::filter(spans, user == "TedderBot") |> dplyr::pull(end) |> pretty_date()`. Some years later, user Sdkb requested that TedderBot be revived. Since its developer, tedder, was no longer active, another user, Naypta, developed a new bot.[@noauthor_wikipediabot_2022] Yapperbot uses a slightly relaxed criterion, deleting Template:Current from articles that have not been edited in 5 hours. It has operated (almost) continually from `r dplyr::filter(spans, user == "Yapperbot") |> dplyr::pull(start) |> pretty_date()` until data was collected for this article on `r bot_meta$ctime |> pretty_date()`.
+
+As if to emphasise the autonomy of bots and their ideals, none of Yellowdesk, tedder or Naypta is active on Wikipedia today. Due to tedder's departure, TedderBot's death in 2013 was irremediable. Yapperbot's continued operation is precarious, because the bot is hosted on Toolforge, a server managed by Wikipedia, and Naypta has the login details. Yapperbot has outlived the humans that brought it into being, and continues to enjoy support from human editors. Every day, it refutes de Laat's claim that Wikipedia "unequivocally" holds "creators" accountable for the behaviour of their bots [-@de_laat_use_2015, 180]. Yapperbot's creators are long gone—is it accountable no more?
+
+Of course not. Wikipedia's editors collaborate or argue with Yapperbot in all sorts of ways. They discuss Yapperbot on its Talk page. They disagree with its removal of Template:Current, and re-insert it onto articles. They take responsibility for Yapperbot, and try to resolve the technical issues with its maintenance. They discuss the guidelines Yapperbot enforces, and debate Yapperbot's relationship to those guidelines. In the event of a severe disagreement, they hit Yapperbot's "kill" switch, and disable it. Yapperbot is also supported by humans and other agents far beyond Wikipedia. It is hosted on Toolforge, itself a complex system. It is written in the programming language Go, initially developed at Google, and now maintained by the Go Foundation. If Yapperbot is able to operate independently of its creator, it is partly because it is so radically dependent on so many other agents.
+
+Nonetheless, from the point of view of Wikipedia, it is Yapperbot's relationship to human editors that is salient. To understand this relationship, I compare Yapperbot's edit history to Tedderbot's and Yellowdesk's. What makes the bots different?
+
+## Robotic and Human Virtues {#sec-comparison}
+
+The most common virtue ascribed to bots is efficiency. @geiger_beyond_2017 likens Wikipedia's bots to "clerks," who can rapidly and tirelessly perform tasks that bore human editors. The "clerk" is an old metaphor in the history of computing. In 1966, the creators of the General Inquirer likened their program "to an energetic, compulsive, but stupid clerk," who has "no ideas of his own" [@stone_general_1966, 68]. In this context, "stupidity" is a virtue, because it allows the program to be energetic and exhaustless. It is the very intelligence of human beings, their restless imagination, that unfits them for "clerkly" duties.
+
+The virtue of clerkly efficiency is not salient in the case of Tedderbot and Yapperbot. As @fig-timeline shows, the task of removing Template:Current was perfectly feasible for a human editor to perform using the tools available in Wikipedia's first decade. In a single 28-day period, Yellowdesk was able to remove more than 1000 instances of the template, and apparently continued to police the Template effectively for the following three years. Although it was surely some relief for Yellowdesk to hand the task over to a bot, this is not a case where automation was necessary to compensate for the inefficiency of human clerks. What virtues did the bot offer instead?
+
+```{r}
+#| label: fig-timeline
+#| fig-cap: Timeline of Template:Current removels by TedderBot, Yapperbot and Yellowdesk. Two large outliers are labelled.
+
+# You specify binwidth in days in ggplot2
+bin_days <- 28
+# There are some huge outliers
+y_limit <- 110
+
+data |> 
+  dplyr::rename_with(stringr::str_to_title) |> 
+  dplyr::mutate(
+    User = forcats::fct_relevel(User, c("Yellowdesk", "TedderBot", "Yapperbot"))
+  ) |> 
+  ggplot2::ggplot(
+    ggplot2::aes(x = Date, fill = User)
+    ) +
+  ggplot2::geom_histogram(binwidth = bin_days, stat = "bin") + 
+  ggplot2::scale_y_continuous(limits = c(0, y_limit), oob = scales::oob_keep) +
+  ggplot2::labs(y = "Removals (28-day increments)") +
+  ggplot2::guides(fill = "none") +
+  ggplot2::facet_grid(rows = dplyr::vars(User)) +
+  ggrepel::geom_label_repel(
+    mapping = ggplot2::aes(
+      x = Date,
+      label = dplyr::if_else(
+        ggplot2::after_stat(count) >= y_limit, # condition
+        ggplot2::after_stat(count), # consequent
+        NA # alternative
+        )
+    ),
+    stat = "bin",
+    binwidth = bin_days,
+    y = y_limit,
+    direction = "x", # only 'repel' labels horizontally
+    min.segment.length = 0,
+    seed = 102 # Chosen to make the labels move to the right
+  )
+```
+
+```{r}
+#| label: tbl-bot-comments
+#| tbl-cap: "Unique comments left by TedderBot and Yapperbot when removing Template:Current"
+bot_comment_tbl <- data |> 
+  dplyr::filter(user == "TedderBot" | user == "Yapperbot") |> 
+  dplyr::group_by(user, comment) |> 
+  dplyr::count() |> 
+  dplyr::arrange(user, n)
+  
+yd_comment_tbl <- data |> 
+  dplyr::filter(user == "Yellowdesk") |> 
+  dplyr::group_by(user, comment) |> 
+  dplyr::count() |> 
+  dplyr::ungroup() |> 
+  dplyr::arrange(user, desc(n))
+
+bot_comment_tbl |> 
+  dplyr::rename_with(stringr::str_to_title) |> 
+  knitr::kable()
+```
+
+One virtue, certainly, is Geiger's "uniformity." Compared to Yellowdesk, both Tedderbot and Yapperbot are extremely consistent in their messaging, as seen in @tbl-bot-comments. When a bot or human edits Wikipedia, they leave a comment explaining what they have done. In all their years policing Template:Current, TedderBot and Yapperbot removed Template:Current `r sum(bot_comment_tbl$n)` times, but only left two unique comments each time. By contrast, Yellowdesk used `r length(unique(yd_comment_tbl$comment))` comments for `r sum(yd_comment_tbl$n)` removals of Template:Current. Of course, many of the inconsistencies in Yellowdesks's comments are insignificant. Essentially the same comment is phrased in a slightly different way. But some of the differences between Yellowdesk's comments *are* significant, as shown in @tbl-yellowdesk-comments.
+
+```{r}
+#| label: tbl-yellowdesk-comments
+#| tbl-cap: "Yellowdesk's most frequently used comments when removing Template:Current, divided between comments that contain the word 'hundreds' and those that don't."
+
+yd_comments_n <- 5
+
+yd_comment_tbl |> 
+  dplyr::mutate(hundreds = stringr::str_detect(comment, "hundreds")) |> 
+  dplyr::group_by(hundreds) |>
+  dplyr::arrange(desc(n)) |> 
+  dplyr::slice_head(n = yd_comments_n) |>
+  dplyr::ungroup() |>
+  dplyr::rename_with(stringr::str_to_title) |> 
+  dplyr::rename(`Contains 'hundreds'` = Hundreds) |> 
+  knitr::kable() |> 
+  kableExtra::row_spec(row = yd_comments_n, extra_css = "border-bottom-width: 1px; border-bottom-color: var(--bs-table-striped-color);")
+```
+
+Yellowdesk frequently explained to fellow editors that Template:Current was related to the volume of edits, rather than the supposed "currency" of the article. To support this claim, Yellowdesk would frequently link to the [Talk page of Template:Current](https://en.wikipedia.org/wiki/Template_talk:Current). After Yellowdesk's Guidelines appeared on the page for Template:Current, they would link to these instead (n = `r yd_comment_tbl |> dplyr::filter(stringr::str_detect(comment, "Template\\:Current#Guidelines")) |> dplyr::pull(n) |> sum()`). If we filter out the comments that contain the keyword "hundreds," however, we can see that Yellowdesks's commentary did not always hove rigidly to the Guidelines. Often, Yellowdesk would simply state that an event was "not current," wihout explaining the special meaning of "current" in Wikipedia. Similarly, Yellowdesk would sometimes make other arguments about the proper use of Template:Current, for example, arguing that an article could not be "current" if it lacked citations.
+
+By contrast, TedderBot and Yapperbot consistently explain their actions in all cases (@tbl-bot-comments). Tedderbot would leave the message "[remove stale current-event template](https://en.wikipedia.org/wiki/User:TedderBot/CurrentPruneBot), please see [WP:CET](https://en.wikipedia.org/wiki/Wikipedia:Current_event_templates). (bot edit)." The two links lead to: (1) a page in TedderBot's user area, explaining its role in "pruning" Template:Current; and (2) a Wikipedia "essay" explaining the nature and use of Template:Current and some similar templates. Yapperbot's comments are even more rhetorical. In its current configuration, Yapperbot explains the criterion it uses ("no edits in 5+ hours"), the reason it applies this criterion ("the template is designed only for articles which many editors are editing"), and its expected outcome (the template "is usually up for less than a day"). Rather than linking to its own page, or an informal essay, it links directly to the page for [Template:Current](https://en.wikipedia.org/wiki/Template:Current), where Yellowdesks's Guidelines, in somewhat modified form, still stand to justify Yapperbot's actions.
+
+In this case, the virtue of uniformity takes on a new meaning. It is not only that TedderBot and Yapperbot *act* uniformly. They also *explain themselves* uniformly. When we focus on the actions of TedderBot and Yapperbot, uniformity is a *moral* virtue: a fair judge applies laws uniformly to everyone. When we focus on the communications of TedderBot and Yapperbot, uniformity becomes an *epistemic* virtue: an information system will be more reliable if its actors use terms and labels in a consistent way for consistent reasons. TedderBot and Yapperbot, despite being bots, are arguably better teachers than Yellowdesk. Yellowdesk did not always have the energy or wherewithal to write the ideal comment. Sometimes Yellowdesk would muddy the waters with extraneous considerations (no citations), or simple ambiguities ("not current"). By contrast, TedderBot and Yapperbot always inform their human interlocutors exactly why their actions are correct.
+
+This example undermines @de_laat_use_2015's argument that bots are unable to exercise "moral skills." He argues that only humans can be "tactful, forgiving and supportive," and implies that tact, forgiveness, and support are the essential moral skills for the deliberation of an encylcopaedia. TedderBot and Yapperbot may not be "forgiving," but there commentary is certainly "tactfully" phrased, and pedagogically "supportive." Humans probably do not expect "forgiveness" from a bot, but seen one way, forgiveness is simply a kind of pliability, and bots can be pliable in their own way, as Yapperbot hints in its original comment: "Did I get this wrong? Please revert me a check my userpage!" In its initial configuration, Yapperbot actively invited disagreement. Once its trial period was over, and it was fully approved, its comment became more self-certain.
+
+Nonetheless, humans can and do disagree with Yapperbot. Sometimes they disagree with Yapperbot by taking its original advice, and reversing its decisions. I have downloaded a dataset of 38 articles from which Tedderbot, Yapperbot or Yellowdesk have had to remove Template:Current more than 3 times. In the full version of this paper, I hope to analyse this data, and reveal the similarities and differences between human-human edit disputes, and human-bot edit disputes. I have the text of each revision, along with the metadata such as the timestamp and comment of the edit.
+
+If an editor is not satisfied with reversing a bot's decision, they have another option. Wikipedia's bots usually (always?) have multiple kill switches, which visually dominate the bot's user page (@fig-yapperbot-homepage). Each kill switch has its own Wikipedia page, where its usage is recorded. Yapperbot/uncurrenter has been killed three times in its five years of operation: once on 18 June 2020 by Deryck Chan, accidentally on 26 October 2020 by KESHA69, and once on 24 April 2023 by SuperTyphoonNoru [@noauthor_useryapperbotkilluncurrenter_nodate]. In the first two instances, the killing was rapidly reversed, but in the third instance, it took a month till WikiCleanerMan reverted SuperTyphoonNoru's edit. Three months later, Pppery protected the page [User:Yapperbot/kill/Uncurrenter](https://en.wikipedia.org/wiki/User:Yapperbot/kill/Uncurrenter), so that only users with a reasonable edit history would be able kill the bot.
+
+When Deryck Chan and SuperTyphoonNoru killed Yapperbot, they had a genuine dispute with the bot. Both of them disagreed with Yapperbot's definition of "current." Deryck @chan_useryapperbotkilluncurrenter_2020 disputed the link between currency and intense editing:
+
+> "Current" marks the fact that the event described by an article is still ongoing, not necessarily that much editing is taking place, which is what {{inuse}} is for.
+
+Deryck Chan then translated this argument into an argument about the bot's code: it should only removed Template:Current after 24 hours without edits, rather than 5 hours. When @supertyphoonnoru_useryapperbotkilluncurrenter_2023 killed Yapperbot, they left a much simpler message on the kill page:
+
+> Death.
+
+In their edit comment, however, they expressed a similar view to Deryck Chan's: "Removed a current template from a current event." Like Deryck Chan, SuperTyphoonNoru objected to the decision made by Yellowdesk and their allies 16 years before, to restrict Template:Current not to "current" events, but to events undergoing intense editing. Yapperbot had politely reminded both Deryck Chan and SuperTyphoonNoru that this is what "current" means on English Wikipedia: "The event may still be current," wrote Yapperbot, but Template:Current is for actively edited articles. Yapperbot backed up this statement with a link to the page for Template:Current, where Deryck Chan and SuperTyphoonNoru could both have read Yellowdesks strict guidelines. Nonetheless, the bot allowed them to shut it off, and politely desisted from its task. Only when human allies stepped in, and permitted it again to operate, did it resume its job enforcing an old and apparently settled policy on the encyclopaedia.
+
+![Yapperbot's user page, including its global and task-specific kill switches.](images/yapperbot-homepage.png){#fig-yapperbot-homepage}
+
+The virtues and vices of bots and humans can be hard to distinguish. On Wikipedia, where bots are carefully managed, bots can display apparently human virtues, such as politeness, accountability, and pliability (if not exactly "forgiveness"), while humans can display bot-like qualities such as uniformity, e.g. in Yellowdesks's hundreds of edit comments that mention "hundreds" of edits. Not only can bot-virtues be hard to distinguish from human-virtues, but virtues can also be difficult to distinguish from vices. Geiger and De Laat argue that bots are "rash" or "overzealous." Both seem to imagine situations where bots over-act, or do too much. But as the case of Yapperbot shows, bots can also be excessively deferential. Bots can under-act, or refrain too much. This, at least, was Pppery's judgement, when they "protected" Yapperbot's kill-switch, making it a little less pliable to its human opponents. If bots can be bot vicious and virtuous, this only underscores their autonomy. Yapperbot now stands alone, running code written by Naypta, enforcing guidelines drafted by Yellowdesk. Naypta and Yellowdesk are not longer active, but Yapperbot lives on, politely reminding English Wikipedians every day about the nature of time.
+
+## The Eye of Eternity {#sec-temporality}
+
+To conclude, I want to consider the nature of time on Wikipedia. Yapperbot constantly contradicts itself, arguing that an article can be "current" without being "{{current}}". On other language editions of Wikipedia, there is no such contradiction. For instance, on French Wikipedia, Template:Current is divided into two modes, "Événement récent" (recent event) and "Événement en cours" (ongoing event) [@noauthor_modeevenement_2023]. Editors can use these templates simply to indicate whether an article describes an event that finished recently (récent) or is still "unrolling itself" (se déroule) in the present. There is no bot to enforce the template. There is no counter-intuitive definition of "en cours" or "récent" in terms of editing intensity. French Wikipedia seems to be typical. I have not been able to locate a language edition that resembles English in its strict definition and enforcement of "currency."
+
+In this context, the decision of English Wikipedians may seem strange. Why would they want such a strict and counter-intuitive definition of "currency" to prevail in their encyclopaedia? As I argued above, even before the rise of Tedderbot, Yellowdesk had already articulated a view of time that lent itself to enforcement by a bot. If time is simply a function of the number of edits, then a piece of software can easily enforce the boundaries of time. Yellowdesk's view clearly dominates English Wikipedia, but it also rubs against deeply held convictions of English Wikipedians. Yellowdesk themself could not suppress the urge to give "not current" as a reason to remove Template:Current, and decades after the first accepted draft of Yellowdesk's guidelines, users such as Deryck Chan and SuperTyphoonNoru continue to assume that "current" means on Wikipedia what it means in ordinary speech.
+
+In my view, the English Wikipedias have grasped something very fundamental about the nature of encyclopaedic discourse, and Yapperbot is a virtuous member of a community of knowledge. Encyclopaedias are eternal. They seek to encompass or encircle all knowledge, and that encircling operation is necessarily atemporal in intention, even if the activity of producing the encyclopaedia unfolds in time. In the final version of this paper, I hope to explain this point with the help of Umberto @eco_tree_2014, Hilary @clark_encyclopedic_1992, Bernhard @stiegler_technics_1998, Don Fallis and Dennis Whitcomb [-@fallis_epistemic_2009]. For now though, I will simply sum up what I see that Yapperbot's prime virtue. Like the great historian Manning Clark, Yapperbot has "an eye for eternity." It is poetic in its optimism that all events will find their place in a universal story, and poignant in its vulnerability, as it continues to run on a server that no-one can access, using code that no-one can repair. May it remain current for a while yet.
+
+## Ideas...
+
+Is it worth loking at daily edit rhythms?
+
+```{r}
+#| label: fig-daily-routine
+#| fig-caption: Daily cycles of edits by the three police officers.
+
+data |> 
+  dplyr::mutate(
+    hour = lubridate::hour(timestamp)
+  ) |> 
+  dplyr::group_by(user, date, hour) |> 
+  dplyr::summarise(n = dplyr::n(), .groups = "drop") |> 
+  dplyr::group_by(user, hour) |> 
+  dplyr::summarise(mean = mean(n), sd = sd(n)) |> 
+  ggplot2::ggplot(ggplot2::aes(hour, mean, colour = user)) +
+  ggplot2::geom_line()
+  
+```
+
+## References

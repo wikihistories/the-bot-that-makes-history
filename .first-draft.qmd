@@ -36,6 +36,13 @@ library(tidyverse)
 
 # Introduction: Wikipedia and The Technicity of Time
 
+```{r}
+# Import data
+DATA_DIR <- "data"
+bots <- file.path(DATA_DIR, "bots.csv") |> readr::read_csv()
+yellowdesk <- file.path(DATA_DIR, "yellowdesk.csv") |> readr::read_csv()
+```
+
 Time is a supple medium. It winds itself into many shapes. It surges through the heartwood. It lies upon the bark. It carves rock and unfolds in song. It creates myriad structures, then entropically destroys them. It races, dallies, recurs, reverses, accelerates, splits and stops.
 
 Despite its suppleness, time has definite characteristics. It forms rhythms. It weaves people and plants and animals into lives and seasons. It founds eras.
@@ -102,13 +109,13 @@ Wikipedia itself provides an answer in two of its foundational policies. Accordi
 
 Despite its supposed pastness, Wikipedia is well-known as a source of information on current events. It is 'An Encylopedia with Breaking News' [@keegan_encyclopedia_2019]. Current events dominate Wikipedia, accounting for the lion's share of user contributions and page views at any given time [@keegan_hot_2011]. Scholars have analysed Wikipedia's coverage of current events in detail. We now know how Wikipedia's editors clash over the nature and definition of current events [@ford_writing_2022; @pentzold_fixing_2009], how they link current events into larger thematic structures [@twyman_black_2017], how they adopt newsroom practices to co-ordinate their efforts [@avieson_breaking_2019], how they revisit old articles to commemorate traumatic events [@ferron_beyond_2014], and how they shape the interpretation of events using images [@porter_visual_2020]. One thing we *don't* know is how Wikipedia's editors decide what is 'current'. How does Wikipedia distinguish the past from the present at the very threshold of time? How does it resolve the contradiction between the pastness of the encyclopaedia and the presentness of the current?
 
-Most readers of Wikipedia will have seen what editors do when an article trespasses on the present: mark it with one of the available [Current Event Templates](https://en.wikipedia.org/wiki/Wikipedia:Current_event_templates). The main template is [Template:Current](https://en.wikipedia.org/wiki/Template:Current), which at the time of writing is available on `r wikkitidy::get_page_langlinks("Template:Current") %>% .[[1]] %>% length() + 1` language editions of Wikipedia. When the template is added to an article, a familiar banner appears at the top of the page (Figure \ref{fig:banner_collage}), and the article is automatically added to [Category:Current Events](https://en.wikipedia.org/wiki/Category:Current_events) or a related category. Each language edition has its own distinct version of Template:Current, and may also sport a range of related Templates. French Wikipedia, for instance, distinguishes 'Événements en cours' [ongoing events] from 'Événements récents' [recent events] in its [main template](https://fr.wikipedia.org/wiki/Mod%C3%A8le:%C3%89v%C3%A9nement_en_cours), and provides several related templates such as [Modèle:Bataille en cours](https://fr.wikipedia.org/wiki/Mod%C3%A8le:Bataille_en_cours) [Template:Ongoing battle] and [Modèle:Mort récente](https://fr.wikipedia.org/wiki/Mod%C3%A8le:Mort_r%C3%A9cente) [Template:Recent death]. German Wikipedia, by contrast, has only a single [Current Events template](https://de.wikipedia.org/wiki/Vorlage:Laufendes_Ereignis), but it is customisable, so that editors can replace the phrase "aktuelles Ereignis" [current event] in the banner with a more specific description such as "die derzeitige Sportveranstaltung" [the ongoing sporting event].
+Most readers of Wikipedia will have seen what editors do when an article trespasses on the present: mark it with one of the available [Current Event Templates](https://en.wikipedia.org/wiki/Wikipedia:Current_event_templates). The main template is [Template:Current](https://en.wikipedia.org/wiki/Template:Current), which at the time of writing is available on `r wikkitidy::get_page_langlinks("Template:Current") |> .[[1]] |> length() + 1` language editions of Wikipedia. When the template is added to an article, a familiar banner appears at the top of the page (Figure \ref{fig:banner_collage}), and the article is automatically added to [Category:Current Events](https://en.wikipedia.org/wiki/Category:Current_events) or a related category. Each language edition has its own distinct version of Template:Current, and may also sport a range of related Templates. French Wikipedia, for instance, distinguishes 'Événements en cours' [ongoing events] from 'Événements récents' [recent events] in its [main template](https://fr.wikipedia.org/wiki/Mod%C3%A8le:%C3%89v%C3%A9nement_en_cours), and provides several related templates such as [Modèle:Bataille en cours](https://fr.wikipedia.org/wiki/Mod%C3%A8le:Bataille_en_cours) [Template:Ongoing battle] and [Modèle:Mort récente](https://fr.wikipedia.org/wiki/Mod%C3%A8le:Mort_r%C3%A9cente) [Template:Recent death]. German Wikipedia, by contrast, has only a single [Current Events template](https://de.wikipedia.org/wiki/Vorlage:Laufendes_Ereignis), but it is customisable, so that editors can replace the phrase "aktuelles Ereignis" [current event] in the banner with a more specific description such as "die derzeitige Sportveranstaltung" [the ongoing sporting event].
 
 New twist in the tale: a user 'killed' Yapperbot/uncurrent on 24/4/2023 because [they complained it had removed {{current}} from a current event](https://en.wikipedia.org/w/index.php?diff=1151461527&oldid=986550108&title=User%3AYapperbot%2Fkill%2FUncurrenter).
 
 On the surface, Template:Current might seem like a simple phenomenon. Editors mark an article when it is "current," then remove the template when its currency is ended. @avieson_breaking_2019 likens Template:Current to the "live" icon on a newspaper blog or television news. While Template:Current is present, the article functions as live coverage; when the template is removed, the article gradually becomes encyclopaedic.
 
-But the use of Template:Current is not simple, and has vexed Wikipedia's editors for years. @avieson_breaking_2019 herself grapples with the problem. Although she argues for a distinction between "news" and "encyclopaedias," she also observes that Wikipedia's coverage of current events "blurs the boundaries of both news and temporality." These blurred boundaries are a problem for Wikipedia's editors, and editors in different langauges have clarified the distinction between past, present and future in different ways. In this context, English Wikipedia is extremist. Unlike other language editions, English Wikipedia strictly polices the use of Template:Current with a bot: [Yapperbot/uncurrenter](https://en.wikipedia.org/wiki/User:Yapperbot). Yapperbot/uncurrenter scans English Wikipedia hourly, examining every article that includes Template:Current and deleting the template if the article has not been edited in the last five hours. English Wikipedia is also one of the few larger language editions without a [Template:Future](https://wikipedia.org/wiki/Template:Future) to mark events that have yet to occur. English Wikipedia deleted Template:Future in 2009 after an official process, and several attempts to resurrect the template have foundered. Meanwhile French, Italian, Bengali, Chinese and `r wikkitidy::get_page_langlinks("Modèle:Événement_à_venir", language="fr") %>% .[[1]] %>% length() - 3` other-language Wikipedias maintain a Template:Future.
+But the use of Template:Current is not simple, and has vexed Wikipedia's editors for years. @avieson_breaking_2019 herself grapples with the problem. Although she argues for a distinction between "news" and "encyclopaedias," she also observes that Wikipedia's coverage of current events "blurs the boundaries of both news and temporality." These blurred boundaries are a problem for Wikipedia's editors, and editors in different langauges have clarified the distinction between past, present and future in different ways. In this context, English Wikipedia is extremist. Unlike other language editions, English Wikipedia strictly polices the use of Template:Current with a bot: [Yapperbot/uncurrenter](https://en.wikipedia.org/wiki/User:Yapperbot). Yapperbot/uncurrenter scans English Wikipedia hourly, examining every article that includes Template:Current and deleting the template if the article has not been edited in the last five hours. English Wikipedia is also one of the few larger language editions without a [Template:Future](https://wikipedia.org/wiki/Template:Future) to mark events that have yet to occur. English Wikipedia deleted Template:Future in 2009 after an official process, and several attempts to resurrect the template have foundered. Meanwhile French, Italian, Bengali, Chinese and `r wikkitidy::get_page_langlinks("Modèle:Événement_à_venir", language="fr") |> .[[1]] |> length() - 3` other-language Wikipedias maintain a Template:Future.
 
 Why does practice vary across the different language editions? What led to the extremely strict approach of English Wikipedia, in which Template:Current is ruthlessly policed by an artificial agent, and the future is not explicitly marked? What can this tell us about Wikipedia's "temporal regime" [@assmann_is_2020]?
 
@@ -120,42 +127,6 @@ We try to answer these questions by focussing on Yapperbot/uncurrenter. We descr
 -   *Quantitative methods:* Comparison of Yapperbot/uncurrenter with humans who have policed Template:Current using wikkitidy [@falk_wikkitidy_2023] and the tidyverse [@wickham_welcome_2019].
 -   *Methodology:* Trace ethnography [@geiger_trace_2011]; ethnography of algorithmic systems [@seaver_algorithms_2017; @geiger_beyond_2017].
 
-```{r}
-get_yapperbot <- function(data_dir = "data", use_cache = FALSE) {
-  data_files <- list.files(data_dir)
-  yp_files = stringr::str_detect(data_files, "yapperbot-contribs-to")
-  if (!any(yp_files) | !use_cache) {
-    # Download all yapperbot's contributions
-    yapperbot <- wikkitidy::wiki_action_request() %>%
-      wikkitidy::get_list_of(
-        "usercontribs",
-        ucuser = "Yapperbot",
-        uclimit = "max",
-        ucprop = "comment|ids|title|timestamp",
-        ucnamespace = 0
-      ) %>%
-      wikkitidy::retrieve_all() %>% 
-      filter(stringr::str_detect(comment, "current"))
-    write_csv(
-      yapperbot,
-      file.path(
-        data_dir,
-        glue::glue("yapperbot-contribs-to-{as.integer(Sys.time())}.csv")
-        )
-    )
-  } else {
-    latest_file <- sort(data_files[yp_files], decreasing = TRUE)[1]
-    yapperbot <- read_csv(file = file.path(data_dir, latest_file))
-  }
-  # Final transformations before import into document
-  yapperbot %>%
-    mutate(timestamp = lubridate::as_datetime(timestamp),
-           date = lubridate::as_date(timestamp))
-}
-
-yapperbot <- get_yapperbot(use_cache = T)
-```
-
 *How did \`Yapperbot/uncurrenter' come about? What were the debates and discussions of the editors? What was the perceived problem the bot was supposed to fix?*
 
 *What does the bot actually do? How does that compare with what it is supposed to do?*
@@ -163,47 +134,74 @@ yapperbot <- get_yapperbot(use_cache = T)
 How many pages is yapperbot uncurrenting per day?
 
 ```{r}
-yapperbot %>%
-  ggplot(aes(date)) +
-  geom_bar() +
-  labs(
-    title = "Yapperbot usually uncurrents less than five articles a day",
-    x = "Day",
-    y = "Deletions of Template:Current"
+#| label: fig-daily-frequency-descriptive
+#| fig-cap: "Descriptive statistics for daily uncurrenting"
+bots |> 
+  dplyr::group_by(user) |> 
+  dplyr::count(date) |> 
+  dplyr::group_by(user) |> 
+  dplyr::summarise(
+    mean = mean(n, trim = 0.02),
+    median = median(n),
+    max = max(n),
+    days_in_operation = min(date) %--% max(date) |> lubridate::time_length(unit = "day"),
+    days_without_edit = days_in_operation - n(),
+    prop_without_edit = days_without_edit / days_in_operation
   )
 ```
 
-What was happening on that day it uncurrented 45 pages?
 
 ```{r}
-most_active_day <- yapperbot %>% 
-  group_by(date) %>% 
-  summarise(count = n()) %>% 
-  slice_max(count, n=1)
+#| label: fig-n-per-day
+#| fig-cap: "Both TedderBot and Yapperbot uncurrent a similar number of articles per day"
+bots |> 
+  dplyr::group_by(user) |> 
+  dplyr::count(date) |> 
+  ggplot2::ggplot(aes(x=n)) +
+  ggplot2::geom_density(stat="density", n=512) +
+  ggplot2::scale_x_log10() +
+  ggplot2::facet_wrap(vars(user)) +
+  ggplot2::labs(
+    x = "Articles uncurrented per day (log scale)",
+    y = "Density estimate"
+  )
+```
 
-yapperbot %>% 
-  filter(date == most_active_day$date) %>% 
-  select(pageid, title, timestamp)
+What were the five most active days?
+
+```{r}
+most_active_day <- bots |> 
+  dplyr::filter(user == "Yapperbot") |> 
+  dplyr::group_by(date) |> 
+  dplyr::summarise(count = n()) |> 
+  dplyr::slice_max(count, n=1) |> 
+  dplyr::pull(date)
+
+bots |> 
+  dplyr::filter(user == "Yapperbot") |> 
+  dplyr::filter(date == most_active_day) |> 
+  dplyr::select(pageid, title, timestamp)
 ```
 
 How often does Yapperbot have to remove the template more than once?
 
 ```{r}
-yapperbot %>% 
-  group_by(pageid) %>% 
-  summarise(count = n()) %>% 
-  group_by(count) %>% 
-  summarise(num_pages = n())
+bots |> 
+  dplyr::filter(user == "Yapperbot") |> 
+  dplyr::group_by(pageid) |> 
+  dplyr::summarise(count = n()) |> 
+  dplyr::group_by(count) |> 
+  dplyr::summarise(num_pages = n())
 ```
 
 Which page had to be uncurrented nine times?
 
 ```{r}
-yapperbot %>% 
-  group_by(pageid, title) %>% 
-  summarise(count = n()) %>% 
-  filter(count > 4) %>% 
-  arrange(desc(count))
+dplyr::filter(bots, user == "Yapperbot") |> 
+  dplyr::group_by(pageid, title) |> 
+  dplyr::summarise(count = n()) |> 
+  dplyr::filter(count > 4) |> 
+  dplyr::arrange(desc(count))
 ```
 
 # Wikipedia time (2): encyclopaedia time
